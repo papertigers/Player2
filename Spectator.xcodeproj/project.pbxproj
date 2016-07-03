@@ -13,6 +13,11 @@
 		3BAC48FF1D28C2450034A972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC48FD1D28C2450034A972 /* Main.storyboard */; };
 		3BAC49011D28C2450034A972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC49001D28C2450034A972 /* Assets.xcassets */; };
 		3BAC490C1D28C2450034A972 /* SpectatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC490B1D28C2450034A972 /* SpectatorTests.swift */; };
+		3BAC49191D28C3800034A972 /* TwitchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49181D28C3800034A972 /* TwitchRouter.swift */; };
+		3BAC49271D28C52A0034A972 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491A1D28C47D0034A972 /* Alamofire.framework */; };
+		3BAC49281D28C52A0034A972 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491B1D28C47D0034A972 /* KeychainSwift.framework */; };
+		3BAC49291D28C52A0034A972 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491C1D28C47D0034A972 /* pop.framework */; };
+		3BAC492A1D28C52A0034A972 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		3BAC49071D28C2450034A972 /* SpectatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BAC490B1D28C2450034A972 /* SpectatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorTests.swift; sourceTree = "<group>"; };
 		3BAC490D1D28C2450034A972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BAC49181D28C3800034A972 /* TwitchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchRouter.swift; path = Models/TwitchRouter.swift; sourceTree = "<group>"; };
+		3BAC491A1D28C47D0034A972 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/tvOS/Alamofire.framework; sourceTree = "<group>"; };
+		3BAC491B1D28C47D0034A972 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/tvOS/KeychainSwift.framework; sourceTree = "<group>"; };
+		3BAC491C1D28C47D0034A972 /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = Carthage/Build/tvOS/pop.framework; sourceTree = "<group>"; };
+		3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/tvOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BAC49271D28C52A0034A972 /* Alamofire.framework in Frameworks */,
+				3BAC49281D28C52A0034A972 /* KeychainSwift.framework in Frameworks */,
+				3BAC49291D28C52A0034A972 /* pop.framework in Frameworks */,
+				3BAC492A1D28C52A0034A972 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +73,10 @@
 		3BAC48EB1D28C2450034A972 = {
 			isa = PBXGroup;
 			children = (
+				3BAC491A1D28C47D0034A972 /* Alamofire.framework */,
+				3BAC491B1D28C47D0034A972 /* KeychainSwift.framework */,
+				3BAC491C1D28C47D0034A972 /* pop.framework */,
+				3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */,
 				3BAC48F61D28C2450034A972 /* Spectator */,
 				3BAC490A1D28C2450034A972 /* SpectatorTests */,
 				3BAC48F51D28C2450034A972 /* Products */,
@@ -77,6 +95,7 @@
 		3BAC48F61D28C2450034A972 /* Spectator */ = {
 			isa = PBXGroup;
 			children = (
+				3BAC49171D28C30A0034A972 /* Models */,
 				3BAC48F71D28C2450034A972 /* AppDelegate.swift */,
 				3BAC48F91D28C2450034A972 /* FirstViewController.swift */,
 				3BAC48FB1D28C2450034A972 /* SecondViewController.swift */,
@@ -96,6 +115,22 @@
 			path = SpectatorTests;
 			sourceTree = "<group>";
 		};
+		3BAC49161D28C2E30034A972 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3BAC49181D28C3800034A972 /* TwitchRouter.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		3BAC49171D28C30A0034A972 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3BAC49161D28C2E30034A972 /* API */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +141,7 @@
 				3BAC48F01D28C2450034A972 /* Sources */,
 				3BAC48F11D28C2450034A972 /* Frameworks */,
 				3BAC48F21D28C2450034A972 /* Resources */,
+				3BAC492B1D28C54B0034A972 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -191,12 +227,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3BAC492B1D28C54B0034A972 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/KeychainSwift.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/pop.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3BAC48F01D28C2450034A972 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3BAC48FC1D28C2450034A972 /* SecondViewController.swift in Sources */,
+				3BAC49191D28C3800034A972 /* TwitchRouter.swift in Sources */,
 				3BAC48F81D28C2450034A972 /* AppDelegate.swift in Sources */,
 				3BAC48FA1D28C2450034A972 /* FirstViewController.swift in Sources */,
 			);
@@ -320,6 +377,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = Spectator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Spectator;
@@ -332,6 +393,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = Spectator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Spectator;
