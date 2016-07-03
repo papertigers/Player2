@@ -13,6 +13,11 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let test = TwitchService()
+        test.getTopGames { res in
+            //yayyy
+        }
     }
 
     override func didReceiveMemoryWarning() {
