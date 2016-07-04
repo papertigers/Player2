@@ -6,7 +6,10 @@
 //  Copyright © 2016 Lights and Shapes. All rights reserved.
 //
 
-enum TwitchResult<T> {
+import Foundation
+import SwiftyJSON
+
+enum ServiceResult<T> {
     case Success(T)
     case Failure(ErrorType)
     
@@ -33,11 +36,18 @@ enum TwitchResult<T> {
     }
 }
 
-protocol TwitchServiceProtocol {
-    associatedtype T
-    
-    associatedtype Limit = Int
-    associatedtype Offset = Int
-    
-    func getTopGames(limit: Limit, offset: Offset, completionHandler: TwitchResult<T>)
+protocol Game: Hashable {
+    var name: String { get }
+    var id: Int  { get }
+    var hashValue: Int { get }
+    func ==(lhs: Self, rhs:Self) -> Bool
+}
+
+protocol Testing {
+    var a: Int { get }
+}
+
+protocol GameService {
+    associatedtype T: Game
+    func getTopGames(limit: Int, offset: Int, completionHandler: (ServiceResult<[T]> -> Void))
 }

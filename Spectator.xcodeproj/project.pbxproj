@@ -21,6 +21,7 @@
 		3BAC492D1D28CF750034A972 /* TwitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC492C1D28CF750034A972 /* TwitchService.swift */; };
 		3BAC492F1D28DB510034A972 /* Willow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC492E1D28DB510034A972 /* Willow.framework */; };
 		3BAC49311D28E7610034A972 /* TwitchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49301D28E7610034A972 /* TwitchServiceProtocol.swift */; };
+		3BAC49331D28EED70034A972 /* TwitchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49321D28EED70034A972 /* TwitchGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		3BAC492C1D28CF750034A972 /* TwitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchService.swift; path = Models/TwitchService.swift; sourceTree = "<group>"; };
 		3BAC492E1D28DB510034A972 /* Willow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Willow.framework; path = Carthage/Build/tvOS/Willow.framework; sourceTree = "<group>"; };
 		3BAC49301D28E7610034A972 /* TwitchServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchServiceProtocol.swift; path = Models/TwitchServiceProtocol.swift; sourceTree = "<group>"; };
+		3BAC49321D28EED70034A972 /* TwitchGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchGame.swift; path = Models/TwitchGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				3BAC49161D28C2E30034A972 /* API */,
+				3BAC49321D28EED70034A972 /* TwitchGame.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				3BAC49311D28E7610034A972 /* TwitchServiceProtocol.swift in Sources */,
 				3BAC49191D28C3800034A972 /* TwitchRouter.swift in Sources */,
 				3BAC48F81D28C2450034A972 /* AppDelegate.swift in Sources */,
+				3BAC49331D28EED70034A972 /* TwitchGame.swift in Sources */,
 				3BAC48FA1D28C2450034A972 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

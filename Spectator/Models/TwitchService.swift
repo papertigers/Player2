@@ -12,7 +12,7 @@ import Alamofire
 import Willow
 
 
-struct TwitchService {
+struct TwitchService: GameService {
     
     let log: Logger
     
@@ -24,23 +24,20 @@ struct TwitchService {
     }
     
     typealias TwitchResponse = Alamofire.Response
-    
-    private func checkResponse<T: AnyObject, U>(response: TwitchResponse<T, U>) -> TwitchResult<JSON> {
-        var result: TwitchResult<JSON>
-        if let value = response.result.value {
-            let json = JSON(value)
-            result = TwitchResult.Success(json)
-        } else {
-            result = TwitchResult.Failure(response.result.error!)
-        }
-        return result
+    enum TwitchError: ErrorType {
+        case NoGames
     }
     
-    typealias Limit = Int
-    typealias Offset = Int
+    private func checkResponse<T: AnyObject, U>(response: TwitchResponse<T, U>) -> ServiceResult<JSON> {
+        guard let value = response.result.value else {
+            return .Failure(response.result.error!)
+        }
+        return .Success(JSON(value))
+    }
     
-    typealias TopGamesCallback = (TwitchResult<JSON> -> Void)
-    func getTopGames(limit: Limit = 10, offset: Offset = 0, completionHandler: TopGamesCallback) {
+    
+    typealias TopGamesCallback = (ServiceResult<[TwitchGame]> -> Void)
+    func getTopGames(limit: Int = 10, offset: Int = 0, completionHandler: TopGamesCallback) {
         let parameters = [
             "limit": limit,
             "offset": offset
@@ -50,7 +47,10 @@ struct TwitchService {
             case .Success(let json):
                 self.log.debug{ "\(json)" }
                 self.log.info{ "Got top games" }
-                completionHandler(.Success(json))
+                guard let games = json["top"].array else {
+                    return completionHandler(.Failure(TwitchError.NoGames))
+                }
+                completionHandler(.Success(games.flatMap { TwitchGame($0) }))
             case .Failure(let error):
                 self.log.error { "\(error)" }
                 completionHandler(.Failure(error))
