@@ -20,10 +20,13 @@ enum tapi: URLRequestConvertible {
     
     // Games
     case TopGames([String:Int])
+    case Streams([String:AnyObject])
     
     var method: Alamofire.Method {
         switch self {
         case .TopGames:
+            return .GET
+        case .Streams:
             return .GET
         }
     }
@@ -32,6 +35,8 @@ enum tapi: URLRequestConvertible {
         switch self {
         case .TopGames:
             return "/games/top"
+        case .Streams:
+            return "/streams"
         }
     }
     
@@ -59,6 +64,8 @@ enum tapi: URLRequestConvertible {
         
         switch self {
         case .TopGames(let parameters):
+            return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
+        case .Streams(let parameters):
             return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
         }
     }

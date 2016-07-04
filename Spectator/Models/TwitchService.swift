@@ -57,4 +57,24 @@ struct TwitchService: GameService {
             }
         }
     }
+    
+    struct Test: Stream {
+        var a = 10
+    }
+    
+    func streamsForGame(limit: Int = 25 , offset: Int = 0, game: TwitchGame, completionHandler: (ServiceResult<Test> -> Void)) {
+        let parameteres = [
+            "limit": limit,
+            "offset": offset,
+            "game": game.name
+        ]
+        Alamofire.request(tapi.Streams(parameteres as! [String : AnyObject])).responseJSON { response in
+            switch self.checkResponse(response) {
+            case .Success(let json):
+                print(json)
+            case .Failure(let error):
+                print(error)
+            }
+        }
+    }
 }

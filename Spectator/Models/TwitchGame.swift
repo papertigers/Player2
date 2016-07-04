@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 
+/// A Twitch Game
 struct TwitchGame: Game {
     let name: String
     let box: [String:String]
@@ -21,6 +22,20 @@ struct TwitchGame: Game {
         return id
     }
     
+    enum Size: String {
+        case Large = "large"
+        case Medium = "medium"
+        case Small = "small"
+        case Template = "template"
+    }
+    
+    /**
+     Initializes a new TwitchGame based on a JSON payload
+     
+     - parameter json: JSON payload from Twitch API
+     
+     - returns: TwitchGame
+    */
     init?(_ json: JSON) {
         guard let id = json["game"]["_id"].int,
             name = json["game"]["name"].string,
@@ -38,19 +53,32 @@ struct TwitchGame: Game {
         self.channels = channels
     }
     
-    func mapValues(dict: [String:JSON]) -> [String:String] {
-        var gen = dict.generate()
-        var mapped: [String:String] = [:]
-        while let x =  gen.next() {
-            mapped[x.0] = x.1.string ?? ""
-        }
-        return mapped
+    /**
+    Get a box(poster) by size
+    - parameter forSize: Size of box to be returned
+    - returns: box URL
+    */
+    func box(forSize: Size) -> String? {
+        return box[forSize.rawValue]
+    }
+    
+    /**
+    Get a logo by size
+    - parameter forSize: Size of logo to be returned
+    - returns: logo URL
+    */
+    func logo(forSize: Size) -> String? {
+        return logo[forSize.rawValue]
     }
 }
 
+// MARK: Equatable
 func ==(lhs: TwitchGame, rhs: TwitchGame) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
+
+
+// MARK: Extensions
 
 // We mark this private because its specific to the Twitch API
 private extension JSON {

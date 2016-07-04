@@ -43,11 +43,13 @@ protocol Game: Hashable {
     func ==(lhs: Self, rhs:Self) -> Bool
 }
 
-protocol Testing {
-    var a: Int { get }
+protocol Stream {
+    
 }
 
 protocol GameService {
-    associatedtype T: Game
-    func getTopGames(limit: Int, offset: Int, completionHandler: (ServiceResult<[T]> -> Void))
+    associatedtype G: Game
+    associatedtype S: Stream
+    func getTopGames(limit: Int, offset: Int, completionHandler: (ServiceResult<[G]> -> Void))
+    func streamsForGame(limit: Int, offset: Int, game: G, completionHandler: (ServiceResult<S> -> Void))
 }
