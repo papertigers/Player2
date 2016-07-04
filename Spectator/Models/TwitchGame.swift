@@ -52,8 +52,11 @@ func ==(lhs: TwitchGame, rhs: TwitchGame) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
-
+// We mark this private because its specific to the Twitch API
 private extension JSON {
+    /**
+    Dictonary mapping of String:String specific to Twitches API data
+    */
     var dictOfString: [String:String]? {
         get {
             var mapped: [String:String] = [:]
