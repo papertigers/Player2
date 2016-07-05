@@ -76,28 +76,3 @@ struct TwitchGame: Game {
 func ==(lhs: TwitchGame, rhs: TwitchGame) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
-
-
-// MARK: Extensions
-
-// We mark this private because its specific to the Twitch API
-private extension JSON {
-    /**
-    Dictonary mapping of String:String specific to Twitches API data
-    */
-    var dictOfString: [String:String]? {
-        get {
-            var mapped: [String:String] = [:]
-            switch self.type {
-            case .Dictionary:
-                var gen = self.generate()
-                while let x = gen.next() {
-                    mapped[x.0] = x.1.string ?? ""
-                }
-                return mapped
-            default:
-                return nil
-            }
-        }
-    }
-}

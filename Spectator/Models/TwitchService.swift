@@ -26,6 +26,7 @@ struct TwitchService: GameService {
     typealias TwitchResponse = Alamofire.Response
     enum TwitchError: ErrorType {
         case NoGames
+        case NoStreams
     }
     
     private func checkResponse<T: AnyObject, U>(response: TwitchResponse<T, U>) -> ServiceResult<JSON> {
@@ -58,22 +59,26 @@ struct TwitchService: GameService {
         }
     }
     
-    struct Test: Stream {
-        var a = 10
-    }
     
-    func streamsForGame(limit: Int = 25 , offset: Int = 0, game: TwitchGame, completionHandler: (ServiceResult<Test> -> Void)) {
+    func streamsForGame(limit: Int = 25 , offset: Int = 0, game: TwitchGame, completionHandler: (ServiceResult<[TwitchStream]> -> Void)) {
         let parameteres = [
             "limit": limit,
             "offset": offset,
+            "live": true,
             "game": game.name
         ]
         Alamofire.request(tapi.Streams(parameteres as! [String : AnyObject])).responseJSON { response in
             switch self.checkResponse(response) {
             case .Success(let json):
-                print(json)
+                self.log.debug{ "\(json)" }
+                self.log.info{ "Got streams for game: \(game.name)" }
+                guard let streams = json["streams"].array else {
+                    return completionHandler(.Failure(TwitchError.NoStreams))
+                }
+                completionHandler(.Success(streams.flatMap { TwitchStream($0) }))
             case .Failure(let error):
-                print(error)
+                self.log.error { "\(error)" }
+                completionHandler(.Failure(error))
             }
         }
     }

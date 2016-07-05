@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B49C6F91D2B66C00097CDFC /* TwitchChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */; };
+		3B49C6FC1D2B6A140097CDFC /* ThirdPartyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6FB1D2B6A140097CDFC /* ThirdPartyExtensions.swift */; };
+		3B49C6FE1D2B74FC0097CDFC /* TwitchStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */; };
 		3BAC48F81D28C2450034A972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC48F71D28C2450034A972 /* AppDelegate.swift */; };
 		3BAC48FA1D28C2450034A972 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC48F91D28C2450034A972 /* FirstViewController.swift */; };
 		3BAC48FC1D28C2450034A972 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC48FB1D28C2450034A972 /* SecondViewController.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchChannel.swift; path = Models/TwitchChannel.swift; sourceTree = "<group>"; };
+		3B49C6FB1D2B6A140097CDFC /* ThirdPartyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyExtensions.swift; sourceTree = "<group>"; };
+		3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchStream.swift; path = Models/TwitchStream.swift; sourceTree = "<group>"; };
 		3BAC48F41D28C2450034A972 /* Spectator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BAC48F71D28C2450034A972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BAC48F91D28C2450034A972 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B49C6FA1D2B69F30097CDFC /* Third Party Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3B49C6FB1D2B6A140097CDFC /* ThirdPartyExtensions.swift */,
+			);
+			name = "Third Party Extensions";
+			sourceTree = "<group>";
+		};
 		3BAC48EB1D28C2450034A972 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +119,7 @@
 		3BAC48F61D28C2450034A972 /* Spectator */ = {
 			isa = PBXGroup;
 			children = (
+				3B49C6FA1D2B69F30097CDFC /* Third Party Extensions */,
 				3BAC49171D28C30A0034A972 /* Models */,
 				3BAC48F71D28C2450034A972 /* AppDelegate.swift */,
 				3BAC48F91D28C2450034A972 /* FirstViewController.swift */,
@@ -140,6 +155,8 @@
 			children = (
 				3BAC49161D28C2E30034A972 /* API */,
 				3BAC49321D28EED70034A972 /* TwitchGame.swift */,
+				3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */,
+				3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -266,11 +283,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B49C6FE1D2B74FC0097CDFC /* TwitchStream.swift in Sources */,
 				3BAC492D1D28CF750034A972 /* TwitchService.swift in Sources */,
 				3BAC48FC1D28C2450034A972 /* SecondViewController.swift in Sources */,
+				3B49C6F91D2B66C00097CDFC /* TwitchChannel.swift in Sources */,
 				3BAC49311D28E7610034A972 /* TwitchServiceProtocol.swift in Sources */,
 				3BAC49191D28C3800034A972 /* TwitchRouter.swift in Sources */,
 				3BAC48F81D28C2450034A972 /* AppDelegate.swift in Sources */,
+				3B49C6FC1D2B6A140097CDFC /* ThirdPartyExtensions.swift in Sources */,
 				3BAC49331D28EED70034A972 /* TwitchGame.swift in Sources */,
 				3BAC48FA1D28C2450034A972 /* FirstViewController.swift in Sources */,
 			);
@@ -464,6 +484,7 @@
 				3BAC49121D28C2450034A972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3BAC49131D28C2450034A972 /* Build configuration list for PBXNativeTarget "SpectatorTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +493,7 @@
 				3BAC49151D28C2450034A972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -43,13 +43,28 @@ protocol Game: Hashable {
     func ==(lhs: Self, rhs:Self) -> Bool
 }
 
-protocol Stream {
-    
+protocol Channel: Hashable {
+    var name: String { get }
+    var id: Int { get }
+    var displayName: String { get }
+    func ==(lhs: Self, rhs:Self) -> Bool
+}
+
+protocol Stream: Hashable {
+    associatedtype C: Channel
+    var id: Int { get }
+    var game: String { get }
+    var viewers: Int { get }
+    var videoHeight: Int { get }
+    var isPlaylist: Bool { get }
+    var preview: [String:String] { get }
+    var channel: C { get }
+    func ==(lhs: Self, rhs:Self) -> Bool
 }
 
 protocol GameService {
     associatedtype G: Game
     associatedtype S: Stream
     func getTopGames(limit: Int, offset: Int, completionHandler: (ServiceResult<[G]> -> Void))
-    func streamsForGame(limit: Int, offset: Int, game: G, completionHandler: (ServiceResult<S> -> Void))
+    func streamsForGame(limit: Int, offset: Int, game: G, completionHandler: (ServiceResult<[S]> -> Void))
 }
