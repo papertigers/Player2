@@ -17,6 +17,7 @@ class FirstViewController: UIViewController {
         let test = TwitchService()
         test.getTopGames { res in
             if let games = res.results {
+                print(games[3])
                 test.streamsForGame(game: games[3]) { res in
                     if let streams = res.results {
                         for stream in streams {

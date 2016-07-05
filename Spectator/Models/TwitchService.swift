@@ -16,6 +16,10 @@ struct TwitchService: GameService {
     
     let log: Logger
     
+    /**
+     Initializes a new TwitchService used to interact with the Twitch API
+     - returns: TwitchService
+     */
     init() {
         let writers: [LogLevel: [Writer]] = [
         [.Error, .Info]: [ConsoleWriter()]
@@ -29,6 +33,13 @@ struct TwitchService: GameService {
         case NoStreams
     }
     
+    /**
+     Checks a Twitch API response was successful and if so, returns the JSON payload
+     
+     - parameter response: Twitch API response (from Alamofire)
+     
+     - returns: JSON payload if successful
+     */
     private func checkResponse<T: AnyObject, U>(response: TwitchResponse<T, U>) -> ServiceResult<JSON> {
         guard let value = response.result.value else {
             return .Failure(response.result.error!)
@@ -38,6 +49,14 @@ struct TwitchService: GameService {
     
     
     typealias TopGamesCallback = (ServiceResult<[TwitchGame]> -> Void)
+    /**
+     Gets the most top streamed games from Twitch
+     
+     - parameter limit: Number of results to return
+     - parameter offset: Offset to start at
+     - parameter completionHandler: Callback called with possible array of top games
+     
+     */
     func getTopGames(limit: Int = 10, offset: Int = 0, completionHandler: TopGamesCallback) {
         let parameters = [
             "limit": limit,
@@ -59,7 +78,15 @@ struct TwitchService: GameService {
         }
     }
     
-    
+    /**
+     Get the top streams for a given TwitchGame
+     
+     - parameter limit: Number of results to return
+     - parameter offset: Offset to start at
+     - parameter game: TwitchGame to get streams for
+     - parameter completionHandler: Callback called with possible array of top streams
+
+    */
     func streamsForGame(limit: Int = 25 , offset: Int = 0, game: TwitchGame, completionHandler: (ServiceResult<[TwitchStream]> -> Void)) {
         let parameteres = [
             "limit": limit,

@@ -153,12 +153,20 @@
 		3BAC49171D28C30A0034A972 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3BC00C621D2B843D00A2D90D /* Twitch Models */,
 				3BAC49161D28C2E30034A972 /* API */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3BC00C621D2B843D00A2D90D /* Twitch Models */ = {
+			isa = PBXGroup;
+			children = (
 				3BAC49321D28EED70034A972 /* TwitchGame.swift */,
 				3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */,
 				3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */,
 			);
-			name = Models;
+			name = "Twitch Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
