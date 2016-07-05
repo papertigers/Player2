@@ -14,6 +14,8 @@ enum TwitchAPIVersion: String {
     case v3 = "application/vnd.twitchtv.v3+json"
 }
 
+let CLIENT_ID  = "Spectator"
+
 enum tapi: URLRequestConvertible {
     static let baseURLString = "https://api.twitch.tv/kraken"
     static var OAuthToken: String?
@@ -60,6 +62,7 @@ enum tapi: URLRequestConvertible {
             mutableURLRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         
+        mutableURLRequest.setValue(CLIENT_ID, forHTTPHeaderField: "Client-ID")
         mutableURLRequest.setValue(apiVersion.rawValue, forHTTPHeaderField: "Accept")
         
         switch self {
