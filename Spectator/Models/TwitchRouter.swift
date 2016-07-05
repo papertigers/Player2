@@ -18,17 +18,23 @@ let CLIENT_ID  = "Spectator"
 
 enum tapi: URLRequestConvertible {
     static let baseURLString = "https://api.twitch.tv/kraken"
+    static let tokenURLString = "https://api.twitch.tv/api"
     static var OAuthToken: String?
     
     // Games
     case TopGames([String:Int])
+    // Streams
     case Streams([String:AnyObject])
+    // Undocumented API for VideoStreams
+    case ChannelToken(TwitchChannel)
     
     var method: Alamofire.Method {
         switch self {
         case .TopGames:
             return .GET
         case .Streams:
+            return .GET
+        case .ChannelToken:
             return .GET
         }
     }
@@ -39,6 +45,8 @@ enum tapi: URLRequestConvertible {
             return "/games/top"
         case .Streams:
             return "/streams"
+        case .ChannelToken(let channel):
+            return "/channels/\(channel.name)/access_token"
         }
     }
     
@@ -49,10 +57,21 @@ enum tapi: URLRequestConvertible {
         }
     }
     
+    // We have to change the base URL unfortunately 
+    // because we have to use an undocumented API occassionally
+    var apiURL: String {
+        switch self {
+        case .ChannelToken:
+            return tapi.tokenURLString
+        default:
+            return tapi.baseURLString
+        }
+    }
+    
     // MARK: URLRequsetConvertible
     
     var URLRequest: NSMutableURLRequest {
-        let URL = NSURL(string: tapi.baseURLString)!
+        let URL = NSURL(string: apiURL)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
         mutableURLRequest.HTTPMethod = method.rawValue
         
@@ -70,6 +89,8 @@ enum tapi: URLRequestConvertible {
             return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
         case .Streams(let parameters):
             return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
+        default:
+            return mutableURLRequest
         }
     }
 }

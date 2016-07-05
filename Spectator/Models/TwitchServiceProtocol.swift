@@ -68,3 +68,17 @@ protocol GameService {
     func getTopGames(limit: Int, offset: Int, completionHandler: (ServiceResult<[G]> -> Void))
     func streamsForGame(limit: Int, offset: Int, game: G, completionHandler: (ServiceResult<[S]> -> Void))
 }
+
+typealias TwitchChannelToken = String
+typealias TwitchChannelSig = String
+protocol TwitchToken {
+    var token: TwitchChannelToken { get }
+}
+protocol TwitchSig {
+    var sig: TwitchChannelSig { get }
+}
+
+protocol UndocumentedTwitchAPI {
+    associatedtype C: TwitchToken, TwitchSig
+    func getChannelToken(channel: TwitchChannel, completionHandler: (ServiceResult<C> -> Void))
+}

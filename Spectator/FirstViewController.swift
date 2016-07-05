@@ -20,8 +20,8 @@ class FirstViewController: UIViewController {
                 print(games[3])
                 test.streamsForGame(game: games[3]) { res in
                     if let streams = res.results {
-                        for stream in streams {
-                            print("\(stream.channel.displayName): \(stream.channel.status!)")
+                        test.getChannelToken(streams[0].channel) { res in
+                            print(res)
                         }
                     }
                 }

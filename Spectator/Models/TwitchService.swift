@@ -12,7 +12,7 @@ import Alamofire
 import Willow
 
 
-struct TwitchService: GameService {
+struct TwitchService: GameService, UndocumentedTwitchAPI {
     
     let log: Logger
     
@@ -31,6 +31,7 @@ struct TwitchService: GameService {
     enum TwitchError: ErrorType {
         case NoGames
         case NoStreams
+        case FailedToRetrieveTokenOrSig
     }
     
     /**
@@ -98,11 +99,39 @@ struct TwitchService: GameService {
             switch self.checkResponse(response) {
             case .Success(let json):
                 self.log.debug{ "\(json)" }
-                self.log.info{ "Got streams for game: \(game.name)" }
                 guard let streams = json["streams"].array else {
                     return completionHandler(.Failure(TwitchError.NoStreams))
                 }
+                self.log.info{ "Got streams for game: \(game.name)" }
                 completionHandler(.Success(streams.flatMap { TwitchStream($0) }))
+            case .Failure(let error):
+                self.log.error { "\(error)" }
+                completionHandler(.Failure(error))
+            }
+        }
+    }
+    
+    
+    // MARK: Undocumented Twitch API
+    
+    /**
+     Get a channel token and sig for a given TwitchChannel
+     
+     - parameter channel: TwitchChannel
+     - parameter completionHandler: Callback called with possible TwitchChannelCreds
+     
+     */
+    func getChannelToken(channel: TwitchChannel, completionHandler: (ServiceResult<TwitchChannelCreds> -> Void)) {
+        Alamofire.request(tapi.ChannelToken(channel)).responseJSON { response in
+            switch self.checkResponse(response) {
+            case .Success(let json):
+                self.log.debug{ "\(json)" }
+                guard let token = json["token"].string,
+                sig = json["sig"].string else {
+                    return completionHandler(.Failure(TwitchError.FailedToRetrieveTokenOrSig))
+                }
+                self.log.info{ "Got token and sig for channel: \(channel.name)" }
+                completionHandler(.Success(TwitchChannelCreds(token: token, sig: sig)))
             case .Failure(let error):
                 self.log.error { "\(error)" }
                 completionHandler(.Failure(error))

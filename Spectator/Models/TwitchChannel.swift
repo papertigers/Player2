@@ -9,6 +9,17 @@
 import Foundation
 import SwiftyJSON
 
+
+struct TwitchChannelCreds: TwitchToken, TwitchSig {
+    let token: TwitchChannelToken
+    let sig: TwitchChannelSig
+    
+    init(token: TwitchChannelToken, sig: TwitchChannelSig) {
+        self.token = token
+        self.sig = sig
+    }
+}
+
 struct TwitchChannel: Channel {
     let id : Int
     var hashValue: Int {
