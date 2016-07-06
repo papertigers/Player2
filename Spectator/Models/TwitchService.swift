@@ -32,6 +32,7 @@ struct TwitchService: GameService, UndocumentedTwitchAPI {
         case NoGames
         case NoStreams
         case FailedToRetrieveTokenOrSig
+        case FailedToParseM3U
     }
     
     /**
@@ -121,7 +122,7 @@ struct TwitchService: GameService, UndocumentedTwitchAPI {
      - parameter completionHandler: Callback called with possible TwitchChannelCreds
      
      */
-    func getChannelToken(channel: TwitchChannel, completionHandler: (ServiceResult<TwitchChannelCreds> -> Void)) {
+    private func getChannelTokenAndSig(channel: TwitchChannel, completionHandler: (ServiceResult<TwitchChannelCreds> -> Void)) {
         Alamofire.request(tapi.ChannelToken(channel)).responseJSON { response in
             switch self.checkResponse(response) {
             case .Success(let json):
@@ -134,6 +135,44 @@ struct TwitchService: GameService, UndocumentedTwitchAPI {
                 completionHandler(.Success(TwitchChannelCreds(token: token, sig: sig)))
             case .Failure(let error):
                 self.log.error { "\(error)" }
+                completionHandler(.Failure(error))
+            }
+        }
+    }
+    
+    /**
+     Get a channels live streams for a given TwitchChannel
+     
+     - parameter channel: TwitchChannel
+     - parameter completionHandler: Callback called with possible array of TwitchStreamVideo
+     
+     */
+    func getStreamsForChannel(channel: TwitchChannel, completionHandler: (ServiceResult<[TwitchStreamVideo]> -> Void)) {
+        getChannelTokenAndSig(channel) { res in
+            switch res {
+            case .Success(let tokenAndSig):
+                let parameters = [
+                    "player"            : "twitchweb",
+                    "allow_audio_only"  : true,
+                    "allow_source"      : true,
+                    "mobile_restricted" : false,
+                    "type"              : "any",
+                    "p"                 : Int(arc4random_uniform(99999)),
+                    "token"             : tokenAndSig.token,
+                    "sig"               : tokenAndSig.sig
+                ]
+                Alamofire.request(tapi.VideoStreams(channel, parameters as! [String : AnyObject])).validate(statusCode: 200..<300).responseString { res2 in
+                    switch res2.result {
+                    case .Success(let rawM3U):
+                        guard let streams = M3UParser.parseToDict(rawM3U) else {
+                            return completionHandler(.Failure(TwitchError.FailedToParseM3U))
+                        }
+                        completionHandler(.Success(streams))
+                    case .Failure(let error):
+                        completionHandler(.Failure(error))
+                    }
+                }
+            case .Failure(let error):
                 completionHandler(.Failure(error))
             }
         }

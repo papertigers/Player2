@@ -79,6 +79,5 @@ protocol TwitchSig {
 }
 
 protocol UndocumentedTwitchAPI {
-    associatedtype C: TwitchToken, TwitchSig
-    func getChannelToken(channel: TwitchChannel, completionHandler: (ServiceResult<C> -> Void))
+    func getStreamsForChannel(channel: TwitchChannel, completionHandler: (ServiceResult<[TwitchStreamVideo]> -> Void))
 }

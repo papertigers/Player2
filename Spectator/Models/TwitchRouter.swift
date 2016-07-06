@@ -19,6 +19,7 @@ let CLIENT_ID  = "Spectator"
 enum tapi: URLRequestConvertible {
     static let baseURLString = "https://api.twitch.tv/kraken"
     static let tokenURLString = "https://api.twitch.tv/api"
+    static let videoStreamsURLString = "http://usher.twitch.tv/api"
     static var OAuthToken: String?
     
     // Games
@@ -27,6 +28,7 @@ enum tapi: URLRequestConvertible {
     case Streams([String:AnyObject])
     // Undocumented API for VideoStreams
     case ChannelToken(TwitchChannel)
+    case VideoStreams(TwitchChannel, [String:AnyObject])
     
     var method: Alamofire.Method {
         switch self {
@@ -35,6 +37,8 @@ enum tapi: URLRequestConvertible {
         case .Streams:
             return .GET
         case .ChannelToken:
+            return .GET
+        case .VideoStreams:
             return .GET
         }
     }
@@ -47,6 +51,8 @@ enum tapi: URLRequestConvertible {
             return "/streams"
         case .ChannelToken(let channel):
             return "/channels/\(channel.name)/access_token"
+        case .VideoStreams(let channel, _):
+            return "/channel/hls/\(channel.name).m3u8"
         }
     }
     
@@ -63,6 +69,8 @@ enum tapi: URLRequestConvertible {
         switch self {
         case .ChannelToken:
             return tapi.tokenURLString
+        case .VideoStreams:
+            return tapi.videoStreamsURLString
         default:
             return tapi.baseURLString
         }
@@ -88,6 +96,10 @@ enum tapi: URLRequestConvertible {
         case .TopGames(let parameters):
             return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
         case .Streams(let parameters):
+            return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
+        case .VideoStreams(_, let parameters):
+            //We have to nil out the accept header or twitch gets cranky
+            mutableURLRequest.setValue("", forHTTPHeaderField: "Accept")
             return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
         default:
             return mutableURLRequest

@@ -18,10 +18,14 @@ class FirstViewController: UIViewController {
         test.getTopGames { res in
             if let games = res.results {
                 print(games[3])
-                test.streamsForGame(game: games[3]) { res in
+                test.streamsForGame(game: games[2]) { res in
                     if let streams = res.results {
-                        test.getChannelToken(streams[0].channel) { res in
-                            print(res)
+                        test.getStreamsForChannel(streams[0].channel) { res in
+                            switch res.results {
+                            default:
+                                print(res)
+                            }
+                            
                         }
                     }
                 }
