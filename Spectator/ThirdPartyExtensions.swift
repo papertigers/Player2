@@ -22,6 +22,8 @@ extension JSON {
                 while let x = gen.next() {
                     if let value = x.1.string {
                         mapped[x.0] = value
+                    } else {
+                        return nil
                     }
                 }
                 return mapped

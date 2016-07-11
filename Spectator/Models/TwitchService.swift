@@ -15,7 +15,7 @@ import Willow
 struct TwitchService: GameService {
     
     let log: Logger
-    let queue = dispatch_queue_create("com.cnoon.manager-response-queue", DISPATCH_QUEUE_CONCURRENT)
+    let queue = dispatch_queue_create("com.lightsandshapes.response-queue", DISPATCH_QUEUE_CONCURRENT)
     
     /**
      Initializes a new TwitchService used to interact with the Twitch API

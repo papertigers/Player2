@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "745017D941DF76947D50BD5E82B059F25FC2F86C" : 0,
+    "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E06D0B51-AF86-421E-9340-965C6BEE7EB7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "745017D941DF76947D50BD5E82B059F25FC2F86C" : "..",
+    "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F" : "Spectator\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Spectator",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Spectator.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:papertigers\/salt-formulas.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "745017D941DF76947D50BD5E82B059F25FC2F86C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:papertigers\/Spectator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F"
+    }
+  ]
+}
