@@ -17,13 +17,18 @@ class FirstViewController: UIViewController {
         let test = TwitchService()
         test.getTopGames { res in
             if let games = res.results {
-                print(games[3])
+                print(games[2])
                 test.streamsForGame(game: games[2]) { res in
                     if let streams = res.results {
                         test.getStreamsForChannel(streams[0].channel) { res in
-                            switch res.results {
+                            switch res {
+                            case .Success(let mike):
+                                if let url = mike.filter( {$0.quality == "chunked"} ).first {
+                                    print(url)
+                                    print(NSThread.isMainThread())
+                                }
                             default:
-                                print(res)
+                                print()
                             }
                             
                         }
