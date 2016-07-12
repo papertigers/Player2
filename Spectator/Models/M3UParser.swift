@@ -4,10 +4,12 @@
 //
 //  Created by Olivier Boucher on 2015-09-13.
 // https://github.com/OlivierBoucher/StreamCenter/blob/master/StreamCenter/M3UParser.swift
-// Modified by Michael Zeller on 7/5/16.
+//
+// Modified by Michael Zeller <mike@mikezeller.net>
 
 import Foundation
 
+// TODO: Needs love
 class M3UParser {
     
     static func parseToDict(data : String) -> [TwitchStreamVideo]? {

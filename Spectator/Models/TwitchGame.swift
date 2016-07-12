@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 /// A Twitch Game
-struct TwitchGame: Game {
+struct TwitchGame: Hashable {
     let name: String
     let box: [String:String]
     let logo: [String:String]

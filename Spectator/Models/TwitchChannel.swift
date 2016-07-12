@@ -10,7 +10,9 @@ import Foundation
 import SwiftyJSON
 
 
-struct TwitchChannelCreds: TwitchToken, TwitchSig {
+struct TwitchChannelCreds {
+    typealias TwitchChannelToken = String
+    typealias TwitchChannelSig = String
     let token: TwitchChannelToken
     let sig: TwitchChannelSig
     
@@ -20,7 +22,7 @@ struct TwitchChannelCreds: TwitchToken, TwitchSig {
     }
 }
 
-struct TwitchChannel: Channel {
+struct TwitchChannel: Hashable {
     let id : Int
     var hashValue: Int {
         return id

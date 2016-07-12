@@ -36,47 +36,11 @@ enum ServiceResult<T> {
     }
 }
 
-protocol Game: Hashable {
-    var name: String { get }
-    var id: Int  { get }
-    var hashValue: Int { get }
-    func ==(lhs: Self, rhs:Self) -> Bool
-}
-
-protocol Channel: Hashable {
-    var name: String { get }
-    var id: Int { get }
-    var displayName: String { get }
-    func ==(lhs: Self, rhs:Self) -> Bool
-}
-
-protocol Stream: Hashable {
-    associatedtype C: Channel
-    var id: Int { get }
-    var game: String { get }
-    var viewers: Int { get }
-    var videoHeight: Int { get }
-    var isPlaylist: Bool { get }
-    var preview: [String:String] { get }
-    var channel: C { get }
-    func ==(lhs: Self, rhs:Self) -> Bool
-}
-
 protocol GameService {
-    associatedtype G: Game
-    associatedtype S: Stream
-    func getTopGames(limit: Int, offset: Int, completionHandler: (ServiceResult<[G]> -> Void))
-    func streamsForGame(limit: Int, offset: Int, game: G, completionHandler: (ServiceResult<[S]> -> Void))
+    func getTopGames(limit: Int, offset: Int, completionHandler: (ServiceResult<[TwitchGame]> -> Void))
+    func streamsForGame(limit: Int, offset: Int, game: TwitchGame, completionHandler: (ServiceResult<[TwitchStream]> -> Void))
 }
 
-typealias TwitchChannelToken = String
-typealias TwitchChannelSig = String
-protocol TwitchToken {
-    var token: TwitchChannelToken { get }
-}
-protocol TwitchSig {
-    var sig: TwitchChannelSig { get }
-}
 
 protocol UndocumentedTwitchAPI {
     func getStreamsForChannel(channel: TwitchChannel, completionHandler: (ServiceResult<[TwitchStreamVideo]> -> Void))
