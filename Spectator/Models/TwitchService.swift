@@ -15,8 +15,8 @@ import Willow
 struct TwitchService: GameService {
     
     let log: Logger
-    let queue = dispatch_queue_create("com.lightsandshapes.response-queue", DISPATCH_QUEUE_CONCURRENT)
-    
+    static let backgroundQueue = dispatch_queue_create("com.lightsandshapes.response-queue", DISPATCH_QUEUE_CONCURRENT)
+
     /**
      Initializes a new TwitchService used to interact with the Twitch API
      - returns: TwitchService
@@ -73,7 +73,12 @@ struct TwitchService: GameService {
                 guard let games = json["top"].array else {
                     return completionHandler(.Failure(TwitchError.NoGames))
                 }
-                completionHandler(.Success(games.flatMap { TwitchGame($0) }))
+                dispatch_async(TwitchService.backgroundQueue) {
+                    let g = games.flatMap { TwitchGame($0) }
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completionHandler(.Success(g))
+                    }
+                }
             case .Failure(let error):
                 self.log.error { "\(error)" }
                 completionHandler(.Failure(error))
@@ -105,7 +110,12 @@ struct TwitchService: GameService {
                     return completionHandler(.Failure(TwitchError.NoStreams))
                 }
                 self.log.info{ "Got streams for game: \(game.name)" }
-                completionHandler(.Success(streams.flatMap { TwitchStream($0) }))
+                dispatch_async(TwitchService.backgroundQueue) {
+                    let s = streams.flatMap { TwitchStream($0) }
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completionHandler(.Success(s))
+                    }
+                }
             case .Failure(let error):
                 self.log.error { "\(error)" }
                 completionHandler(.Failure(error))
@@ -125,7 +135,7 @@ extension TwitchService: UndocumentedTwitchAPI {
      
      */
     private func getChannelTokenAndSig(channel: TwitchChannel, completionHandler: (ServiceResult<TwitchChannelCreds> -> Void)) {
-        Alamofire.request(tapi.ChannelToken(channel)).validate(statusCode: 200..<300).responseJSON { response in
+        Alamofire.request(tapi.ChannelToken(channel)).validate(statusCode: 200..<300).responseJSON(queue: TwitchService.backgroundQueue) { response in
             switch self.checkResponse(response) {
             case .Success(let json):
                 self.log.debug{ "\(json)" }
@@ -163,7 +173,7 @@ extension TwitchService: UndocumentedTwitchAPI {
                     "token"             : tokenAndSig.token,
                     "sig"               : tokenAndSig.sig
                 ]
-                Alamofire.request(tapi.VideoStreams(channel, parameters as! [String : AnyObject])).validate(statusCode: 200..<300).responseString(queue: self.queue) { res2 in
+                Alamofire.request(tapi.VideoStreams(channel, parameters as! [String : AnyObject])).validate(statusCode: 200..<300).responseString(queue: TwitchService.backgroundQueue) { res2 in
                     switch res2.result {
                     case .Success(let rawM3U):
                         guard let streams = M3UParser.parseToDict(rawM3U) else {
