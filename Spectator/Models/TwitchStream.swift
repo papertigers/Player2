@@ -30,12 +30,12 @@ struct TwitchStream: Hashable {
      */
     init?(_ json: JSON) {
         guard let id = json["_id"].int,
-            game = json["game"].string,
-            videoHeight = json["video_height"].int,
-            isPlaylist = json["is_playlist"].bool,
-            viewers = json["viewers"].int,
-            preview = json["preview"].dictOfString,
-            channel = TwitchChannel(json["channel"])
+            let game = json["game"].string,
+            let videoHeight = json["video_height"].int,
+            let isPlaylist = json["is_playlist"].bool,
+            let viewers = json["viewers"].int,
+            let preview = json["preview"].dictOfString,
+            let channel = TwitchChannel(json["channel"])
             else {
                 return nil
         }

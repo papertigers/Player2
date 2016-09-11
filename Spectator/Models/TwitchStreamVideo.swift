@@ -10,6 +10,6 @@ import Foundation
 
 struct TwitchStreamVideo {
     let quality : String
-    let url : NSURL
+    let url : URL
     let codecs : String
 }

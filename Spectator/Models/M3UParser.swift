@@ -12,8 +12,8 @@ import Foundation
 // TODO: Needs love
 class M3UParser {
     
-    static func parseToDict(data : String) -> [TwitchStreamVideo]? {
-        let dataByLine = data.componentsSeparatedByString("\n")
+    static func parseToDict(_ data : String) -> [TwitchStreamVideo]? {
+        let dataByLine = data.components(separatedBy: "\n")
         
         var resultArray = [TwitchStreamVideo]()
         
@@ -23,15 +23,15 @@ class M3UParser {
                     let line = dataByLine[i]
                     var codecs : String?
                     var quality : String?
-                    var url : NSURL?
+                    var url : URL?
                     
-                    if let codecsRange = line.rangeOfString("CODECS=\"") {
-                        if let videoRange = line.rangeOfString("VIDEO=\"") {
-                            codecs = line.substringWithRange(codecsRange.endIndex..<videoRange.startIndex.advancedBy(-2))
-                            quality = line.substringWithRange(videoRange.endIndex..<line.endIndex.advancedBy(-1))
+                    if let codecsRange = line.range(of: "CODECS=\"") {
+                        if let videoRange = line.range(of: "VIDEO=\"") {
+                            codecs = line.substring(with: codecsRange.upperBound..<line.characters.index(line.endIndex, offsetBy: -2))
+                            quality = line.substring(with: videoRange.upperBound..<line.characters.index(line.endIndex, offsetBy: -1))
                             
                             if(dataByLine[i+1].hasPrefix("http")){
-                                url = NSURL(string: dataByLine[i+1].stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+                                url = URL(string: dataByLine[i+1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
                             }
                         }
                     }

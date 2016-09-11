@@ -23,35 +23,35 @@ enum tapi: URLRequestConvertible {
     static var OAuthToken: String?
     
     // Games
-    case TopGames([String:Int])
+    case topGames([String:Int])
     // Streams
-    case Streams([String:AnyObject])
+    case streams([String:AnyObject])
     // Undocumented API for VideoStreams
-    case ChannelToken(TwitchChannel)
-    case VideoStreams(TwitchChannel, [String:AnyObject])
+    case channelToken(TwitchChannel)
+    case videoStreams(TwitchChannel, [String:AnyObject])
     
-    var method: Alamofire.Method {
+    var method: HTTPMethod {
         switch self {
-        case .TopGames:
-            return .GET
-        case .Streams:
-            return .GET
-        case .ChannelToken:
-            return .GET
-        case .VideoStreams:
-            return .GET
+        case .topGames:
+            return .get
+        case .streams:
+            return .get
+        case .channelToken:
+            return .get
+        case .videoStreams:
+            return .get
         }
     }
     
     var path: String {
         switch self {
-        case .TopGames:
+        case .topGames:
             return "/games/top"
-        case .Streams:
+        case .streams:
             return "/streams"
-        case .ChannelToken(let channel):
+        case .channelToken(let channel):
             return "/channels/\(channel.name)/access_token"
-        case .VideoStreams(let channel, _):
+        case .videoStreams(let channel, _):
             return "/channel/hls/\(channel.name).m3u8"
         }
     }
@@ -67,9 +67,9 @@ enum tapi: URLRequestConvertible {
     // because we have to use an undocumented API occassionally
     var apiURL: String {
         switch self {
-        case .ChannelToken:
+        case .channelToken:
             return tapi.tokenURLString
-        case .VideoStreams:
+        case .videoStreams:
             return tapi.videoStreamsURLString
         default:
             return tapi.baseURLString
@@ -78,10 +78,10 @@ enum tapi: URLRequestConvertible {
     
     // MARK: URLRequsetConvertible
     
-    var URLRequest: NSMutableURLRequest {
-        let URL = NSURL(string: apiURL)!
-        let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
-        mutableURLRequest.HTTPMethod = method.rawValue
+    func asURLRequest() throws -> URLRequest {
+        let URL = Foundation.URL(string: apiURL)!
+        var mutableURLRequest = URLRequest(url: URL.appendingPathComponent(path))
+        mutableURLRequest.httpMethod = method.rawValue
         
         
         
@@ -93,16 +93,18 @@ enum tapi: URLRequestConvertible {
         mutableURLRequest.setValue(apiVersion.rawValue, forHTTPHeaderField: "Accept")
         
         switch self {
-        case .TopGames(let parameters):
-            return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
-        case .Streams(let parameters):
-            return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
-        case .VideoStreams(_, let parameters):
+        case .topGames(let parameters):
+            mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
+        case .streams(let parameters):
+            mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
+        case .videoStreams(_, let parameters):
             //We have to nil out the accept header or twitch gets cranky
             mutableURLRequest.setValue("", forHTTPHeaderField: "Accept")
-            return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
+            mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
         default:
-            return mutableURLRequest
+            break
         }
+        
+        return mutableURLRequest
     }
 }

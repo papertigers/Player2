@@ -15,25 +15,25 @@ import Willow
 struct TwitchService: GameService {
     
     let log: Logger
-    static let backgroundQueue = dispatch_queue_create("com.lightsandshapes.response-queue", DISPATCH_QUEUE_CONCURRENT)
+    static let backgroundQueue = DispatchQueue(label: "com.lightsandshapes.response-queue", attributes: DispatchQueue.Attributes.concurrent)
 
     /**
      Initializes a new TwitchService used to interact with the Twitch API
      - returns: TwitchService
      */
     init() {
-        let writers: [LogLevel: [Writer]] = [
-        [.Error, .Info]: [ConsoleWriter()]
+        let writers: [LogLevel: [LogMessageWriter]] = [
+        [.error, .info]: [ConsoleWriter()]
         ]
         log = Logger(configuration: LoggerConfiguration(writers: writers))
     }
     
-    typealias TwitchResponse = Alamofire.Response
-    enum TwitchError: ErrorType {
-        case NoGames
-        case NoStreams
-        case FailedToRetrieveTokenOrSig
-        case FailedToParseM3U
+    typealias TwitchResponse = Alamofire.DataResponse
+    enum TwitchError: Error {
+        case noGames
+        case noStreams
+        case failedToRetrieveTokenOrSig
+        case failedToParseM3U
     }
     
     /**
@@ -43,15 +43,15 @@ struct TwitchService: GameService {
      
      - returns: JSON payload if successful
      */
-    private func checkResponse<T: AnyObject, U>(response: TwitchResponse<T, U>) -> ServiceResult<JSON> {
+    fileprivate func checkResponse<T: Any>(_ response: TwitchResponse<T>) -> ServiceResult<JSON> {
         guard let value = response.result.value else {
-            return .Failure(response.result.error!)
+            return .failure(response.result.error!)
         }
-        return .Success(JSON(value))
+        return .success(JSON(value))
     }
     
     
-    typealias TopGamesCallback = (ServiceResult<[TwitchGame]> -> Void)
+    typealias TopGamesCallback = ((ServiceResult<[TwitchGame]>) -> Void)
     /**
      Gets the most top streamed games from Twitch
      
@@ -60,28 +60,28 @@ struct TwitchService: GameService {
      - parameter completionHandler: Callback called with possible array of top games
      
      */
-    func getTopGames(limit: Int = 10, offset: Int = 0, completionHandler: TopGamesCallback) {
+    func getTopGames(_ limit: Int = 10, offset: Int = 0, completionHandler: @escaping TopGamesCallback) {
         let parameters = [
             "limit": limit,
             "offset": offset
         ]
-        Alamofire.request(tapi.TopGames(parameters)).validate(statusCode: 200..<300).responseJSON { response in
+        Alamofire.request(tapi.topGames(parameters)).validate(statusCode: 200..<300).responseJSON { response in
             switch self.checkResponse(response) {
-            case .Success(let json):
+            case .success(let json):
                 self.log.debug{ "\(json)" }
                 self.log.info{ "Got top games" }
                 guard let games = json["top"].array else {
-                    return completionHandler(.Failure(TwitchError.NoGames))
+                    return completionHandler(.failure(TwitchError.noGames))
                 }
-                dispatch_async(TwitchService.backgroundQueue) {
+                TwitchService.backgroundQueue.async {
                     let g = games.flatMap { TwitchGame($0) }
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completionHandler(.Success(g))
+                    DispatchQueue.main.async() {
+                        completionHandler(.success(g))
                     }
                 }
-            case .Failure(let error):
+            case .failure(let error):
                 self.log.error { "\(error)" }
-                completionHandler(.Failure(error))
+                completionHandler(.failure(error))
             }
         }
     }
@@ -95,30 +95,30 @@ struct TwitchService: GameService {
      - parameter completionHandler: Callback called with possible array of top streams
 
     */
-    func streamsForGame(limit: Int = 25 , offset: Int = 0, game: TwitchGame, completionHandler: (ServiceResult<[TwitchStream]> -> Void)) {
+    func streamsForGame(_ limit: Int = 25 , offset: Int = 0, game: TwitchGame, completionHandler: @escaping ((ServiceResult<[TwitchStream]>) -> Void)) {
         let parameteres = [
             "limit": limit,
             "offset": offset,
             "live": true,
             "game": game.name
-        ]
-        Alamofire.request(tapi.Streams(parameteres as! [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
+        ] as [String : Any]
+        Alamofire.request(tapi.streams(parameteres as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
             switch self.checkResponse(response) {
-            case .Success(let json):
+            case .success(let json):
                 self.log.debug{ "\(json)" }
                 guard let streams = json["streams"].array else {
-                    return completionHandler(.Failure(TwitchError.NoStreams))
+                    return completionHandler(.failure(TwitchError.noStreams))
                 }
                 self.log.info{ "Got streams for game: \(game.name)" }
-                dispatch_async(TwitchService.backgroundQueue) {
+                TwitchService.backgroundQueue.async {
                     let s = streams.flatMap { TwitchStream($0) }
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completionHandler(.Success(s))
+                    DispatchQueue.main.async {
+                        completionHandler(.success(s))
                     }
                 }
-            case .Failure(let error):
+            case .failure(let error):
                 self.log.error { "\(error)" }
-                completionHandler(.Failure(error))
+                completionHandler(.failure(error))
             }
         }
     }
@@ -134,20 +134,20 @@ extension TwitchService: UndocumentedTwitchAPI {
      - parameter completionHandler: Callback called with possible TwitchChannelCreds
      
      */
-    private func getChannelTokenAndSig(channel: TwitchChannel, completionHandler: (ServiceResult<TwitchChannelCreds> -> Void)) {
-        Alamofire.request(tapi.ChannelToken(channel)).validate(statusCode: 200..<300).responseJSON(queue: TwitchService.backgroundQueue) { response in
+    fileprivate func getChannelTokenAndSig(_ channel: TwitchChannel, completionHandler: @escaping ((ServiceResult<TwitchChannelCreds>) -> Void)) {
+        Alamofire.request(tapi.channelToken(channel)).validate(statusCode: 200..<300).responseJSON(queue: TwitchService.backgroundQueue) { response in
             switch self.checkResponse(response) {
-            case .Success(let json):
+            case .success(let json):
                 self.log.debug{ "\(json)" }
                 guard let token = json["token"].string,
-                sig = json["sig"].string else {
-                    return completionHandler(.Failure(TwitchError.FailedToRetrieveTokenOrSig))
+                let sig = json["sig"].string else {
+                    return completionHandler(.failure(TwitchError.failedToRetrieveTokenOrSig))
                 }
                 self.log.info{ "Got token and sig for channel: \(channel.name)" }
-                completionHandler(.Success(TwitchChannelCreds(token: token, sig: sig)))
-            case .Failure(let error):
+                completionHandler(.success(TwitchChannelCreds(token: token, sig: sig)))
+            case .failure(let error):
                 self.log.error { "\(error)" }
-                completionHandler(.Failure(error))
+                completionHandler(.failure(error))
             }
         }
     }
@@ -159,10 +159,10 @@ extension TwitchService: UndocumentedTwitchAPI {
      - parameter completionHandler: Callback called with possible array of TwitchStreamVideo
      
      */
-    func getStreamsForChannel(channel: TwitchChannel, completionHandler: (ServiceResult<[TwitchStreamVideo]> -> Void)) {
+    func getStreamsForChannel(_ channel: TwitchChannel, completionHandler: @escaping ((ServiceResult<[TwitchStreamVideo]>) -> Void)) {
         getChannelTokenAndSig(channel) { res in
             switch res {
-            case .Success(let tokenAndSig):
+            case .success(let tokenAndSig):
                 let parameters = [
                     "player"            : "twitchweb",
                     "allow_audio_only"  : true,
@@ -172,27 +172,27 @@ extension TwitchService: UndocumentedTwitchAPI {
                     "p"                 : Int(arc4random_uniform(99999)),
                     "token"             : tokenAndSig.token,
                     "sig"               : tokenAndSig.sig
-                ]
-                Alamofire.request(tapi.VideoStreams(channel, parameters as! [String : AnyObject])).validate(statusCode: 200..<300).responseString(queue: TwitchService.backgroundQueue) { res2 in
+                ] as [String : Any]
+                Alamofire.request(tapi.videoStreams(channel, parameters as [String : AnyObject])).validate(statusCode: 200..<300).responseString(queue: TwitchService.backgroundQueue) { res2 in
                     switch res2.result {
-                    case .Success(let rawM3U):
+                    case .success(let rawM3U):
                         guard let streams = M3UParser.parseToDict(rawM3U) else {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                completionHandler(.Failure(TwitchError.FailedToParseM3U))
+                            DispatchQueue.main.async {
+                                completionHandler(.failure(TwitchError.failedToParseM3U))
                             }
                             return
                         }
-                        dispatch_async(dispatch_get_main_queue()) {
-                            completionHandler(.Success(streams))
+                        DispatchQueue.main.async {
+                            completionHandler(.success(streams))
                         }
-                    case .Failure(let error):
-                        dispatch_async(dispatch_get_main_queue()) {
-                            completionHandler(.Failure(error))
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            completionHandler(.failure(error))
                         }
                     }
                 }
-            case .Failure(let error):
-                completionHandler(.Failure(error))
+            case .failure(let error):
+                completionHandler(.failure(error))
             }
         }
     }

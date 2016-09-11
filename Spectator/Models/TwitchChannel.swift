@@ -48,10 +48,10 @@ struct TwitchChannel: Hashable {
      */
     init?(_ json: JSON) {
         guard let id = json["_id"].int,
-            name = json["name"].string,
-            displayName = json["display_name"].string,
-            followers = json["followers"].int,
-            views = json["views"].int else {
+            let name = json["name"].string,
+            let displayName = json["display_name"].string,
+            let followers = json["followers"].int,
+            let views = json["views"].int else {
                 return nil
         }
         

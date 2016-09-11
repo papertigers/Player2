@@ -10,7 +10,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E06D0B51-AF86-421E-9340-965C6BEE7EB7",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "745017D941DF76947D50BD5E82B059F25FC2F86C" : "..",
-    "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F" : "Spectator\/"
+    "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F" : "Player2\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Spectator",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

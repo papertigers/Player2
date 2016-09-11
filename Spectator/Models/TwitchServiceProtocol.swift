@@ -10,14 +10,14 @@ import Foundation
 import SwiftyJSON
 
 enum ServiceResult<T> {
-    case Success(T)
-    case Failure(ErrorType)
+    case success(T)
+    case failure(Error)
     
     var isSuccess: Bool  {
         switch self {
-        case .Success:
+        case .success:
             return true
-        case .Failure:
+        case .failure:
             return false
         }
     }
@@ -28,20 +28,20 @@ enum ServiceResult<T> {
     
     var results: T? {
         switch self {
-        case .Success(let value):
+        case .success(let value):
             return value
-        case .Failure:
+        case .failure:
             return nil
         }
     }
 }
 
 protocol GameService {
-    func getTopGames(limit: Int, offset: Int, completionHandler: (ServiceResult<[TwitchGame]> -> Void))
-    func streamsForGame(limit: Int, offset: Int, game: TwitchGame, completionHandler: (ServiceResult<[TwitchStream]> -> Void))
+    func getTopGames(_ limit: Int, offset: Int, completionHandler: @ escaping((ServiceResult<[TwitchGame]>) -> Void))
+    func streamsForGame(_ limit: Int, offset: Int, game: TwitchGame, completionHandler: @escaping ((ServiceResult<[TwitchStream]>) -> Void))
 }
 
 
 protocol UndocumentedTwitchAPI {
-    func getStreamsForChannel(channel: TwitchChannel, completionHandler: (ServiceResult<[TwitchStreamVideo]> -> Void))
+    func getStreamsForChannel(_ channel: TwitchChannel, completionHandler: @escaping ((ServiceResult<[TwitchStreamVideo]>) -> Void))
 }

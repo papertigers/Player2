@@ -38,11 +38,11 @@ struct TwitchGame: Hashable {
     */
     init?(_ json: JSON) {
         guard let id = json["game"]["_id"].int,
-            name = json["game"]["name"].string,
-            box = json["game"]["box"].dictOfString,
-            logo = json["game"]["logo"].dictOfString,
-            viewers = json["viewers"].int,
-            channels = json["channels"].int else {
+            let name = json["game"]["name"].string,
+            let box = json["game"]["box"].dictOfString,
+            let logo = json["game"]["logo"].dictOfString,
+            let viewers = json["viewers"].int,
+            let channels = json["channels"].int else {
             return nil
         }
         self.name = name
@@ -58,7 +58,7 @@ struct TwitchGame: Hashable {
     - parameter forSize: Size of box to be returned
     - returns: box URL
     */
-    func box(forSize: Size) -> String? {
+    func box(_ forSize: Size) -> String? {
         return box[forSize.rawValue]
     }
     
@@ -67,7 +67,7 @@ struct TwitchGame: Hashable {
     - parameter forSize: Size of logo to be returned
     - returns: logo URL
     */
-    func logo(forSize: Size) -> String? {
+    func logo(_ forSize: Size) -> String? {
         return logo[forSize.rawValue]
     }
 }
