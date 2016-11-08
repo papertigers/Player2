@@ -1,5 +1,5 @@
 github "Alamofire/Alamofire" ~> 4.0
-github "BaiduHiDeviOS/SwiftyJSON" "swift3"
+github "SwiftyJSON/SwiftyJSON" ~> 3.0 
 github "marketplacer/keychain-swift" ~> 6.0
 github "facebook/pop" ~> 1.0
 github "Nike-Inc/Willow" ~> 2.0

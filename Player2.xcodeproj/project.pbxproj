@@ -20,11 +20,11 @@
 		3BAC49271D28C52A0034A972 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491A1D28C47D0034A972 /* Alamofire.framework */; };
 		3BAC49281D28C52A0034A972 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491B1D28C47D0034A972 /* KeychainSwift.framework */; };
 		3BAC49291D28C52A0034A972 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491C1D28C47D0034A972 /* pop.framework */; };
-		3BAC492A1D28C52A0034A972 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */; };
 		3BAC492D1D28CF750034A972 /* TwitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC492C1D28CF750034A972 /* TwitchService.swift */; };
 		3BAC492F1D28DB510034A972 /* Willow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC492E1D28DB510034A972 /* Willow.framework */; };
 		3BAC49311D28E7610034A972 /* TwitchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49301D28E7610034A972 /* TwitchServiceProtocol.swift */; };
 		3BAC49331D28EED70034A972 /* TwitchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49321D28EED70034A972 /* TwitchGame.swift */; };
+		3BB678EC1DD27DE800420C2F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */; };
 		3BC00C641D2CAADC00A2D90D /* TwitchStreamVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */; };
 		3BC00C671D2CABA900A2D90D /* M3UParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00C661D2CABA900A2D90D /* M3UParser.swift */; };
 /* End PBXBuildFile section */
@@ -43,14 +43,14 @@
 		3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchChannel.swift; path = Models/TwitchChannel.swift; sourceTree = "<group>"; };
 		3B49C6FB1D2B6A140097CDFC /* ThirdPartyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyExtensions.swift; sourceTree = "<group>"; };
 		3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchStream.swift; path = Models/TwitchStream.swift; sourceTree = "<group>"; };
-		3BAC48F41D28C2450034A972 /* Spectator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BAC48F41D28C2450034A972 /* Player2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Player2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BAC48F71D28C2450034A972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BAC48F91D28C2450034A972 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		3BAC48FB1D28C2450034A972 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3BAC48FE1D28C2450034A972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BAC49001D28C2450034A972 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BAC49021D28C2450034A972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3BAC49071D28C2450034A972 /* SpectatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BAC49071D28C2450034A972 /* Player2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Player2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BAC490B1D28C2450034A972 /* SpectatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorTests.swift; sourceTree = "<group>"; };
 		3BAC490D1D28C2450034A972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BAC49181D28C3800034A972 /* TwitchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchRouter.swift; path = Models/TwitchRouter.swift; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 				3BAC49271D28C52A0034A972 /* Alamofire.framework in Frameworks */,
 				3BAC49281D28C52A0034A972 /* KeychainSwift.framework in Frameworks */,
 				3BAC49291D28C52A0034A972 /* pop.framework in Frameworks */,
-				3BAC492A1D28C52A0034A972 /* SwiftyJSON.framework in Frameworks */,
+				3BB678EC1DD27DE800420C2F /* SwiftyJSON.framework in Frameworks */,
 				3BAC492F1D28DB510034A972 /* Willow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +105,7 @@
 				3BAC491B1D28C47D0034A972 /* KeychainSwift.framework */,
 				3BAC491C1D28C47D0034A972 /* pop.framework */,
 				3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */,
-				3BAC48F61D28C2450034A972 /* Spectator */,
+				3BAC48F61D28C2450034A972 /* Player2 */,
 				3BAC490A1D28C2450034A972 /* SpectatorTests */,
 				3BAC48F51D28C2450034A972 /* Products */,
 			);
@@ -114,13 +114,13 @@
 		3BAC48F51D28C2450034A972 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3BAC48F41D28C2450034A972 /* Spectator.app */,
-				3BAC49071D28C2450034A972 /* SpectatorTests.xctest */,
+				3BAC48F41D28C2450034A972 /* Player2.app */,
+				3BAC49071D28C2450034A972 /* Player2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3BAC48F61D28C2450034A972 /* Spectator */ = {
+		3BAC48F61D28C2450034A972 /* Player2 */ = {
 			isa = PBXGroup;
 			children = (
 				3BC00C651D2CAB7200A2D90D /* Controllers */,
@@ -133,6 +133,7 @@
 				3BAC49001D28C2450034A972 /* Assets.xcassets */,
 				3BAC49021D28C2450034A972 /* Info.plist */,
 			);
+			name = Player2;
 			path = Spectator;
 			sourceTree = "<group>";
 		};
@@ -186,9 +187,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3BAC48F31D28C2450034A972 /* Spectator */ = {
+		3BAC48F31D28C2450034A972 /* Player2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3BAC49101D28C2450034A972 /* Build configuration list for PBXNativeTarget "Spectator" */;
+			buildConfigurationList = 3BAC49101D28C2450034A972 /* Build configuration list for PBXNativeTarget "Player2" */;
 			buildPhases = (
 				3BAC48F01D28C2450034A972 /* Sources */,
 				3BAC48F11D28C2450034A972 /* Frameworks */,
@@ -199,14 +200,14 @@
 			);
 			dependencies = (
 			);
-			name = Spectator;
+			name = Player2;
 			productName = Spectator;
-			productReference = 3BAC48F41D28C2450034A972 /* Spectator.app */;
+			productReference = 3BAC48F41D28C2450034A972 /* Player2.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3BAC49061D28C2450034A972 /* SpectatorTests */ = {
+		3BAC49061D28C2450034A972 /* Player2Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3BAC49131D28C2450034A972 /* Build configuration list for PBXNativeTarget "SpectatorTests" */;
+			buildConfigurationList = 3BAC49131D28C2450034A972 /* Build configuration list for PBXNativeTarget "Player2Tests" */;
 			buildPhases = (
 				3BAC49031D28C2450034A972 /* Sources */,
 				3BAC49041D28C2450034A972 /* Frameworks */,
@@ -217,9 +218,9 @@
 			dependencies = (
 				3BAC49091D28C2450034A972 /* PBXTargetDependency */,
 			);
-			name = SpectatorTests;
+			name = Player2Tests;
 			productName = SpectatorTests;
-			productReference = 3BAC49071D28C2450034A972 /* SpectatorTests.xctest */;
+			productReference = 3BAC49071D28C2450034A972 /* Player2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -243,7 +244,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3BAC48EF1D28C2450034A972 /* Build configuration list for PBXProject "Spectator" */;
+			buildConfigurationList = 3BAC48EF1D28C2450034A972 /* Build configuration list for PBXProject "Player2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -256,8 +257,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3BAC48F31D28C2450034A972 /* Spectator */,
-				3BAC49061D28C2450034A972 /* SpectatorTests */,
+				3BAC48F31D28C2450034A972 /* Player2 */,
+				3BAC49061D28C2450034A972 /* Player2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -335,7 +336,7 @@
 /* Begin PBXTargetDependency section */
 		3BAC49091D28C2450034A972 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3BAC48F31D28C2450034A972 /* Spectator */;
+			target = 3BAC48F31D28C2450034A972 /* Player2 */;
 			targetProxy = 3BAC49081D28C2450034A972 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -451,7 +452,7 @@
 				);
 				INFOPLIST_FILE = Spectator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Spectator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -468,7 +469,7 @@
 				);
 				INFOPLIST_FILE = Spectator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Spectator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -483,7 +484,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.SpectatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectator.app/Spectator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Player2.app/Player2";
 			};
 			name = Debug;
 		};
@@ -496,14 +497,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.SpectatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectator.app/Spectator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Player2.app/Player2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3BAC48EF1D28C2450034A972 /* Build configuration list for PBXProject "Spectator" */ = {
+		3BAC48EF1D28C2450034A972 /* Build configuration list for PBXProject "Player2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3BAC490E1D28C2450034A972 /* Debug */,
@@ -512,7 +513,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3BAC49101D28C2450034A972 /* Build configuration list for PBXNativeTarget "Spectator" */ = {
+		3BAC49101D28C2450034A972 /* Build configuration list for PBXNativeTarget "Player2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3BAC49111D28C2450034A972 /* Debug */,
@@ -521,7 +522,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3BAC49131D28C2450034A972 /* Build configuration list for PBXNativeTarget "SpectatorTests" */ = {
+		3BAC49131D28C2450034A972 /* Build configuration list for PBXNativeTarget "Player2Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3BAC49141D28C2450034A972 /* Debug */,

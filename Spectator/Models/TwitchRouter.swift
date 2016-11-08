@@ -14,7 +14,7 @@ enum TwitchAPIVersion: String {
     case v3 = "application/vnd.twitchtv.v3+json"
 }
 
-let CLIENT_ID  = "Spectator"
+let CLIENT_ID  = "4t85h8m64oxmccc25iqpbg9amuy4x57"
 
 enum tapi: URLRequestConvertible {
     static let baseURLString = "https://api.twitch.tv/kraken"
