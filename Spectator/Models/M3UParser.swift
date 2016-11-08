@@ -27,7 +27,7 @@ class M3UParser {
                     
                     if let codecsRange = line.range(of: "CODECS=\"") {
                         if let videoRange = line.range(of: "VIDEO=\"") {
-                            codecs = line.substring(with: codecsRange.upperBound..<line.characters.index(line.endIndex, offsetBy: -2))
+                            codecs = line.substring(with: codecsRange.upperBound..<line.characters.index(line.endIndex, offsetBy: -1))
                             quality = line.substring(with: videoRange.upperBound..<line.characters.index(line.endIndex, offsetBy: -1))
                             
                             if(dataByLine[i+1].hasPrefix("http")){
