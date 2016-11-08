@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Spectator.xcodeproj">
+      location = "self:/Users/link/src/Player2/Player2.xcodeproj">
    </FileRef>
 </Workspace>

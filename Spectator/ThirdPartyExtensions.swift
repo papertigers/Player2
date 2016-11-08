@@ -17,8 +17,8 @@ extension JSON {
         get {
             var mapped: [String:String] = [:]
             switch self.type {
-            case .Dictionary:
-                var gen = self.generate()
+            case .dictionary:
+                var gen = self.makeIterator()
                 while let x = gen.next() {
                     if let value = x.1.string {
                         mapped[x.0] = value

@@ -22,10 +22,10 @@ class FirstViewController: UIViewController {
                     if let streams = res.results {
                         test.getStreamsForChannel(streams[0].channel) { res in
                             switch res {
-                            case .Success(let mike):
+                            case .success(let mike):
                                 if let url = mike.filter( {$0.quality == "chunked"} ).first {
                                     print(url)
-                                    print(NSThread.isMainThread())
+                                    print(Thread.isMainThread)
                                 }
                             default:
                                 print()
