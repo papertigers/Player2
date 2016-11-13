@@ -69,7 +69,7 @@ struct TwitchService: GameService {
             switch self.checkResponse(response) {
             case .success(let json):
                 self.log.debug{ "\(json)" }
-                self.log.info{ "Got top games" }
+                self.log.info{ "🎮 Got top games" }
                 guard let games = json["top"].array else {
                     return completionHandler(.failure(TwitchError.noGames))
                 }

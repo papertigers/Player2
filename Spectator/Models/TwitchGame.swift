@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import IGListKit
 
 /// A Twitch Game
 struct TwitchGame: Hashable {
