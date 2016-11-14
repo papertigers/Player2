@@ -47,6 +47,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
+                                <connections>
+                                    <segue destination="BU2-nA-nEp" kind="show" identifier="ShowChannels" id="vlc-9R-iSr"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -59,6 +62,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wR5-FM-NV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4484" y="-712"/>
+        </scene>
+        <!--Channel Section Controller-->
+        <scene sceneID="VrC-or-7Mf">
+            <objects>
+                <collectionViewController id="BU2-nA-nEp" customClass="ChannelSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gao-tx-aaK">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MUC-4E-4dG">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChannelCell" id="uzS-9l-MUQ">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <connections>
+                                    <segue destination="OmX-eQ-7lS" kind="show" identifier="ShowStream" id="LRR-HQ-8JQ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="BU2-nA-nEp" id="Ecs-mJ-bXI"/>
+                            <outlet property="delegate" destination="BU2-nA-nEp" id="pQJ-bC-2vv"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L8v-JT-lrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6841" y="-712"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="KXl-fY-qxm">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="OmX-eQ-7lS" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ApV-9y-87d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9021" y="-712"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">

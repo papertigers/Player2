@@ -26,6 +26,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>hls.ttvnw.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>usher.twitch.tv</key>
 			<dict>
 				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
