@@ -288,6 +288,7 @@
 				TargetAttributes = {
 					3BAC48F31D28C2450034A972 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ZPQ7DPPR5V;
 						LastSwiftMigration = 0800;
 					};
 					3BAC49061D28C2450034A972 = {
@@ -507,6 +508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = ZPQ7DPPR5V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
@@ -516,6 +518,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -524,6 +527,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = ZPQ7DPPR5V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
@@ -533,6 +537,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
