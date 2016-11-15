@@ -3,3 +3,5 @@ github "SwiftyJSON/SwiftyJSON" ~> 3.0
 github "marketplacer/keychain-swift" ~> 6.0
 github "facebook/pop" ~> 1.0
 github "Nike-Inc/Willow" ~> 2.0
+github "onevcat/Kingfisher" ~> 3.0
+github "papertigers/Dwifft" "master"

@@ -34,6 +34,15 @@ enum ServiceResult<T> {
             return nil
         }
     }
+    
+    var error: Error? {
+        switch self {
+        case .success(_):
+            return nil
+        case .failure(let value):
+            return value
+        }
+    }
 }
 
 protocol GameService {

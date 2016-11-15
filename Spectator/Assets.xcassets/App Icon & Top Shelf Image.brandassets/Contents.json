@@ -13,6 +13,15 @@
       "role" : "primary-app-icon"
     },
     {
+      "filename" : "Player2Logo.imageset"
+    },
+    {
+      "size" : "2320x720",
+      "idiom" : "tv",
+      "filename" : "Top Shelf Image Wide.imageset",
+      "role" : "top-shelf-image-wide"
+    },
+    {
       "size" : "1920x720",
       "idiom" : "tv",
       "filename" : "Top Shelf Image.imageset",
