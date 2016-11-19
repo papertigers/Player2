@@ -28,7 +28,7 @@ class GameSectionController: UICollectionViewController, UICollectionViewDelegat
         layout.minimumLineSpacing = 80.0
         layout.sectionInset = UIEdgeInsetsMake(50.0, 50.0, 30.0, 50.0)
         collectionView!.collectionViewLayout = layout
-        collectionView!.register(GameCell.classForCoder(), forCellWithReuseIdentifier: "GameCell")
+        collectionView!.register(TwitchCell.classForCoder(), forCellWithReuseIdentifier: "GameCell")
         collectionView!.collectionViewLayout.invalidateLayout()
     }
     
@@ -39,8 +39,9 @@ class GameSectionController: UICollectionViewController, UICollectionViewDelegat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChannels" {
-            let channelsVC = segue.destination as! ChannelSectionController
+            let channelsVC = segue.destination as! StreamSectionController
             channelsVC.game = gamesAdapter.games[(sender as! NSIndexPath).row]
         }
     }
 }
+

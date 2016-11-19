@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChannelSectionController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class StreamSectionController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var channelsAdapter: ChannelsAdapter!
     var game: TwitchGame!
     
@@ -29,19 +29,19 @@ class ChannelSectionController: UICollectionViewController, UICollectionViewDele
         layout.minimumLineSpacing = 80.0
         layout.sectionInset = UIEdgeInsetsMake(50.0, 50.0, 30.0, 50.0)
         collectionView!.collectionViewLayout = layout
-        collectionView!.register(ChannelCell.classForCoder(), forCellWithReuseIdentifier: "ChannelCell")
+        collectionView!.register(TwitchCell.classForCoder(), forCellWithReuseIdentifier: "ChannelCell")
         collectionView!.collectionViewLayout.invalidateLayout()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(channelsAdapter.channels[indexPath.row])
+        print(channelsAdapter.streams[indexPath.row])
         performSegue(withIdentifier: "ShowStream", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowStream" {
             let streamVC = segue.destination as! StreamController
-            streamVC.stream = channelsAdapter.channels[(sender as! NSIndexPath).row]
+            streamVC.stream = channelsAdapter.streams[(sender as! NSIndexPath).row]
         }
     }
 }
