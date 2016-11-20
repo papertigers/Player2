@@ -11,7 +11,7 @@ import Kingfisher
 
 typealias TwitchCellPresentable = ImagePresentable // <ImagePresentable, LablePresentable>
 
-class TwitchCell: UICollectionViewCell {
+class TwitchCell: UICollectionViewCell, Reusable {
     let imageView = UIImageView()
     
     required init?(coder aDecoder: NSCoder) {

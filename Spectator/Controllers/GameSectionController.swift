@@ -8,28 +8,15 @@
 
 import UIKit
 
-class GameSectionController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class GameSectionController: SectionController, UICollectionViewDelegateFlowLayout {
     var gamesAdapter: GamesAdapter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setupView(withConfig: GameCollectionViewConfig())
         gamesAdapter = GamesAdapter(collectionView: collectionView!)
         collectionView!.dataSource = gamesAdapter
         gamesAdapter.loadGames()
-    }
-
-    
-    func setupView() {
-        //navigationItem.title = "Top Games"
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 272, height: 430)
-        layout.minimumInteritemSpacing = 30.0
-        layout.minimumLineSpacing = 80.0
-        layout.sectionInset = UIEdgeInsetsMake(50.0, 50.0, 30.0, 50.0)
-        collectionView!.collectionViewLayout = layout
-        collectionView!.register(TwitchCell.classForCoder(), forCellWithReuseIdentifier: "GameCell")
-        collectionView!.collectionViewLayout.invalidateLayout()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

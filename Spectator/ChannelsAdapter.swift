@@ -13,9 +13,7 @@ class ChannelsAdapter: NSObject, UICollectionViewDataSource {
     private weak var collectionView: UICollectionView?
     internal var streams = [TwitchStream]()
     private let api = TwitchService()
-    
-    let reuseIdentifier = "ChannelCell"
-    
+        
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
         super.init()
@@ -36,7 +34,7 @@ class ChannelsAdapter: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TwitchCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
         let viewModel = TwitchStreamViewModel(stream: streams[indexPath.row])
         cell.configure(withPresenter: viewModel)
         return cell

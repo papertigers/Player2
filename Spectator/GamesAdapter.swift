@@ -14,8 +14,6 @@ class GamesAdapter: NSObject, UICollectionViewDataSource {
     internal var games = [TwitchGame]()
     private let api = TwitchService()
     
-    let reuseIdentifier = "GameCell"
-    
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
         super.init()
@@ -37,7 +35,7 @@ class GamesAdapter: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TwitchCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
         let viewModel = TwitchGameViewModel(game: games[indexPath.row])
         cell.configure(withPresenter: viewModel)
         return cell
