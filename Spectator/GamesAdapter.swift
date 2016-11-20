@@ -14,8 +14,6 @@ class GamesAdapter: NSObject, UICollectionViewDataSource {
     internal var games = [TwitchGame]()
     private let api = TwitchService()
     
-    let reuseIdentifier = "GameCell"
-    
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
         super.init()
@@ -37,11 +35,9 @@ class GamesAdapter: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GameCell
-        cell.imageView.kf.cancelDownloadTask() // Cancel download if in progress
-        let game = games[indexPath.row]
-        let url = URL(string: game.box(.Large)!)
-        cell.imageView.kf.setImage(with: url)
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
+        let viewModel = TwitchGameViewModel(game: games[indexPath.row])
+        cell.configure(withPresenter: viewModel)
         return cell
     }
 }

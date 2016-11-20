@@ -1,14 +1,17 @@
 //
-//  GameCell.swift
+//  File.swift
 //  Player2
 //
-//  Created by Michael Zeller on 11/13/16.
+//  Created by Michael Zeller on 11/19/16.
 //  Copyright © 2016 Lights and Shapes. All rights reserved.
 //
 
 import UIKit
+import Kingfisher
 
-class GameCell: UICollectionViewCell {
+typealias TwitchCellPresentable = ImagePresentable // <ImagePresentable, LablePresentable>
+
+class TwitchCell: UICollectionViewCell, Reusable {
     let imageView = UIImageView()
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,5 +27,11 @@ class GameCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.adjustsImageWhenAncestorFocused = true
         addSubview(imageView)
+    }
+    
+    func configure(withPresenter presenter: TwitchCellPresentable) {
+        self.imageView.kf.cancelDownloadTask()
+        let url = URL(string: presenter.icon)!
+        self.imageView.kf.setImage(with: url)
     }
 }
