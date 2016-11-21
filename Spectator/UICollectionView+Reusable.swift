@@ -11,6 +11,16 @@ import UIKit
 // MARK: Reusable support for UICollectionView
 
 public extension UICollectionView {
+    /**
+     Register a NIB-Based `UICollectionViewCell` subclass (conforming to `NibReusable`)
+     
+     - parameter cellType: the `UICollectionViewCell` (`NibReusable`-conforming) subclass to register
+     
+     - seealso: `register(_:,forCellWithReuseIdentifier:)`
+     */
+    final func register<T: UICollectionViewCell>(cellType: T.Type) where T: NibReusable {
+        self.register(cellType.nib, forCellWithReuseIdentifier: cellType.reuseIdentifier)
+    }
     
     /**
      Register a Class-Based `UICollectionViewCell` subclass (conforming to `Reusable`)
@@ -46,7 +56,18 @@ public extension UICollectionView {
         return cell
     }
     
-
+    /**
+     Register a NIB-Based `UICollectionReusableView` subclass (conforming to `NibReusable`) as a Supplementary View
+     
+     - parameter supplementaryViewType: the `UIView` (`NibReusable`-conforming) subclass to register as Supplementary View
+     - parameter elementKind: The kind of supplementary view to create.
+     
+     - seealso: `register(_:,forSupplementaryViewOfKind:,withReuseIdentifier:)`
+     */
+    final func register<T: UICollectionReusableView>(supplementaryViewType: T.Type, ofKind elementKind: String) where T: NibReusable {
+        self.register(supplementaryViewType.nib, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: supplementaryViewType.reuseIdentifier)
+    }
+    
     /**
      Register a Class-Based `UICollectionReusableView` subclass (conforming to `Reusable`) as a Supplementary View
      

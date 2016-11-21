@@ -17,3 +17,9 @@ struct TwitchStreamViewModel: ImagePresentable {
         self.icon = stream.preview["large"]!
     }
 }
+
+extension TwitchStreamViewModel: TextPresentable {
+    var title: String {
+        return stream.channel.displayName
+    }
+}

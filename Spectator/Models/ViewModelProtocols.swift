@@ -13,7 +13,7 @@ protocol ImagePresentable {
 }
 
 protocol TextPresentable {
-    var text: String { get }
+    var title: String { get }
     var textColor: UIColor { get }
     var font: UIFont { get }
 }

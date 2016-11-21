@@ -13,11 +13,11 @@ protocol CollectionViewConfig {
 }
 
 struct GameCollectionViewConfig: CollectionViewConfig {
-    let itemSize = CGSize(width: 272, height: 430)
+    let itemSize = CGSize(width: 272, height: 420)
 }
 
 struct StreamCollectionViewConfig: CollectionViewConfig {
-    let itemSize = CGSize(width: 320, height: 180)
+    let itemSize = CGSize(width: 320, height: 220)
 }
 
 class SectionController: UICollectionViewController {
