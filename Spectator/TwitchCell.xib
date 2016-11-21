@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TwitchCell" customModule="Player2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8x8-AN-O1A">
+                    <rect key="frame" x="0.0" y="0.0" width="1920" height="1040"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitch!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-hB-1bD">
+                    <rect key="frame" x="0.0" y="1040" width="1920" height="40"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8x8-AN-O1A" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="14P-E5-DXj"/>
+                <constraint firstAttribute="trailing" secondItem="8x8-AN-O1A" secondAttribute="trailing" id="87h-X5-Irv"/>
+                <constraint firstItem="wPn-hB-1bD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="96B-3v-M41"/>
+                <constraint firstItem="wPn-hB-1bD" firstAttribute="top" secondItem="8x8-AN-O1A" secondAttribute="bottom" id="ES4-E8-QW7"/>
+                <constraint firstItem="wPn-hB-1bD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Lzc-SU-m6u"/>
+                <constraint firstAttribute="bottom" secondItem="8x8-AN-O1A" secondAttribute="bottom" constant="40" id="QQh-bi-5FJ"/>
+                <constraint firstAttribute="bottom" secondItem="wPn-hB-1bD" secondAttribute="bottom" id="YZU-sn-R2s"/>
+                <constraint firstAttribute="trailing" secondItem="wPn-hB-1bD" secondAttribute="trailing" id="cQc-ll-Qm1"/>
+                <constraint firstItem="8x8-AN-O1A" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fdE-Ha-xPb"/>
+                <constraint firstItem="8x8-AN-O1A" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zRm-nl-FCC"/>
+            </constraints>
+            <connections>
+                <outlet property="imageView" destination="8x8-AN-O1A" id="jIV-gm-C0y"/>
+                <outlet property="title" destination="wPn-hB-1bD" id="FGR-EL-pnf"/>
+            </connections>
+        </view>
+    </objects>
+</document>

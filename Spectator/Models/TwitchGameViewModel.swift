@@ -21,3 +21,9 @@ struct TwitchGameViewModel: ImagePresentable {
         }
     }
 }
+
+extension TwitchGameViewModel: TextPresentable {
+    var title: String {
+        return game.name
+    }
+}
