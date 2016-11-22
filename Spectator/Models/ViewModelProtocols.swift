@@ -11,6 +11,7 @@ import UIKit
 protocol ImagePresentable {
     var icon: String { get }
     var iconMultiplier: CGFloat { get }
+    var placeholder: String { get }
 }
 
 protocol TextPresentable {

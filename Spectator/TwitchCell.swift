@@ -33,7 +33,7 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         //backgroundColor = UIColor(white: 0.1, alpha: 1.0)
         let imageviewConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: presenter.iconMultiplier, constant: 0)
         imageView.addConstraint(imageviewConstraint)
-        itemStack.layoutIfNeeded()
+        //itemStack.layoutIfNeeded()
         backgroundColor = .clear
         imageView.contentMode = .scaleAspectFit
         imageView.adjustsImageWhenAncestorFocused = true
@@ -46,7 +46,7 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         
         self.imageView.kf.cancelDownloadTask()
         let url = URL(string: presenter.icon)!
-        self.imageView.kf.setImage(with: url)
+        self.imageView.kf.setImage(with: url, placeholder: UIImage(named: presenter.placeholder))
     }
 
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {

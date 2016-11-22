@@ -12,6 +12,7 @@ struct TwitchGameViewModel: ImagePresentable {
     let icon: String
     let game: TwitchGame
     let iconMultiplier: CGFloat
+    let placeholder = "GameDefault"
     
     init(game: TwitchGame) {
         self.game = game

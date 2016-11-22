@@ -12,6 +12,7 @@ struct TwitchStreamViewModel: ImagePresentable {
     let icon: String
     let stream: TwitchStream
     let iconMultiplier: CGFloat
+    let placeholder = "StreamDefault"
     
     init(stream: TwitchStream) {
         self.stream = stream
