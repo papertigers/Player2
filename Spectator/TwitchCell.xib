@@ -15,11 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="619" height="464"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EZD-ub-O8K">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EZD-ub-O8K">
                     <rect key="frame" x="0.0" y="0.0" width="619" height="464"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ed-gU-mmK">
-                            <rect key="frame" x="165" y="0.0" width="289" height="396"/>
+                            <rect key="frame" x="165" y="0.0" width="289" height="388"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O38-A4-WEZ">
                             <rect key="frame" x="0.0" y="396" width="619" height="68"/>

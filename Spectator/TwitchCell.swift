@@ -18,6 +18,8 @@ class TwitchCell: UICollectionViewCell, NibReusable {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
     
+    static let kITEMSPACING: CGFloat = 10
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -52,7 +54,7 @@ class TwitchCell: UICollectionViewCell, NibReusable {
             coordinator.addCoordinatedAnimations({ [weak title, weak subTitle, weak labelStack] in
                 let bottom = self.imageView.focusedFrameGuide.layoutFrame.maxY
                 if let labelStack = labelStack {
-                    labelStack.frame = CGRect(x: 0, y: bottom, width: labelStack.frame.width, height: labelStack.frame.height)
+                    labelStack.frame = CGRect(x: 0, y: bottom + TwitchCell.kITEMSPACING, width: labelStack.frame.width, height: labelStack.frame.height)
                     title?.textColor = .white
                     subTitle?.textColor = .white
 
@@ -62,7 +64,8 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         if (context.previouslyFocusedView == self) {
             coordinator.addCoordinatedAnimations({ [weak title, weak subTitle, weak labelStack] in
                 if let labelStack = labelStack {
-                    labelStack.frame = CGRect(x: 0, y: self.imageView.frame.height, width: labelStack.frame.width, height: labelStack.frame.height)
+                    labelStack.frame = CGRect(x: 0, y: self.imageView.frame.height + TwitchCell.kITEMSPACING,
+                                              width: labelStack.frame.width, height: labelStack.frame.height)
                     title?.textColor = .black
                     subTitle?.textColor = .black
                 }
