@@ -12,8 +12,11 @@ import Kingfisher
 typealias TwitchCellPresentable = ImagePresentable & TextPresentable
 
 class TwitchCell: UICollectionViewCell, NibReusable {
+    @IBOutlet weak var itemStack: UIStackView!
+    @IBOutlet weak var labelStack: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var subTitle: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,12 +29,18 @@ class TwitchCell: UICollectionViewCell, NibReusable {
     
     func configure(withPresenter presenter: TwitchCellPresentable) {
         //backgroundColor = UIColor(white: 0.1, alpha: 1.0)
+        let imageviewConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: presenter.iconMultiplier, constant: 0)
+        imageView.addConstraint(imageviewConstraint)
+        itemStack.layoutIfNeeded()
         backgroundColor = .clear
         imageView.contentMode = .scaleAspectFit
         imageView.adjustsImageWhenAncestorFocused = true
         
         title.backgroundColor = .clear
         title.text = presenter.title
+        
+        subTitle.backgroundColor = .clear
+        subTitle.text = presenter.subTitle
         
         self.imageView.kf.cancelDownloadTask()
         let url = URL(string: presenter.icon)!
@@ -40,17 +49,23 @@ class TwitchCell: UICollectionViewCell, NibReusable {
 
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         if(context.nextFocusedView == self){
-            coordinator.addCoordinatedAnimations({ [weak title] in
+            coordinator.addCoordinatedAnimations({ [weak title, weak subTitle, weak labelStack] in
                 let bottom = self.imageView.focusedFrameGuide.layoutFrame.maxY
-                title?.frame = CGRect(x: 0, y: bottom, width: 272, height: 40)
-                title?.textColor = .white
+                if let labelStack = labelStack {
+                    labelStack.frame = CGRect(x: 0, y: bottom, width: labelStack.frame.width, height: labelStack.frame.height)
+                    title?.textColor = .white
+                    subTitle?.textColor = .white
 
-            }, completion: nil)
+                }
+                    }, completion: nil)
         }
         if (context.previouslyFocusedView == self) {
-            coordinator.addCoordinatedAnimations({ [weak title] in
-                title?.frame = CGRect(x: 0, y: self.imageView.frame.height, width: 272, height: 40)
-                title?.textColor = .black
+            coordinator.addCoordinatedAnimations({ [weak title, weak subTitle, weak labelStack] in
+                if let labelStack = labelStack {
+                    labelStack.frame = CGRect(x: 0, y: self.imageView.frame.height, width: labelStack.frame.width, height: labelStack.frame.height)
+                    title?.textColor = .black
+                    subTitle?.textColor = .black
+                }
             }, completion: nil)
         }
     }

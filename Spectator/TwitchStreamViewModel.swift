@@ -11,15 +11,20 @@ import UIKit
 struct TwitchStreamViewModel: ImagePresentable {
     let icon: String
     let stream: TwitchStream
+    let iconMultiplier: CGFloat
     
     init(stream: TwitchStream) {
         self.stream = stream
         self.icon = stream.preview["large"]!
+        self.iconMultiplier = 360.0/640.0
     }
 }
 
 extension TwitchStreamViewModel: TextPresentable {
     var title: String {
-        return stream.channel.displayName
+        return stream.channel.status ?? stream.game
+    }
+    var subTitle: String {
+        return "\(stream.viewers) viewing \(stream.channel.displayName)"
     }
 }

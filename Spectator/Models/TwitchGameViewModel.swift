@@ -11,9 +11,11 @@ import UIKit
 struct TwitchGameViewModel: ImagePresentable {
     let icon: String
     let game: TwitchGame
+    let iconMultiplier: CGFloat
     
     init(game: TwitchGame) {
         self.game = game
+        self.iconMultiplier = 380.0/272.0
         if let image = game.box(.Large) {
             self.icon = image
         } else {
@@ -25,5 +27,8 @@ struct TwitchGameViewModel: ImagePresentable {
 extension TwitchGameViewModel: TextPresentable {
     var title: String {
         return game.name
+    }
+    var subTitle: String {
+        return "\(game.viewers) viewing"
     }
 }

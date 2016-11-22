@@ -10,10 +10,12 @@ import UIKit
 
 protocol ImagePresentable {
     var icon: String { get }
+    var iconMultiplier: CGFloat { get }
 }
 
 protocol TextPresentable {
     var title: String { get }
+    var subTitle: String { get }
     var textColor: UIColor { get }
     var font: UIFont { get }
 }

@@ -17,7 +17,7 @@ struct GameCollectionViewConfig: CollectionViewConfig {
 }
 
 struct StreamCollectionViewConfig: CollectionViewConfig {
-    let itemSize = CGSize(width: 320, height: 220)
+    let itemSize = CGSize(width: 320, height: 260)
 }
 
 class SectionController: UICollectionViewController {
