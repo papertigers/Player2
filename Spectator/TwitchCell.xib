@@ -19,20 +19,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="619" height="464"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ed-gU-mmK">
-                            <rect key="frame" x="165" y="0.0" width="289" height="388"/>
+                            <rect key="frame" x="165" y="0.0" width="289" height="400"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O38-A4-WEZ">
-                            <rect key="frame" x="0.0" y="396" width="619" height="68"/>
+                            <rect key="frame" x="0.0" y="408" width="619" height="56"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNI-wr-r4l">
-                                    <rect key="frame" x="0.0" y="0.0" width="619" height="39"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="619" height="29"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9b1-oa-P0u">
-                                    <rect key="frame" x="0.0" y="39" width="619" height="29"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                    <rect key="frame" x="0.0" y="29" width="619" height="27"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
