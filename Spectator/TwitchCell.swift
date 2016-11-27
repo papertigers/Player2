@@ -30,6 +30,10 @@ class TwitchCell: UICollectionViewCell, NibReusable {
     }
     
     func configure(withPresenter presenter: TwitchCellPresentable) {
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        title.translatesAutoresizingMaskIntoConstraints = false
+        subTitle.translatesAutoresizingMaskIntoConstraints = false
+        
         //backgroundColor = UIColor(white: 0.1, alpha: 1.0)
         let imageviewConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: presenter.iconMultiplier, constant: 0)
         imageView.addConstraint(imageviewConstraint)
@@ -50,26 +54,28 @@ class TwitchCell: UICollectionViewCell, NibReusable {
     }
 
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        var color: UIColor!
+        var adjustY: CGFloat!
+        var transform: CGAffineTransform!
         if(context.nextFocusedView == self){
-            coordinator.addCoordinatedAnimations({ [weak title, weak subTitle, weak labelStack] in
-                let bottom = self.imageView.focusedFrameGuide.layoutFrame.maxY
-                if let labelStack = labelStack {
-                    labelStack.frame = CGRect(x: 0, y: bottom + TwitchCell.kITEMSPACING, width: labelStack.frame.width, height: labelStack.frame.height)
-                    title?.textColor = .white
-                    subTitle?.textColor = .white
+            color = .white
+            adjustY = self.imageView.focusedFrameGuide.layoutFrame.maxY - self.imageView.frame.maxY + TwitchCell.kITEMSPACING
+            transform = CGAffineTransform(translationX: 0, y: adjustY)
 
-                }
-                    }, completion: nil)
+        } else {
+            color = .black
+            adjustY = 0
+            transform = CGAffineTransform.identity
         }
-        if (context.previouslyFocusedView == self) {
-            coordinator.addCoordinatedAnimations({ [weak title, weak subTitle, weak labelStack] in
-                if let labelStack = labelStack {
-                    labelStack.frame = CGRect(x: 0, y: self.imageView.frame.height + TwitchCell.kITEMSPACING,
-                                              width: labelStack.frame.width, height: labelStack.frame.height)
-                    title?.textColor = .black
-                    subTitle?.textColor = .black
-                }
-            }, completion: nil)
-        }
+        
+        coordinator.addCoordinatedAnimations({ [weak title, weak subTitle, weak labelStack] in
+            if let labelStack = labelStack {
+                labelStack.transform = transform
+                title?.textColor = color
+                subTitle?.textColor = color
+                
+            }
+        }, completion: nil)
+
     }
 }
