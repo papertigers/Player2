@@ -30,6 +30,6 @@ extension TwitchGameViewModel: TextPresentable {
         return game.name
     }
     var subTitle: String {
-        return "\(game.viewers) viewing"
+        return "\(game.channels) channels"
     }
 }

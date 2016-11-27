@@ -22,28 +22,13 @@ struct StreamCollectionViewConfig: CollectionViewConfig {
 
 
 class SectionController: UICollectionViewController {
-    var titlebar: UIView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     func setupView(withConfig config: CollectionViewConfig) {
-        
-        //Test titlebar
-        titlebar = UIView.init(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 150))
-        titlebar.backgroundColor = .red
-        view.addSubview(titlebar)
-        //view.bringSubview(toFront: titlebar)
-        let title = UILabel()
-        title.text = "Top Games"
-        title.textColor = .black
-        titlebar.addSubview(title)
-//        let centerX = NSLayoutConstraint(item: title, attribute: .centerX, relatedBy: .equal, toItem: titlebar, attribute: .centerX, multiplier: 1, constant: 0)
-//        let centerY = NSLayoutConstraint(item: title, attribute: .centerY, relatedBy: .equal, toItem: titlebar, attribute: .centerY, multiplier: 1, constant: 0)
-//        let titleWidth = NSLayoutConstraint(item: title, attribute: .width, relatedBy: .equal, toItem: nil,
-//                                            attribute: .notAnAttribute, multiplier: 1, constant: 300)
-//        title.addConstraints([centerX])
-        
-        //Set collectionview inset
-        collectionView?.contentInset = UIEdgeInsetsMake(titlebar.frame.height, 0, 0, 0)
+        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = config.itemSize

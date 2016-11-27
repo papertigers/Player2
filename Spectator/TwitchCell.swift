@@ -57,6 +57,7 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         var color: UIColor!
         var adjustY: CGFloat!
         var transform: CGAffineTransform!
+
         if(context.nextFocusedView == self){
             color = .white
             adjustY = self.imageView.focusedFrameGuide.layoutFrame.maxY - self.imageView.frame.maxY + TwitchCell.kITEMSPACING

@@ -45,7 +45,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wR5-FM-NV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4484" y="-712"/>
+            <point key="canvasLocation" x="4336" y="-712"/>
         </scene>
         <!--Stream Section Controller-->
         <scene sceneID="VrC-or-7Mf">
@@ -107,7 +107,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1325" y="-712"/>
+            <point key="canvasLocation" x="1982" y="-712"/>
         </scene>
     </scenes>
 </document>
