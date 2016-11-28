@@ -17,6 +17,8 @@ class StreamController: AVPlayerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.showsPlaybackControls = false  //Don't allow controls for livestreams
+        
         twitch.getStreamsForChannel(stream.channel) { [weak self] res in
             guard let streams = res.results else {
                 return print("Error getting streams: \(res.error)")
