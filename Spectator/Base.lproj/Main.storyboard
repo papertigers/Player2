@@ -10,23 +10,6 @@
     </dependencies>
     <scenes>
         <!--Top Games-->
-        <scene sceneID="ZRE-IQ-hw2">
-            <objects>
-                <navigationController id="G6E-Ca-uUK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Top Games" id="drq-P5-44H"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhN-AE-CCa">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="145"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="B0Q-9i-vwk" kind="relationship" relationship="rootViewController" id="7dx-JQ-ujq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qVf-p6-Kqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2244" y="-712"/>
-        </scene>
-        <!--Game Section Controller-->
         <scene sceneID="FCY-Et-3Fc">
             <objects>
                 <collectionViewController id="B0Q-9i-vwk" customClass="GameSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,11 +40,12 @@
                             <outlet property="delegate" destination="B0Q-9i-vwk" id="Wil-OO-sF0"/>
                         </connections>
                     </collectionView>
+                    <tabBarItem key="tabBarItem" title="Top Games" id="2Vl-q5-SRt"/>
                     <navigationItem key="navigationItem" id="sCT-71-g2h"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wR5-FM-NV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4484" y="-712"/>
+            <point key="canvasLocation" x="4336" y="-712"/>
         </scene>
         <!--Stream Section Controller-->
         <scene sceneID="VrC-or-7Mf">
@@ -105,7 +89,7 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="OmX-eQ-7lS" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ApV-9y-87d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9021" y="-712"/>
+            <point key="canvasLocation" x="9370" y="-712"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -118,12 +102,12 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="G6E-Ca-uUK" kind="relationship" relationship="viewControllers" id="via-eR-qq2"/>
+                        <segue destination="B0Q-9i-vwk" kind="relationship" relationship="viewControllers" id="tOB-Bm-QMo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="1982" y="-712"/>
         </scene>
     </scenes>
 </document>

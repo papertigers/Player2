@@ -170,6 +170,7 @@
 		3BAC48F61D28C2450034A972 /* Player2 */ = {
 			isa = PBXGroup;
 			children = (
+				3BF8EC801DE657AF006260AE /* Custom Views */,
 				3BB678F21DD8D33500420C2F /* Cells */,
 				3BB678EF1DD8D04700420C2F /* Adapters */,
 				3BC00C651D2CAB7200A2D90D /* Controllers */,
@@ -227,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				3B15512D1DE0E4530079A7B9 /* TwitchCell.swift */,
-				3B5B38151DE2B8020069F64A /* TwitchCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -261,6 +261,14 @@
 				3B5B38061DE17D360069F64A /* StreamController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3BF8EC801DE657AF006260AE /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B38151DE2B8020069F64A /* TwitchCell.xib */,
+			);
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

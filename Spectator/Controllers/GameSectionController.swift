@@ -11,6 +11,7 @@ import UIKit
 class GameSectionController: SectionController, UICollectionViewDelegateFlowLayout {
     var gamesAdapter: GamesAdapter!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(withConfig: GameCollectionViewConfig())
