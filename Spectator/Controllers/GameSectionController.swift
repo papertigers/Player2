@@ -17,6 +17,8 @@ class GameSectionController: SectionController {
         setupView(withConfig: GameCollectionViewConfig())
         gamesAdapter = GamesAdapter(collectionView: collectionView!)
         collectionView!.dataSource = gamesAdapter
+        collectionView!.prefetchDataSource = gamesAdapter
+        collectionView!.isPrefetchingEnabled = true
         gamesAdapter.loadGames()
     }
     

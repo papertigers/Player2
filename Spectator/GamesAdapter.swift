@@ -41,3 +41,16 @@ class GamesAdapter: NSObject, UICollectionViewDataSource {
         return cell
     }
 }
+
+extension GamesAdapter: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        let urls: [URL] = indexPaths.flatMap {
+            guard let url = games[$0.row].box(.Large) else {
+                return nil
+            }
+            return URL(string: url)
+        }
+        ImagePrefetcher(urls: urls).start()
+        
+    }
+}

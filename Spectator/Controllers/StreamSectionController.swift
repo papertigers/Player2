@@ -18,6 +18,8 @@ class StreamSectionController: SectionController {
         channelsAdapter = ChannelsAdapter(collectionView: collectionView!)
         collectionView!.dataSource = channelsAdapter
         collectionView!.prefetchDataSource = channelsAdapter
+        collectionView!.isPrefetchingEnabled = true
+
         channelsAdapter.loadChannels(game: self.game)
     }
     

@@ -43,6 +43,13 @@ class ChannelsAdapter: NSObject, UICollectionViewDataSource {
 
 extension ChannelsAdapter: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print(indexPaths)
+        let urls: [URL] = indexPaths.flatMap {
+            guard let url = streams[$0.row].preview["large"] else {
+                return nil
+            }
+            return URL(string: url)
+        }
+        ImagePrefetcher(urls: urls).start()
+        
     }
 }
