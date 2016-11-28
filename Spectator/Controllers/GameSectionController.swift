@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameSectionController: SectionController, UICollectionViewDelegateFlowLayout {
+class GameSectionController: SectionController {
     var gamesAdapter: GamesAdapter!
     
     

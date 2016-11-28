@@ -40,3 +40,9 @@ class ChannelsAdapter: NSObject, UICollectionViewDataSource {
         return cell
     }
 }
+
+extension ChannelsAdapter: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print(indexPaths)
+    }
+}

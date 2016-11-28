@@ -22,7 +22,6 @@ struct StreamCollectionViewConfig: CollectionViewConfig {
 
 
 class SectionController: UICollectionViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

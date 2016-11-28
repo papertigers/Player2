@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StreamSectionController: SectionController, UICollectionViewDelegateFlowLayout {
+class StreamSectionController: SectionController {
     var channelsAdapter: ChannelsAdapter!
     var game: TwitchGame!
     
@@ -17,6 +17,7 @@ class StreamSectionController: SectionController, UICollectionViewDelegateFlowLa
         setupView(withConfig: StreamCollectionViewConfig())
         channelsAdapter = ChannelsAdapter(collectionView: collectionView!)
         collectionView!.dataSource = channelsAdapter
+        collectionView!.prefetchDataSource = channelsAdapter
         channelsAdapter.loadChannels(game: self.game)
     }
     
