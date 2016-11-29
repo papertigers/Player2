@@ -126,7 +126,7 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="OmX-eQ-7lS" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ApV-9y-87d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9370" y="-712"/>
+            <point key="canvasLocation" x="9411" y="40"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -141,11 +141,30 @@
                     <connections>
                         <segue destination="B0Q-9i-vwk" kind="relationship" relationship="viewControllers" id="tOB-Bm-QMo"/>
                         <segue destination="nA0-fB-E6Z" kind="relationship" relationship="viewControllers" id="tpJ-OG-M7G"/>
+                        <segue destination="oxL-3X-eWK" kind="relationship" relationship="viewControllers" id="x45-T3-Eww"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="423" y="368"/>
+            <point key="canvasLocation" x="1707" y="914"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="bUh-xQ-vXg">
+            <objects>
+                <viewController id="oxL-3X-eWK" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o9o-rY-Oa3"/>
+                        <viewControllerLayoutGuide type="bottom" id="v4d-oq-ETr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ciP-ir-x6Y">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" id="4TY-QV-VK2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HDl-DG-ebN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1707" y="2942"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

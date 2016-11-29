@@ -29,6 +29,8 @@ protocol TwitchSectionController {
 
 extension TwitchSectionController where Self: UICollectionViewController {
     func setupView(withConfig config: CollectionViewConfig) {
+        // Background
+        self.view.backgroundColor = ColorScheme.backgroundColor
         // Setup new flowlayout
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = config.itemSize

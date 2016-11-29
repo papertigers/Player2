@@ -25,3 +25,8 @@ extension TextPresentable {
     var textColor: UIColor { return .black }
     var font: UIFont { return UIFont(name: "HelveticaNeue-Light ", size: 12)!}
 }
+
+struct ColorScheme {
+    static let unselectedTextColor = UIColor(red:0.57, green:0.48, blue:0.69, alpha:1.0)
+    static let backgroundColor = UIColor(red:0.20, green:0.08, blue:0.35, alpha:0.85)
+}

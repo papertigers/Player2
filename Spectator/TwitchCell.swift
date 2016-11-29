@@ -45,9 +45,11 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         
         title.backgroundColor = .clear
         title.text = presenter.title
+        title.textColor = ColorScheme.unselectedTextColor
         
         subTitle.backgroundColor = .clear
         subTitle.text = presenter.subTitle
+        subTitle.textColor = ColorScheme.unselectedTextColor
         
         self.imageView.kf.cancelDownloadTask()
         let url = URL(string: presenter.icon)!
@@ -65,7 +67,7 @@ class TwitchCell: UICollectionViewCell, NibReusable {
             transform = CGAffineTransform(translationX: 0, y: adjustY)
 
         } else {
-            color = .black
+            color = ColorScheme.unselectedTextColor
             adjustY = 0
             transform = CGAffineTransform.identity
         }
