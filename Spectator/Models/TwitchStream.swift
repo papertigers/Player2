@@ -18,7 +18,7 @@ struct TwitchStream: Hashable {
     let viewers: Int
     let videoHeight: Int
     let isPlaylist: Bool
-    let preview: [String:String]
+    let preview: TwitchPreview
     let channel: TwitchChannel
     
     /**
@@ -34,7 +34,7 @@ struct TwitchStream: Hashable {
             let videoHeight = json["video_height"].int,
             let isPlaylist = json["is_playlist"].bool,
             let viewers = json["viewers"].int,
-            let preview = json["preview"].dictOfString,
+            let preview = TwitchPreview(json["preview"]),
             let channel = TwitchChannel(json["channel"])
             else {
                 return nil

@@ -16,7 +16,7 @@ struct TwitchStreamViewModel: ImagePresentable {
     
     init(stream: TwitchStream) {
         self.stream = stream
-        self.icon = stream.preview["large"]!
+        self.icon = stream.preview.large
         self.iconMultiplier = 360.0/640.0
     }
 }

@@ -43,6 +43,7 @@
 		3BC00C641D2CAADC00A2D90D /* TwitchStreamVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */; };
 		3BC00C671D2CABA900A2D90D /* M3UParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00C661D2CABA900A2D90D /* M3UParser.swift */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
+		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchStreamVideo.swift; path = Models/TwitchStreamVideo.swift; sourceTree = "<group>"; };
 		3BC00C661D2CABA900A2D90D /* M3UParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = M3UParser.swift; path = Models/M3UParser.swift; sourceTree = "<group>"; };
 		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
+		3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchPreview.swift; path = Models/TwitchPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 				3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */,
 				3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */,
 				3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */,
+				3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */,
 			);
 			name = "Twitch Models";
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B49C6FE1D2B74FC0097CDFC /* TwitchStream.swift in Sources */,
+				3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */,
 				3B5B381A1DE2B8670069F64A /* NibOwnerLoadable.swift in Sources */,
 				3BAC492D1D28CF750034A972 /* TwitchService.swift in Sources */,
 				3B5B37FD1DE0E8A40069F64A /* TwitchStreamViewModel.swift in Sources */,

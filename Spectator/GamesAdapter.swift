@@ -44,12 +44,7 @@ class GamesAdapter: NSObject, UICollectionViewDataSource {
 
 extension GamesAdapter: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let urls: [URL] = indexPaths.flatMap {
-            guard let url = games[$0.row].box(.Large) else {
-                return nil
-            }
-            return URL(string: url)
-        }
+        let urls: [URL] = indexPaths.flatMap { URL(string: games[$0.row].box.large) }
         ImagePrefetcher(urls: urls).start()
         
     }

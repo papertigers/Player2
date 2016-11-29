@@ -12,8 +12,8 @@ import SwiftyJSON
 /// A Twitch Game
 struct TwitchGame: Hashable {
     let name: String
-    let box: [String:String]
-    let logo: [String:String]
+    let box: TwitchPreview
+    let logo: TwitchPreview
     let id: Int
     let viewers: Int
     let channels: Int
@@ -39,8 +39,8 @@ struct TwitchGame: Hashable {
     init?(_ json: JSON) {
         guard let id = json["game"]["_id"].int,
             let name = json["game"]["name"].string,
-            let box = json["game"]["box"].dictOfString,
-            let logo = json["game"]["logo"].dictOfString,
+            let box = TwitchPreview(json["game"]["box"]),
+            let logo = TwitchPreview(json["game"]["logo"]),
             let viewers = json["viewers"].int,
             let channels = json["channels"].int else {
             return nil
@@ -51,24 +51,6 @@ struct TwitchGame: Hashable {
         self.id = id
         self.viewers = viewers
         self.channels = channels
-    }
-    
-    /**
-    Get a box(poster) by size
-    - parameter forSize: Size of box to be returned
-    - returns: box URL
-    */
-    func box(_ forSize: Size) -> String? {
-        return box[forSize.rawValue]
-    }
-    
-    /**
-    Get a logo by size
-    - parameter forSize: Size of logo to be returned
-    - returns: logo URL
-    */
-    func logo(_ forSize: Size) -> String? {
-        return logo[forSize.rawValue]
     }
 }
 
