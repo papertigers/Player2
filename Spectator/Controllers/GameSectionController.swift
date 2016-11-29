@@ -8,29 +8,26 @@
 
 import UIKit
 
-class GameSectionController: SectionController {
-    var gamesAdapter: GamesAdapter!
-    
+class GameSectionController: UICollectionViewController, TwitchSectionController {
+    var adapter: GamesAdapter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(withConfig: GameCollectionViewConfig())
-        gamesAdapter = GamesAdapter(collectionView: collectionView!)
-        collectionView!.dataSource = gamesAdapter
-        collectionView!.prefetchDataSource = gamesAdapter
-        collectionView!.isPrefetchingEnabled = true
-        gamesAdapter.loadGames()
+        adapter = GamesAdapter(collectionView: collectionView!)
+        setupCollectionView(withAdapter: adapter)
+        adapter?.loadGames()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(gamesAdapter.games[indexPath.row])
+        print(adapter.games[indexPath.row])
         performSegue(withIdentifier: "ShowChannels", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChannels" {
             let channelsVC = segue.destination as! StreamSectionController
-            channelsVC.game = gamesAdapter.games[(sender as! NSIndexPath).row]
+            channelsVC.game = adapter.games[(sender as! NSIndexPath).row]
         }
     }
 }

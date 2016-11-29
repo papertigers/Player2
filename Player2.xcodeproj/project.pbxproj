@@ -42,6 +42,7 @@
 		3BB679011DDA73A100420C2F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB679001DDA73A100420C2F /* AVKit.framework */; };
 		3BC00C641D2CAADC00A2D90D /* TwitchStreamVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */; };
 		3BC00C671D2CABA900A2D90D /* M3UParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00C661D2CABA900A2D90D /* M3UParser.swift */; };
+		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		3BB679001DDA73A100420C2F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchStreamVideo.swift; path = Models/TwitchStreamVideo.swift; sourceTree = "<group>"; };
 		3BC00C661D2CABA900A2D90D /* M3UParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = M3UParser.swift; path = Models/M3UParser.swift; sourceTree = "<group>"; };
+		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 		3BB678EF1DD8D04700420C2F /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
+				3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */,
 				3BB678F01DD8D06300420C2F /* GamesAdapter.swift */,
 				3BB678F81DDA679400420C2F /* ChannelsAdapter.swift */,
 			);
@@ -413,6 +416,7 @@
 				3B5B38081DE17D360069F64A /* StreamController.swift in Sources */,
 				3BAC48F81D28C2450034A972 /* AppDelegate.swift in Sources */,
 				3B15512C1DE0E2940079A7B9 /* TwitchGameViewModel.swift in Sources */,
+				3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */,
 				3B5B38141DE2B3B90069F64A /* UICollectionView+Reusable.swift in Sources */,
 				3BC00C671D2CABA900A2D90D /* M3UParser.swift in Sources */,
 				3BB678F11DD8D06300420C2F /* GamesAdapter.swift in Sources */,
