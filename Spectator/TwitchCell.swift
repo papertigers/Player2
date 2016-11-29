@@ -33,11 +33,12 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         title.translatesAutoresizingMaskIntoConstraints = false
         subTitle.translatesAutoresizingMaskIntoConstraints = false
+        labelStack.translatesAutoresizingMaskIntoConstraints = false
+        itemStack.translatesAutoresizingMaskIntoConstraints = false
         
-        //backgroundColor = UIColor(white: 0.1, alpha: 1.0)
-        let imageviewConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: presenter.iconMultiplier, constant: 0)
+        let imageviewConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width,
+                                                     multiplier: presenter.iconMultiplier, constant: 0)
         imageView.addConstraint(imageviewConstraint)
-        //itemStack.layoutIfNeeded()
         backgroundColor = .clear
         imageView.contentMode = .scaleAspectFit
         imageView.adjustsImageWhenAncestorFocused = true
