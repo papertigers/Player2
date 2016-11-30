@@ -7,13 +7,38 @@
 //
 
 import Foundation
+import OrderedSet
 
-protocol asdf {
+protocol TwitchAdapter {
     associatedtype Item: Hashable
-    var offset: Int { get }
+    var offset: Int { get set }
     var limit: Int { get }
-    var items: [Item] { get }
-    func load(fromOffset offset: Int, limit: Int)
+    var items: OrderedSet<Item> { get set}
+    var finished: Bool { get set }
+    func load()
+}
+
+extension TwitchAdapter {
+    var limit: Int {
+        return 100
+    }
+    
+    mutating func updateDatasource(withArray array: [Item]) {
+        if (array.count == 0) {
+            self.finished = true
+            return
+        }
+        self.items += array
+        self.offset += limit
+    }
+}
+
+// Handy function to generate a new datasource that can be used to Diff
+extension Array where Element: Hashable {
+    func appendAndDeduplicate(to array: [Element]) -> [Element] {
+        let dedup = self.filter { !array.contains($0) }
+        return Array([dedup, array].joined())
+    }
 }
 
 

@@ -7,36 +7,45 @@
 //
 
 import UIKit
+import Dwifft_tvOS
 import Kingfisher
+import OrderedSet
 
-class GamesAdapter: NSObject, UICollectionViewDataSource {
+class GamesAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     private weak var collectionView: UICollectionView?
-    internal var games = [TwitchGame]()
+    fileprivate var diffCalculator: CollectionViewDiffCalculator<TwitchGame>?
+    var items = OrderedSet<TwitchGame>() {
+        didSet {
+            self.diffCalculator?.rows = Array(items)
+        }
+    }
     private let api = TwitchService()
+    var offset = 0
+    var finished = false
     
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
+        self.diffCalculator = CollectionViewDiffCalculator<TwitchGame>(collectionView: collectionView)
         super.init()
     }
     
-    func loadGames(offset: Int = 0) {
-        api.getTopGames(100, offset: offset) { [weak self] res in
+    func load() {
+        if (finished) { return }
+        api.getTopGames(limit, offset: offset) { [weak self] res in
             guard let games = res.results else {
                 return print("Failed to get games")
             }
-            
-            self?.games = games
-            self?.collectionView?.reloadData() // Only for testing
+            self?.updateDatasource(withArray: games)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return games.count
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
-        let viewModel = TwitchGameViewModel(game: games[indexPath.row])
+        let viewModel = TwitchGameViewModel(game: items[indexPath.row])
         cell.configure(withPresenter: viewModel)
         return cell
     }
@@ -44,7 +53,7 @@ class GamesAdapter: NSObject, UICollectionViewDataSource {
 
 extension GamesAdapter: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let urls: [URL] = indexPaths.flatMap { URL(string: games[$0.row].box.large) }
+        let urls: [URL] = indexPaths.flatMap { URL(string: items[$0.row].box.large) }
         ImagePrefetcher(urls: urls).start()
         
     }

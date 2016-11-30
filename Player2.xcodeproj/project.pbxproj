@@ -47,6 +47,8 @@
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
 		3BFE1E911DEE128E008D6478 /* FeaturedStreamsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E901DEE128E008D6478 /* FeaturedStreamsAdapter.swift */; };
 		3BFE1E931DEE1568008D6478 /* TwitchFeaturedStreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E921DEE1568008D6478 /* TwitchFeaturedStreamViewModel.swift */; };
+		3BFE1E951DEF66D3008D6478 /* Dwifft_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFE1E941DEF66D3008D6478 /* Dwifft_tvOS.framework */; };
+		3BFE1E971DEF7F21008D6478 /* OrderedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFE1E961DEF7F21008D6478 /* OrderedSet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedStreamsSectionController.swift; path = Controllers/FeaturedStreamsSectionController.swift; sourceTree = "<group>"; };
 		3BFE1E901DEE128E008D6478 /* FeaturedStreamsAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedStreamsAdapter.swift; sourceTree = "<group>"; };
 		3BFE1E921DEE1568008D6478 /* TwitchFeaturedStreamViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchFeaturedStreamViewModel.swift; path = Models/TwitchFeaturedStreamViewModel.swift; sourceTree = "<group>"; };
+		3BFE1E941DEF66D3008D6478 /* Dwifft_tvOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft_tvOS.framework; path = Carthage/Build/tvOS/Dwifft_tvOS.framework; sourceTree = "<group>"; };
+		3BFE1E961DEF7F21008D6478 /* OrderedSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OrderedSet.framework; path = Carthage/Build/tvOS/OrderedSet.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 				3BB678EC1DD27DE800420C2F /* SwiftyJSON.framework in Frameworks */,
 				3BAC492F1D28DB510034A972 /* Willow.framework in Frameworks */,
 				3BB678F71DD8DD2400420C2F /* Kingfisher.framework in Frameworks */,
+				3BFE1E971DEF7F21008D6478 /* OrderedSet.framework in Frameworks */,
+				3BFE1E951DEF66D3008D6478 /* Dwifft_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +254,8 @@
 		3BB678F51DD8DD2300420C2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BFE1E961DEF7F21008D6478 /* OrderedSet.framework */,
+				3BFE1E941DEF66D3008D6478 /* Dwifft_tvOS.framework */,
 				3BB679001DDA73A100420C2F /* AVKit.framework */,
 				3BB678F61DD8DD2400420C2F /* Kingfisher.framework */,
 			);
@@ -399,6 +407,8 @@
 				"$(SRCROOT)/Carthage/Build/tvOS/pop.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/Willow.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/Dwifft_tvOS.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/OrderedSet.framework",
 			);
 			outputPaths = (
 			);

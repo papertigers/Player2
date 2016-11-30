@@ -16,19 +16,26 @@ class GameSectionController: UICollectionViewController, TwitchSectionController
         setupView(withConfig: GameCollectionViewConfig())
         adapter = GamesAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
-        adapter?.loadGames()
+        adapter?.load()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(adapter.games[indexPath.row])
+        print(adapter.items[indexPath.row])
         performSegue(withIdentifier: "ShowChannels", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChannels" {
             let channelsVC = segue.destination as! StreamSectionController
-            channelsVC.game = adapter.games[(sender as! NSIndexPath).row]
+            channelsVC.game = adapter.items[(sender as! NSIndexPath).row]
         }
     }
 }
 
+extension GameSectionController {
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == adapter.items.count - 1 ) {
+            adapter.load()
+        }
+    }
+}

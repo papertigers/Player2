@@ -17,18 +17,26 @@ class FeaturedStreamsSectionController: UICollectionViewController, TwitchSectio
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = FeaturedStreamsAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
-        adapter.loadStreams()
+        adapter.load()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(adapter.streams[indexPath.row])
+        print(adapter.items[indexPath.row])
         performSegue(withIdentifier: "ShowStream", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowStream" {
             let streamVC = segue.destination as! StreamController
-            streamVC.stream = adapter?.streams[(sender as! NSIndexPath).row]
+            streamVC.stream = adapter?.items[(sender as! NSIndexPath).row]
+        }
+    }
+}
+
+extension FeaturedStreamsSectionController {
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == adapter.items.count - 1 ) {
+            adapter.load()
         }
     }
 }
