@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 import Kingfisher
 
 @UIApplicationMain
@@ -17,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Setup Flurry
+        //Flurry.setDebugLogEnabled(true);
+        Flurry.startSession("QQHPHPQDJ9FG2QQ8GMYW");
         
         // Set maximum GameCell cache duration for Kingfisher to 3 days
         P2ImageCache.GameCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
