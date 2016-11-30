@@ -25,6 +25,7 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     
     let game: TwitchGame
     
+    
     init(collectionView: UICollectionView, game: TwitchGame) {
         self.collectionView = collectionView
         self.diffCalculator = CollectionViewDiffCalculator<TwitchStream>(collectionView: collectionView)

@@ -13,6 +13,7 @@ struct TwitchStreamViewModel: ImagePresentable {
     let stream: TwitchStream
     let iconMultiplier: CGFloat
     let placeholder = "StreamDefault"
+    let cache = P2ImageCache.StreamCellCache
     
     init(stream: TwitchStream) {
         self.stream = stream

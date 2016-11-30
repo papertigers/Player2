@@ -8,6 +8,17 @@
 
 import Foundation
 import OrderedSet
+import Kingfisher
+
+struct P2ImageCache {
+    enum CellType: String {
+        case GameCell = "GameCell"
+        case StreamCell = "StreamCell"
+    }
+    
+    static let StreamCellCache = ImageCache(name: CellType.StreamCell.rawValue)
+    static let GameCellCache = ImageCache(name: CellType.GameCell.rawValue)
+}
 
 protocol TwitchAdapter {
     associatedtype Item: Hashable

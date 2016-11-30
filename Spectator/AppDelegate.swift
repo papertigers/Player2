@@ -18,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Set maximum cache duration for Kingfisher to 3 days
-        ImageCache.default.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
+        // Set maximum GameCell cache duration for Kingfisher to 3 days
+        P2ImageCache.GameCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
+        // Set maximum StreamCell cache duration for Kingfisher to 1hr
+        P2ImageCache.StreamCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 1)
         
         return true
     }

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol ImagePresentable {
     var icon: String { get }
     var iconMultiplier: CGFloat { get }
     var placeholder: String { get }
+    var cache: ImageCache { get }
 }
 
 protocol TextPresentable {
