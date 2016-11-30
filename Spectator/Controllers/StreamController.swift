@@ -21,13 +21,14 @@ class StreamController: AVPlayerViewController {
         
         twitch.getStreamsForChannel(stream.channel) { [weak self] res in
             guard let streams = res.results else {
-                print("Error getting streams: \(res.error)")
-                // TODO: push the viewcontroller back or display error.
+                if let error = res.error {
+                    Flurry.logError("StreamController", message: "Failed to get streams for \(self?.stream)", error: error)
+                }
                 return
             }
             
             let chunked = streams.filter({$0.quality == "chunked"}).first
-            print(chunked)
+            Flurry.logEvent("Streaming", withParameters: ["Streamer": self?.stream.channel.name ?? "Unknown", "Game": self?.stream.game ?? "Unknown"])
             self?.player = AVPlayer(url: chunked!.url)
             self?.player?.play()
         }
