@@ -1,23 +1,23 @@
 //
-//  ChannelSectionController.swift
+//  FeaturedStreamsSectionController.swift
 //  Player2
 //
-//  Created by Michael Zeller on 11/14/16.
+//  Created by Michael Zeller on 11/29/16.
 //  Copyright © 2016 Lights and Shapes. All rights reserved.
 //
 
 import UIKit
 
-class StreamSectionController: UICollectionViewController, TwitchSectionController {
-    var adapter: ChannelsAdapter!
+class FeaturedStreamsSectionController: UICollectionViewController, TwitchSectionController {
+    var adapter: FeaturedStreamsAdapter!
     var game: TwitchGame!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(withConfig: StreamCollectionViewConfig())
-        adapter = ChannelsAdapter(collectionView: collectionView!)
+        adapter = FeaturedStreamsAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
-        adapter.loadChannels(game: self.game)
+        adapter.loadStreams()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

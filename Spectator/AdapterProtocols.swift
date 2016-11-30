@@ -8,10 +8,12 @@
 
 import Foundation
 
-protocol TwitchAdapter {
+protocol asdf {
     associatedtype Item: Hashable
     var offset: Int { get }
     var limit: Int { get }
     var items: [Item] { get }
     func load(fromOffset offset: Int, limit: Int)
 }
+
+

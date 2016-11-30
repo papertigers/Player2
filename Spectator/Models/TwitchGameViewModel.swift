@@ -17,11 +17,7 @@ struct TwitchGameViewModel: ImagePresentable {
     init(game: TwitchGame) {
         self.game = game
         self.iconMultiplier = 380.0/272.0
-        if let image = game.box(.Large) {
-            self.icon = image
-        } else {
-            self.icon = "http://someimage"
-        }
+        self.icon = game.box.large
     }
 }
 

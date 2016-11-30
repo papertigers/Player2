@@ -26,6 +26,7 @@ enum tapi: URLRequestConvertible {
     case topGames([String:Int])
     // Streams
     case streams([String:AnyObject])
+    case featuredStreams([String:Int])
     // Undocumented API for VideoStreams
     case channelToken(TwitchChannel)
     case videoStreams(TwitchChannel, [String:AnyObject])
@@ -35,6 +36,8 @@ enum tapi: URLRequestConvertible {
         case .topGames:
             return .get
         case .streams:
+            return .get
+        case .featuredStreams:
             return .get
         case .channelToken:
             return .get
@@ -49,6 +52,8 @@ enum tapi: URLRequestConvertible {
             return "/games/top"
         case .streams:
             return "/streams"
+        case .featuredStreams:
+            return "/streams/featured"
         case .channelToken(let channel):
             return "/channels/\(channel.name)/access_token"
         case .videoStreams(let channel, _):
@@ -96,6 +101,8 @@ enum tapi: URLRequestConvertible {
         case .topGames(let parameters):
             mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
         case .streams(let parameters):
+            mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
+        case .featuredStreams(let parameters):
             mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
         case .videoStreams(_, let parameters):
             //We have to nil out the accept header or twitch gets cranky

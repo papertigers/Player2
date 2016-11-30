@@ -46,8 +46,9 @@ enum ServiceResult<T> {
 }
 
 protocol GameService {
-    func getTopGames(_ limit: Int, offset: Int, completionHandler: @ escaping((ServiceResult<[TwitchGame]>) -> Void))
+    func getTopGames(_ limit: Int, offset: Int, completionHandler: @escaping((ServiceResult<[TwitchGame]>) -> Void))
     func streamsForGame(_ limit: Int, offset: Int, game: TwitchGame, completionHandler: @escaping ((ServiceResult<[TwitchStream]>) -> Void))
+    func featuredStreams(_ limit: Int, offset: Int, completionHandler: @escaping((ServiceResult<[TwitchStream]>) -> Void))
 }
 
 

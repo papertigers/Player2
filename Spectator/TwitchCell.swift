@@ -33,20 +33,23 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         title.translatesAutoresizingMaskIntoConstraints = false
         subTitle.translatesAutoresizingMaskIntoConstraints = false
+        labelStack.translatesAutoresizingMaskIntoConstraints = false
+        itemStack.translatesAutoresizingMaskIntoConstraints = false
         
-        //backgroundColor = UIColor(white: 0.1, alpha: 1.0)
-        let imageviewConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: presenter.iconMultiplier, constant: 0)
+        let imageviewConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width,
+                                                     multiplier: presenter.iconMultiplier, constant: 0)
         imageView.addConstraint(imageviewConstraint)
-        //itemStack.layoutIfNeeded()
         backgroundColor = .clear
         imageView.contentMode = .scaleAspectFit
         imageView.adjustsImageWhenAncestorFocused = true
         
         title.backgroundColor = .clear
         title.text = presenter.title
+        title.textColor = ColorScheme.unselectedTextColor
         
         subTitle.backgroundColor = .clear
         subTitle.text = presenter.subTitle
+        subTitle.textColor = ColorScheme.unselectedTextColor
         
         self.imageView.kf.cancelDownloadTask()
         let url = URL(string: presenter.icon)!
@@ -64,7 +67,7 @@ class TwitchCell: UICollectionViewCell, NibReusable {
             transform = CGAffineTransform(translationX: 0, y: adjustY)
 
         } else {
-            color = .black
+            color = ColorScheme.unselectedTextColor
             adjustY = 0
             transform = CGAffineTransform.identity
         }

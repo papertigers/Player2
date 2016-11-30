@@ -1,17 +1,17 @@
 //
-//  GamesAdapter.swift
+//  FeaturedStreamsAdapter.swift
 //  Player2
 //
-//  Created by Michael Zeller on 11/13/16.
+//  Created by Michael Zeller on 11/29/16.
 //  Copyright © 2016 Lights and Shapes. All rights reserved.
 //
 
 import UIKit
 import Kingfisher
 
-class GamesAdapter: NSObject, UICollectionViewDataSource {
+class FeaturedStreamsAdapter: NSObject, UICollectionViewDataSource {
     private weak var collectionView: UICollectionView?
-    internal var games = [TwitchGame]()
+    internal var streams = [TwitchStream]()
     private let api = TwitchService()
     
     init(collectionView: UICollectionView) {
@@ -19,32 +19,31 @@ class GamesAdapter: NSObject, UICollectionViewDataSource {
         super.init()
     }
     
-    func loadGames(offset: Int = 0) {
-        api.getTopGames(100, offset: offset) { [weak self] res in
-            guard let games = res.results else {
-                return print("Failed to get games")
+    func loadStreams() {
+        api.featuredStreams(100, offset: 0) { [weak self] res in
+            guard let streams = res.results else {
+                return print("Couldn't load streams: \(res.error)") //print error
             }
-            
-            self?.games = games
+            self?.streams = streams
             self?.collectionView?.reloadData() // Only for testing
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return games.count
+        return streams.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
-        let viewModel = TwitchGameViewModel(game: games[indexPath.row])
+        let viewModel = TwitchFeaturedStreamViewModel(stream: streams[indexPath.row])
         cell.configure(withPresenter: viewModel)
         return cell
     }
 }
 
-extension GamesAdapter: UICollectionViewDataSourcePrefetching {
+extension FeaturedStreamsAdapter: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let urls: [URL] = indexPaths.flatMap { URL(string: games[$0.row].box.large) }
+        let urls: [URL] = indexPaths.flatMap { URL(string: streams[$0.row].preview.large) }
         ImagePrefetcher(urls: urls).start()
         
     }

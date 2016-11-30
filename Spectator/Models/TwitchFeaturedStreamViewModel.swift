@@ -1,14 +1,14 @@
 //
-//  TwitchChannelViewModel.swift
+//  TwitchFeaturedStreamViewModel.swift
 //  Player2
 //
-//  Created by Michael Zeller on 11/19/16.
+//  Created by Michael Zeller on 11/29/16.
 //  Copyright © 2016 Lights and Shapes. All rights reserved.
 //
 
 import UIKit
 
-struct TwitchStreamViewModel: ImagePresentable {
+struct TwitchFeaturedStreamViewModel: ImagePresentable {
     let icon: String
     let stream: TwitchStream
     let iconMultiplier: CGFloat
@@ -21,9 +21,9 @@ struct TwitchStreamViewModel: ImagePresentable {
     }
 }
 
-extension TwitchStreamViewModel: TextPresentable {
+extension TwitchFeaturedStreamViewModel: TextPresentable {
     var title: String {
-        return stream.channel.status ?? stream.game
+        return stream.game
     }
     var subTitle: String {
         return "\(stream.viewers) viewing \(stream.channel.displayName)"

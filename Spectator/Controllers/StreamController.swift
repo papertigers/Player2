@@ -21,7 +21,9 @@ class StreamController: AVPlayerViewController {
         
         twitch.getStreamsForChannel(stream.channel) { [weak self] res in
             guard let streams = res.results else {
-                return print("Error getting streams: \(res.error)")
+                print("Error getting streams: \(res.error)")
+                // TODO: push the viewcontroller back or display error.
+                return
             }
             
             let chunked = streams.filter({$0.quality == "chunked"}).first

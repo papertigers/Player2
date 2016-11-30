@@ -122,8 +122,43 @@ struct TwitchService: GameService {
             }
         }
     }
-}
     
+    typealias FeaturedStreamsCallback = ((ServiceResult<[TwitchStream]>) -> Void)
+    /**
+     Gets the featured streams from Twitch
+     
+     - parameter limit: Number of results to return
+     - parameter offset: Offset to start at
+     - parameter completionHandler: Callback called with possible array of featured streams
+     
+     */
+    func featuredStreams(_ limit: Int = 25, offset: Int = 0, completionHandler: @escaping FeaturedStreamsCallback) {
+        let parameters = [
+            "limit": limit,
+            "offset": offset
+        ]
+        Alamofire.request(tapi.featuredStreams(parameters)).validate(statusCode: 200..<300).responseJSON { response in
+            switch self.checkResponse(response) {
+            case .success(let json):
+                self.log.debug{ "\(json)" }
+                self.log.info{ "🎮 Got featured streams" }
+                guard let streams = json["featured"].array else {
+                    return completionHandler(.failure(TwitchError.noStreams))
+                }
+                TwitchService.backgroundQueue.async {
+                    let s = streams.flatMap { TwitchStream($0["stream"]) }
+                    DispatchQueue.main.async() {
+                        completionHandler(.success(s))
+                    }
+                }
+            case .failure(let error):
+                self.log.error { "\(error)" }
+                completionHandler(.failure(error))
+            }
+        }
+    }
+}
+
     // MARK: Undocumented Twitch API
     
 extension TwitchService: UndocumentedTwitchAPI {
