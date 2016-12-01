@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Setup Flurry
+
         //Flurry.setDebugLogEnabled(true);
         Flurry.startSession("QQHPHPQDJ9FG2QQ8GMYW");
         

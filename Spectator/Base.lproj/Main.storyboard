@@ -84,6 +84,37 @@
             </objects>
             <point key="canvasLocation" x="6841" y="914"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="47p-xF-z9j">
+            <objects>
+                <viewController id="i0d-FS-zg3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gj6-mQ-EkT"/>
+                        <viewControllerLayoutGuide type="bottom" id="RbT-Ps-ZWx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dUt-yM-mQg">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-ch-hsx">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <connections>
+                                    <segue destination="vXl-W0-Bnh" kind="embed" id="cEx-El-Ymd"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="dQp-ch-hsx" firstAttribute="top" secondItem="Gj6-mQ-EkT" secondAttribute="bottom" id="CQ3-n3-XS7"/>
+                            <constraint firstItem="dQp-ch-hsx" firstAttribute="leading" secondItem="dUt-yM-mQg" secondAttribute="leading" id="DIF-IC-THa"/>
+                            <constraint firstAttribute="trailing" secondItem="dQp-ch-hsx" secondAttribute="trailing" id="OWa-vf-1IH"/>
+                            <constraint firstItem="RbT-Ps-ZWx" firstAttribute="top" secondItem="dQp-ch-hsx" secondAttribute="bottom" id="wOu-HK-Dpx"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rM-Wm-vE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6664" y="4229"/>
+        </scene>
         <!--Stream Section Controller-->
         <scene sceneID="VrC-or-7Mf">
             <objects>
@@ -165,6 +196,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDl-DG-ebN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1707" y="2942"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vga-Pe-z2S">
+            <objects>
+                <viewController id="vXl-W0-Bnh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8EC-Pa-i76">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4g-6m-YRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9547" y="4229"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

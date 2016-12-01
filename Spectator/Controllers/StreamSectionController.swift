@@ -16,7 +16,7 @@ class StreamSectionController: UICollectionViewController, TwitchSectionControll
         super.viewDidLoad()
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = ChannelsAdapter(collectionView: collectionView!, game: self.game)
-        Flurry.logEvent("Get Streams", withParameters: ["Game": game])
+        Flurry.logEvent("Get Streams", withParameters: ["Game": game.name])
         setupCollectionView(withAdapter: adapter)
         adapter.load()
     }
