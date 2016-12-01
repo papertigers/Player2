@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setup Flurry
 
         //Flurry.setDebugLogEnabled(true);
-        Flurry.startSession("QQHPHPQDJ9FG2QQ8GMYW");
+        //Flurry.startSession("QQHPHPQDJ9FG2QQ8GMYW");
         
         // Set maximum GameCell cache duration for Kingfisher to 3 days
         P2ImageCache.GameCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)

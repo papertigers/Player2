@@ -8,32 +8,41 @@
 
 import UIKit
 
-class GameSectionController: UICollectionViewController, TwitchSectionController {
+class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
     var adapter: GamesAdapter!
+    var titleBar: TitleBar?
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        titleBar?.titleLabel.text = "Top Games"
         setupView(withConfig: GameCollectionViewConfig())
         adapter = GamesAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
         adapter?.load()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(adapter.items[indexPath.row])
-        performSegue(withIdentifier: "ShowChannels", sender: indexPath)
+        performSegue(withIdentifier: "showchannels", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowChannels" {
+        if segue.identifier == "showchannels" {
             let channelsVC = segue.destination as! StreamSectionController
             channelsVC.game = adapter.items[(sender as! NSIndexPath).row]
+        }
+        if segue.identifier == "titlebar"{
+            titleBar = segue.destination as? TitleBar
+            
         }
     }
 }
 
 extension GameSectionController {
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.row == adapter.items.count - 1 ) {
             adapter.load()
         }
