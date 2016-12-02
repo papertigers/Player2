@@ -15,11 +15,14 @@ class StreamSectionController: UIViewController, UICollectionViewDelegate, Twitc
     var titleBar: TitleBar?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var containerViewController: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         titleBar?.titleLabel.text = game.name
+        self.titleBar?.searchBar.isHidden = true
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = ChannelsAdapter(collectionView: collectionView!, game: self.game)
         Flurry.logEvent("Get Streams", withParameters: ["Game": game.name])
@@ -49,5 +52,19 @@ extension StreamSectionController {
         if (indexPath.row == adapter.items.count - 1 ) {
             adapter.load()
         }
+    }
+}
+
+extension StreamSectionController {
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        var environments = [UIFocusEnvironment]()
+        if let searchBar = self.titleBar?.searchBar, let parent = self.parent as? TabBarViewController {
+            if (searchBar.isFocused) {
+                parent.displayTabBarFocus = true
+                environments = environments + [parent]
+            }
+        }
+        environments = environments + [collectionView]
+        return environments
     }
 }

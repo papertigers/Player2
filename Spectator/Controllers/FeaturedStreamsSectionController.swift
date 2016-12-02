@@ -10,7 +10,6 @@ import UIKit
 
 class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
     var adapter: FeaturedStreamsAdapter!
-    var game: TwitchGame!
     
     var titleBar: TitleBar?
     
@@ -21,6 +20,7 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
         super.viewDidLoad()
         collectionView.delegate = self
         titleBar?.titleLabel.text = "Featured Streams"
+        self.titleBar?.setSearchBar(placeholder: "Search Streams")
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = FeaturedStreamsAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
@@ -61,7 +61,9 @@ extension FeaturedStreamsSectionController {
                 environments = environments + [parent]
             }
         }
-        environments = environments + [containerViewController]
+        if let bar = self.titleBar {
+            environments = environments + [bar]
+        }
         return environments
     }
 }

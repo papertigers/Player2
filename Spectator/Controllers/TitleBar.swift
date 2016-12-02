@@ -18,7 +18,11 @@ class TitleBar: UIViewController {
         self.view.backgroundColor = ColorScheme.titleBarBackgroundColor
         self.titleLabel.textColor = ColorScheme.titleBarTextColor
         self.reloadButton.tintColor = ColorScheme.unselectedTextColor
-        self.searchBar.attributedPlaceholder = NSAttributedString(string:"Search",
-                                                        attributes:[NSForegroundColorAttributeName: ColorScheme.titleBarTextColor])
+        self.setSearchBar(placeholder: "Search")
+    }
+    
+    func setSearchBar(placeholder text: String) {
+        self.searchBar.attributedPlaceholder = NSAttributedString(string: text,
+                           attributes:[NSForegroundColorAttributeName: ColorScheme.titleBarTextColor])
     }
 }

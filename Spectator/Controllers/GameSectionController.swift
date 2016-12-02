@@ -19,6 +19,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
         super.viewDidLoad()
         collectionView.delegate = self
         titleBar?.titleLabel.text = "Top Games"
+        self.titleBar?.setSearchBar(placeholder: "Search Games")
         setupView(withConfig: GameCollectionViewConfig())
         adapter = GamesAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
