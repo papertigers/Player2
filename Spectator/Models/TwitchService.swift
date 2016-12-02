@@ -81,6 +81,7 @@ struct TwitchService: GameService {
                 }
             case .failure(let error):
                 self.log.error { "\(error)" }
+                Flurry.logError("GetTopGames", message: "Failed to get top games", error: error)
                 completionHandler(.failure(error))
             }
         }
@@ -118,6 +119,7 @@ struct TwitchService: GameService {
                 }
             case .failure(let error):
                 self.log.error { "\(error)" }
+                Flurry.logError("GetStreamsForGame", message: "Failed to get streams for game", error: error)
                 completionHandler(.failure(error))
             }
         }
@@ -153,6 +155,7 @@ struct TwitchService: GameService {
                 }
             case .failure(let error):
                 self.log.error { "\(error)" }
+                Flurry.logError("GetFeaturedStreams", message: "Failed to get featured streams", error: error)
                 completionHandler(.failure(error))
             }
         }
@@ -182,6 +185,7 @@ extension TwitchService: UndocumentedTwitchAPI {
                 completionHandler(.success(TwitchChannelCreds(token: token, sig: sig)))
             case .failure(let error):
                 self.log.error { "\(error)" }
+                Flurry.logError("ChannelTokenAndSig", message: "Failed to get token/sig", error: error)
                 completionHandler(.failure(error))
             }
         }
@@ -228,6 +232,7 @@ extension TwitchService: UndocumentedTwitchAPI {
                 }
             case .failure(let error):
                 completionHandler(.failure(error))
+                Flurry.logError("GetStreamsForChannel", message: "Failed to get streams for channel", error: error)
             }
         }
     }

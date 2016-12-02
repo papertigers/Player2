@@ -7,35 +7,48 @@
 //
 
 import UIKit
+import Dwifft_tvOS
 import Kingfisher
+import OrderedSet
 
-class ChannelsAdapter: NSObject, UICollectionViewDataSource {
+class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     private weak var collectionView: UICollectionView?
-    internal var streams = [TwitchStream]()
+    fileprivate var diffCalculator: CollectionViewDiffCalculator<TwitchStream>?
+    var items = OrderedSet<TwitchStream>() {
+        didSet {
+            self.diffCalculator?.rows = Array(items)
+        }
+    }
     private let api = TwitchService()
-        
-    init(collectionView: UICollectionView) {
+    var offset = 0
+    var finished = false
+    
+    let game: TwitchGame
+    
+    
+    init(collectionView: UICollectionView, game: TwitchGame) {
         self.collectionView = collectionView
+        self.diffCalculator = CollectionViewDiffCalculator<TwitchStream>(collectionView: collectionView)
+        self.game = game
         super.init()
     }
     
-    func loadChannels(game: TwitchGame) {
-        api.streamsForGame(100, offset: 0, game: game) { [weak self] res in
+    func load() {
+        api.streamsForGame(limit, offset: offset, game: game) { [weak self] res in
             guard let streams = res.results else {
                 return print("Couldn't load channels: \(res.error)") //print error
             }
-            self?.streams = streams
-            self?.collectionView?.reloadData() // Only for testing
+            self?.updateDatasource(withArray: streams)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return streams.count
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
-        let viewModel = TwitchStreamViewModel(stream: streams[indexPath.row])
+        let viewModel = TwitchStreamViewModel(stream: items[indexPath.row])
         cell.configure(withPresenter: viewModel)
         return cell
     }
@@ -43,8 +56,13 @@ class ChannelsAdapter: NSObject, UICollectionViewDataSource {
 
 extension ChannelsAdapter: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let urls: [URL] = indexPaths.flatMap { URL(string: streams[$0.row].preview.large) }
+        let urls: [URL] = indexPaths.flatMap { URL(string: items[$0.row].preview.large) }
         ImagePrefetcher(urls: urls).start()
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        let urls: [URL] = indexPaths.flatMap { URL(string: items[$0.row].preview.large) }
+        ImagePrefetcher(urls: urls).stop()
     }
 }

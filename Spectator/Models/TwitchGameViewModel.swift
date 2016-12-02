@@ -13,6 +13,7 @@ struct TwitchGameViewModel: ImagePresentable {
     let game: TwitchGame
     let iconMultiplier: CGFloat
     let placeholder = "GameDefault"
+    let cache = P2ImageCache.GameCellCache
     
     init(game: TwitchGame) {
         self.game = game

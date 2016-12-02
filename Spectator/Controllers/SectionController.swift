@@ -24,13 +24,13 @@ struct StreamCollectionViewConfig: CollectionViewConfig {
 // Instead of subclassing lets use POP
 typealias Adapter = UICollectionViewDataSource & UICollectionViewDataSourcePrefetching
 protocol TwitchSectionController {
-
+    var collectionView: UICollectionView! { get }
 }
 
-extension TwitchSectionController where Self: UICollectionViewController {
+extension TwitchSectionController where Self: UIViewController {
     func setupView(withConfig config: CollectionViewConfig) {
         // Background
-        self.view.backgroundColor = ColorScheme.backgroundColor
+        collectionView.backgroundColor = ColorScheme.backgroundColor
         // Setup new flowlayout
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = config.itemSize
@@ -38,15 +38,15 @@ extension TwitchSectionController where Self: UICollectionViewController {
         layout.minimumLineSpacing = 100.0
         
         // Setup the collectionview
-        collectionView?.collectionViewLayout = layout
-        collectionView?.contentInset = UIEdgeInsetsMake(60, 90, 60, 90)
-        collectionView?.register(cellType: TwitchCell.self)
-        collectionView?.collectionViewLayout.invalidateLayout()
+        collectionView.collectionViewLayout = layout
+        collectionView.contentInset = UIEdgeInsetsMake(60, 90, 60, 90)
+        collectionView.register(cellType: TwitchCell.self)
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     func setupCollectionView(withAdapter adapter: Adapter) {
-        collectionView?.dataSource = adapter
-        collectionView?.prefetchDataSource = adapter
-        collectionView?.isPrefetchingEnabled = true
+        collectionView.dataSource = adapter
+        collectionView.prefetchDataSource = adapter
+        collectionView.isPrefetchingEnabled = true
     }
 }

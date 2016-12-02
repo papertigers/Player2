@@ -53,7 +53,7 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         
         self.imageView.kf.cancelDownloadTask()
         let url = URL(string: presenter.icon)!
-        self.imageView.kf.setImage(with: url, placeholder: UIImage(named: presenter.placeholder))
+        self.imageView.kf.setImage(with: url, placeholder: UIImage(named: presenter.placeholder), options: [.targetCache(presenter.cache)])
     }
 
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {

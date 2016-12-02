@@ -8,27 +8,46 @@
 
 import UIKit
 
-class StreamSectionController: UICollectionViewController, TwitchSectionController {
+class StreamSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
     var adapter: ChannelsAdapter!
     var game: TwitchGame!
     
+    var titleBar: TitleBar?
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        titleBar?.titleLabel.text = game.name
         setupView(withConfig: StreamCollectionViewConfig())
-        adapter = ChannelsAdapter(collectionView: collectionView!)
+        adapter = ChannelsAdapter(collectionView: collectionView!, game: self.game)
+        Flurry.logEvent("Get Streams", withParameters: ["Game": game.name])
         setupCollectionView(withAdapter: adapter)
-        adapter.loadChannels(game: self.game)
+        adapter.load()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(adapter.streams[indexPath.row])
-        performSegue(withIdentifier: "ShowStream", sender: indexPath)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(adapter.items[indexPath.row])
+        performSegue(withIdentifier: "showstream", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowStream" {
+        if segue.identifier == "showstream" {
             let streamVC = segue.destination as! StreamController
-            streamVC.stream = adapter?.streams[(sender as! NSIndexPath).row]
+            streamVC.stream = adapter?.items[(sender as! NSIndexPath).row]
+        }
+        if segue.identifier == "titlebar"{
+            titleBar = segue.destination as? TitleBar
+            
+        }
+    }
+}
+
+extension StreamSectionController {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == adapter.items.count - 1 ) {
+            adapter.load()
         }
     }
 }

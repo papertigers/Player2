@@ -8,27 +8,60 @@
 
 import UIKit
 
-class FeaturedStreamsSectionController: UICollectionViewController, TwitchSectionController {
+class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
     var adapter: FeaturedStreamsAdapter!
     var game: TwitchGame!
     
+    var titleBar: TitleBar?
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var containerViewController: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        titleBar?.titleLabel.text = "Featured Streams"
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = FeaturedStreamsAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
-        adapter.loadStreams()
+        adapter.load()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(adapter.streams[indexPath.row])
-        performSegue(withIdentifier: "ShowStream", sender: indexPath)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(adapter.items[indexPath.row])
+        performSegue(withIdentifier: "showstream", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowStream" {
+        if segue.identifier == "showstream" {
             let streamVC = segue.destination as! StreamController
-            streamVC.stream = adapter?.streams[(sender as! NSIndexPath).row]
+            streamVC.stream = adapter?.items[(sender as! NSIndexPath).row]
         }
+        if segue.identifier == "titlebar"{
+            titleBar = segue.destination as? TitleBar
+            
+        }
+    }
+}
+
+extension FeaturedStreamsSectionController {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == adapter.items.count - 1 ) {
+            adapter.load()
+        }
+    }
+}
+
+extension FeaturedStreamsSectionController {
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        var environments = [UIFocusEnvironment]()
+        if let searchBar = self.titleBar?.searchBar, let parent = self.parent as? TabBarViewController {
+            if (searchBar.isFocused) {
+                parent.displayTabBarFocus = true
+                environments = environments + [parent]
+            }
+        }
+        environments = environments + [containerViewController]
+        return environments
     }
 }
