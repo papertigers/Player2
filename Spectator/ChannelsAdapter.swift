@@ -60,4 +60,9 @@ extension ChannelsAdapter: UICollectionViewDataSourcePrefetching {
         ImagePrefetcher(urls: urls).start()
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        let urls: [URL] = indexPaths.flatMap { URL(string: items[$0.row].preview.large) }
+        ImagePrefetcher(urls: urls).stop()
+    }
 }

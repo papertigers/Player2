@@ -13,6 +13,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
     var titleBar: TitleBar?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var containerViewController: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,3 +49,14 @@ extension GameSectionController {
         }
     }
 }
+
+
+//extension GameSectionController {
+//    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+//        var environments = [UIFocusEnvironment]()
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let rootvc = storyboard.instantiateViewController(withIdentifier: "TabBar") as! TabBarViewController
+//        environments = environments + [collectionView, containerViewController, rootvc]
+//        return environments
+//    }
+//}

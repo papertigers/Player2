@@ -46,6 +46,7 @@
 		3BC264B31DEF966C00977AB7 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC264AF1DEF966C00977AB7 /* FlurryEmpty.m */; };
 		3BC264B41DEF966C00977AB7 /* libFlurry_7.8.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC264B11DEF966C00977AB7 /* libFlurry_7.8.2.a */; };
 		3BC264B61DF0D30A00977AB7 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC264B51DF0D30A00977AB7 /* TitleBar.swift */; };
+		3BC264B81DF1DEA700977AB7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
@@ -112,6 +113,7 @@
 		3BC264B01DEF966C00977AB7 /* FlurrySessionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurrySessionBuilder.h; sourceTree = "<group>"; };
 		3BC264B11DEF966C00977AB7 /* libFlurry_7.8.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.8.2.a; sourceTree = "<group>"; };
 		3BC264B51DF0D30A00977AB7 /* TitleBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleBar.swift; path = Controllers/TitleBar.swift; sourceTree = "<group>"; };
+		3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
 		3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchPreview.swift; path = Models/TwitchPreview.swift; sourceTree = "<group>"; };
 		3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedStreamsSectionController.swift; path = Controllers/FeaturedStreamsSectionController.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 		3BC00C651D2CAB7200A2D90D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */,
 				3BC264B51DF0D30A00977AB7 /* TitleBar.swift */,
 				3B5B380A1DE17DFF0069F64A /* SectionController.swift */,
 				3BB678ED1DD5329400420C2F /* GameSectionController.swift */,
@@ -451,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BC264B81DF1DEA700977AB7 /* TabBarViewController.swift in Sources */,
 				3B49C6FE1D2B74FC0097CDFC /* TwitchStream.swift in Sources */,
 				3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */,
 				3B5B381A1DE2B8670069F64A /* NibOwnerLoadable.swift in Sources */,
