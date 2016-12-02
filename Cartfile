@@ -6,3 +6,4 @@ github "Nike-Inc/Willow" ~> 2.0
 github "onevcat/Kingfisher" ~> 3.0
 github "papertigers/Dwifft" "master"
 github "papertigers/OrderedSet" "master"
+github "cbpowell/MarqueeLabel" ~> 3.0

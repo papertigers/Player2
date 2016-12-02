@@ -47,6 +47,7 @@
 		3BC264B41DEF966C00977AB7 /* libFlurry_7.8.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC264B11DEF966C00977AB7 /* libFlurry_7.8.2.a */; };
 		3BC264B61DF0D30A00977AB7 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC264B51DF0D30A00977AB7 /* TitleBar.swift */; };
 		3BC264B81DF1DEA700977AB7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */; };
+		3BD0C2351DF22499006AD058 /* MarqueeLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
@@ -114,6 +115,8 @@
 		3BC264B11DEF966C00977AB7 /* libFlurry_7.8.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.8.2.a; sourceTree = "<group>"; };
 		3BC264B51DF0D30A00977AB7 /* TitleBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleBar.swift; path = Controllers/TitleBar.swift; sourceTree = "<group>"; };
 		3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabel.framework; path = Carthage/Build/tvOS/MarqueeLabel.framework; sourceTree = "<group>"; };
+		3BD0C2331DF22469006AD058 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
 		3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchPreview.swift; path = Models/TwitchPreview.swift; sourceTree = "<group>"; };
 		3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedStreamsSectionController.swift; path = Controllers/FeaturedStreamsSectionController.swift; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 				3BC264B41DEF966C00977AB7 /* libFlurry_7.8.2.a in Frameworks */,
 				3BFE1E971DEF7F21008D6478 /* OrderedSet.framework in Frameworks */,
 				3BFE1E951DEF66D3008D6478 /* Dwifft_tvOS.framework in Frameworks */,
+				3BD0C2351DF22499006AD058 /* MarqueeLabel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +274,8 @@
 		3BB678F51DD8DD2300420C2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BD0C2331DF22469006AD058 /* QuartzCore.framework */,
+				3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */,
 				3BFE1E961DEF7F21008D6478 /* OrderedSet.framework */,
 				3BFE1E941DEF66D3008D6478 /* Dwifft_tvOS.framework */,
 				3BB679001DDA73A100420C2F /* AVKit.framework */,
@@ -440,6 +446,7 @@
 				"$(SRCROOT)/Carthage/Build/tvOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/Dwifft_tvOS.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/OrderedSet.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/MarqueeLabel.framework",
 			);
 			outputPaths = (
 			);

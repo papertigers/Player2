@@ -43,12 +43,10 @@ extension TabBarViewController {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         var environments = [UIFocusEnvironment]()
         if (displayTabBarFocus) {
-            print("value set to true")
             environments = environments + [self.tabBar]
             self.displayTabBarFocus = false
         }
         environments = environments + self.childViewControllers
-        print(environments)
         return environments
     }
 }
