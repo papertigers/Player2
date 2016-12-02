@@ -208,6 +208,7 @@
                     <tabBarItem key="tabBarItem" title="Streams" id="lzz-xm-Ibe"/>
                     <connections>
                         <outlet property="collectionView" destination="6B3-1A-x0f" id="DqL-Mv-t0A"/>
+                        <outlet property="containerViewController" destination="lI2-9N-Xv9" id="k5v-In-Rav"/>
                         <segue destination="iM5-Ga-GsM" kind="show" identifier="showstream" id="AFK-TF-AYP"/>
                     </connections>
                 </viewController>
@@ -288,7 +289,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cEx-El-Ymd"/>
         <segue reference="AFK-TF-AYP"/>
+        <segue reference="cEx-El-Ymd"/>
     </inferredMetricsTieBreakers>
 </document>

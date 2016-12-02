@@ -51,12 +51,16 @@ extension GameSectionController {
 }
 
 
-//extension GameSectionController {
-//    override var preferredFocusEnvironments: [UIFocusEnvironment] {
-//        var environments = [UIFocusEnvironment]()
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let rootvc = storyboard.instantiateViewController(withIdentifier: "TabBar") as! TabBarViewController
-//        environments = environments + [collectionView, containerViewController, rootvc]
-//        return environments
-//    }
-//}
+extension GameSectionController {
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        var environments = [UIFocusEnvironment]()
+        if let searchBar = self.titleBar?.searchBar, let parent = self.parent as? TabBarViewController {
+            if (searchBar.isFocused) {
+               parent.displayTabBarFocus = true
+                environments = environments + [parent]
+            }
+        }
+        environments = environments + [containerViewController]
+        return environments
+    }
+}

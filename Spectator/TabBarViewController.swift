@@ -9,11 +9,16 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    
+    var displayTabBarFocus = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+         //Do any additional setup after loading the view.
+//        for item in self.preferredFocusEnvironments {
+//            print(item.debugDescription)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,13 +39,16 @@ class TabBarViewController: UITabBarController {
 
 }
 
-//extension TabBarViewController {
-//    override var preferredFocusEnvironments: [UIFocusEnvironment] {
-//        guard let viewcontrollers = self.viewControllers else {
-//            return [self]
-//        }
-//        var environments = [UIFocusEnvironment]()
-//        environments = environments + viewcontrollers
-//        return environments
-//    }
-//}
+extension TabBarViewController {
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        var environments = [UIFocusEnvironment]()
+        if (displayTabBarFocus) {
+            print("value set to true")
+            environments = environments + [self.tabBar]
+            self.displayTabBarFocus = false
+        }
+        environments = environments + self.childViewControllers
+        print(environments)
+        return environments
+    }
+}
