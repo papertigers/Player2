@@ -26,6 +26,7 @@ protocol TwitchAdapter {
     var limit: Int { get }
     var items: OrderedSet<Item> { get set}
     var finished: Bool { get set }
+    var collectionView: UICollectionView? { get }
     func load()
 }
 
@@ -41,6 +42,17 @@ extension TwitchAdapter {
         }
         self.items += array
         self.offset += limit
+    }
+    
+    mutating func reload() {
+        self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
+                                          at: .top,
+                                          animated: true)
+        self.offset = 0
+        self.finished = false
+        self.items = []
+        self.load()
+        
     }
 }
 

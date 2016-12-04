@@ -12,7 +12,7 @@ import Kingfisher
 import OrderedSet
 
 class FeaturedStreamsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
-    private weak var collectionView: UICollectionView?
+    internal weak var collectionView: UICollectionView?
     fileprivate var diffCalculator: CollectionViewDiffCalculator<TwitchStream>?
     var items = OrderedSet<TwitchStream>() {
         didSet {

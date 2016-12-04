@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
+class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController, TitleBarDelegate {
     var adapter: FeaturedStreamsAdapter!
     
     var titleBar: TitleBar?
@@ -20,7 +20,8 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
         super.viewDidLoad()
         collectionView.delegate = self
         titleBar?.titleLabel.text = "Featured Streams"
-        self.titleBar?.setSearchBar(placeholder: "Search Streams")
+        titleBar?.setSearchBar(placeholder: "Search Streams")
+        titleBar?.delegate = self
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = FeaturedStreamsAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
@@ -41,6 +42,10 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
             titleBar = segue.destination as? TitleBar
             
         }
+    }
+    
+    func handleReload() {
+        adapter.reload()
     }
 }
 

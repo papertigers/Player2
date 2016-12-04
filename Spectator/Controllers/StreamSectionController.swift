@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StreamSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
+class StreamSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController, TitleBarDelegate {
     var adapter: ChannelsAdapter!
     var game: TwitchGame!
     
@@ -22,7 +22,8 @@ class StreamSectionController: UIViewController, UICollectionViewDelegate, Twitc
         super.viewDidLoad()
         collectionView.delegate = self
         titleBar?.titleLabel.text = game.name
-        self.titleBar?.searchBar.isHidden = true
+        titleBar?.searchBar.isHidden = true
+        titleBar?.delegate = self
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = ChannelsAdapter(collectionView: collectionView!, game: self.game)
         Flurry.logEvent("Get Streams", withParameters: ["Game": game.name])
@@ -45,6 +46,10 @@ class StreamSectionController: UIViewController, UICollectionViewDelegate, Twitc
             
         }
     }
+    
+    func handleReload() {
+        adapter.reload()
+    }
 }
 
 extension StreamSectionController {
@@ -58,13 +63,7 @@ extension StreamSectionController {
 extension StreamSectionController {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         var environments = [UIFocusEnvironment]()
-        if let searchBar = self.titleBar?.searchBar, let parent = self.parent as? TabBarViewController {
-            if (searchBar.isFocused) {
-                parent.displayTabBarFocus = true
-                environments = environments + [parent]
-            }
-        }
-        environments = environments + [collectionView]
+        environments = environments + [collectionView, containerViewController]
         return environments
     }
 }

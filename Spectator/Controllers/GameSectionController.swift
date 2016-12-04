@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
+class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController, TitleBarDelegate {
     var adapter: GamesAdapter!
     var titleBar: TitleBar?
     
@@ -19,7 +19,8 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
         super.viewDidLoad()
         collectionView.delegate = self
         titleBar?.titleLabel.text = "Top Games"
-        self.titleBar?.setSearchBar(placeholder: "Search Games")
+        titleBar?.setSearchBar(placeholder: "Search Games")
+        titleBar?.delegate = self
         setupView(withConfig: GameCollectionViewConfig())
         adapter = GamesAdapter(collectionView: collectionView!)
         setupCollectionView(withAdapter: adapter)
@@ -40,6 +41,10 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
             titleBar = segue.destination as? TitleBar
             
         }
+    }
+    
+    func handleReload() {
+        adapter.reload()
     }
 }
 
@@ -65,3 +70,5 @@ extension GameSectionController {
         return environments
     }
 }
+
+

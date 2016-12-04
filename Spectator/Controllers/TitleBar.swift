@@ -8,10 +8,20 @@
 
 import UIKit
 
+protocol TitleBarDelegate {
+    func handleReload()
+}
+
 class TitleBar: UIViewController {
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var reloadButton: UIButton!
+    
+    @IBAction func reloadPressed(_ sender: Any) {
+        self.delegate?.handleReload()
+    }
+    
+    var delegate: TitleBarDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,5 +34,11 @@ class TitleBar: UIViewController {
     func setSearchBar(placeholder text: String) {
         self.searchBar.attributedPlaceholder = NSAttributedString(string: text,
                            attributes:[NSForegroundColorAttributeName: ColorScheme.titleBarTextColor])
+    }
+}
+
+extension TitleBar {
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [searchBar, reloadButton]
     }
 }
