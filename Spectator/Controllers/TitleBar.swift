@@ -10,6 +10,15 @@ import UIKit
 
 protocol TitleBarDelegate {
     func handleReload()
+    func handleSearch()
+}
+
+extension TitleBarDelegate {
+    func handleSearch() {
+        // Override to handle searching
+        // Swift protocols cant have optional functions
+        // unless they are @objc
+    }
 }
 
 class TitleBar: UIViewController {
@@ -29,11 +38,22 @@ class TitleBar: UIViewController {
         self.titleLabel.textColor = ColorScheme.titleBarTextColor
         self.reloadButton.tintColor = ColorScheme.unselectedTextColor
         self.setSearchBar(placeholder: "Search")
+        self.searchBar.delegate = self
     }
     
     func setSearchBar(placeholder text: String) {
         self.searchBar.attributedPlaceholder = NSAttributedString(string: text,
                            attributes:[NSForegroundColorAttributeName: ColorScheme.titleBarTextColor])
+    }
+}
+
+extension TitleBar: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text, text.characters.count > 0 else {
+            return
+        }
+        self.delegate?.handleSearch()
+        //self.searchBar.text = nil
     }
 }
 

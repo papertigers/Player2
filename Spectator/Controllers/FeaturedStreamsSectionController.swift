@@ -40,7 +40,6 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
         }
         if segue.identifier == "titlebar"{
             titleBar = segue.destination as? TitleBar
-            
         }
     }
     

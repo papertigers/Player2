@@ -39,12 +39,17 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
         }
         if segue.identifier == "titlebar"{
             titleBar = segue.destination as? TitleBar
-            
         }
     }
     
     func handleReload() {
         adapter.reload()
+    }
+    
+    func handleSearch() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchResults") as! SearchResultsViewController
+        present(vc, animated: true)
     }
 }
 

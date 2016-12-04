@@ -291,9 +291,70 @@
             </objects>
             <point key="canvasLocation" x="6591" y="4065"/>
         </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="bJC-z9-9cF">
+            <objects>
+                <viewController storyboardIdentifier="SearchResults" id="Z6c-dL-lo5" customClass="SearchResultsViewController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ntS-1M-iFB"/>
+                        <viewControllerLayoutGuide type="bottom" id="1iH-k4-ASa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rc4-wp-l6e">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHj-yP-Wow">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="p22-px-bpu"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="vXl-W0-Bnh" kind="embed" identifier="titlebar" id="NxG-Fg-ljn"/>
+                                </connections>
+                            </containerView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N5f-SM-NmW">
+                                <rect key="frame" x="0.0" y="100" width="1920" height="980"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SfG-FS-5Io">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="ab3-dP-frc">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cHj-yP-Wow" secondAttribute="trailing" id="3Qd-YL-0ld"/>
+                            <constraint firstItem="cHj-yP-Wow" firstAttribute="leading" secondItem="rc4-wp-l6e" secondAttribute="leading" id="fGh-dn-zyD"/>
+                            <constraint firstItem="N5f-SM-NmW" firstAttribute="leading" secondItem="rc4-wp-l6e" secondAttribute="leading" id="fRd-fE-c45"/>
+                            <constraint firstItem="cHj-yP-Wow" firstAttribute="top" secondItem="ntS-1M-iFB" secondAttribute="bottom" id="ff0-GY-MS6"/>
+                            <constraint firstItem="1iH-k4-ASa" firstAttribute="top" secondItem="N5f-SM-NmW" secondAttribute="bottom" id="pfx-KL-eBr"/>
+                            <constraint firstAttribute="trailing" secondItem="N5f-SM-NmW" secondAttribute="trailing" id="wgF-bK-JbW"/>
+                            <constraint firstItem="N5f-SM-NmW" firstAttribute="top" secondItem="cHj-yP-Wow" secondAttribute="bottom" id="xA6-ju-Toe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="N5f-SM-NmW" id="V8I-9a-814"/>
+                        <outlet property="containerViewController" destination="cHj-yP-Wow" id="arS-Yf-xXQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QcK-QO-LyO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8845" y="1894"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sJc-XO-Uat"/>
+        <segue reference="NxG-Fg-ljn"/>
         <segue reference="AFK-TF-AYP"/>
     </inferredMetricsTieBreakers>
 </document>
