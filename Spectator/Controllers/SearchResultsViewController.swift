@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SearchResultsViewController<A: TwitchAdapter>: UIViewController, UICollectionViewDelegate {
+class SearchResultsViewController<A: TwitchAdapter>: UIViewController,  TwitchSectionController, UICollectionViewDelegate {
     var containerViewController: UIView!
-    //var collectionView: UICollectionView!
+    var collectionView: UICollectionView!
     
     var adapter: A!
     var searchType: TwitchSearch!
@@ -24,30 +24,50 @@ class SearchResultsViewController<A: TwitchAdapter>: UIViewController, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         self.containerViewController = UIView()
-        self.containerViewController.translatesAutoresizingMaskIntoConstraints = false
-        self.containerViewController.backgroundColor = .red
-        self.view.addSubview(self.containerViewController)
+        self.view.addSubview(containerViewController)
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        titleBar = storyboard.instantiateViewController(withIdentifier: "TitleBar") as? TitleBar
+        if let titleBar = self.titleBar {
+            self.addChildViewController(titleBar)
+            self.containerViewController.addSubview(titleBar.view)
+            self.containerViewController.translatesAutoresizingMaskIntoConstraints = false
+            titleBar.didMove(toParentViewController: self)
+        }
+        
+        let layout = UICollectionViewLayout()
+        self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(collectionView)
+        
         setupConstraints()
-        return
-
         
         
         //collectionView.delegate = self
-//        titleBar?.titleLabel.text = "Search Results"
-//        titleBar?.searchBar.isHidden = true
-//        titleBar?.reloadButton.isHidden = true
+        titleBar?.titleLabel.text = "Search Results"
+        titleBar?.searchBar.isHidden = true
+        titleBar?.reloadButton.isHidden = true
         
-        //setupView(withConfig: GameCollectionViewConfig())
+        setupView(withConfig: GameCollectionViewConfig())
     }
     
     func setupConstraints() {
-        let views = ["titleBar": containerViewController]
+        let views = ["titleBar": containerViewController, "collectionView": collectionView]
         let titleBarHorizontalPin = NSLayoutConstraint.constraints(withVisualFormat: "H:|[titleBar]|", options: [], metrics: nil, views: views)
         let titleBarVerticalPin = NSLayoutConstraint.constraints(withVisualFormat: "V:|[titleBar(100)]", options: [], metrics: nil, views: views)
-        var titleBarConstraints = [NSLayoutConstraint]()
-        titleBarConstraints += titleBarVerticalPin
-        titleBarConstraints += titleBarHorizontalPin
-        self.view.addConstraints(titleBarConstraints)
+        var allConstraints = [NSLayoutConstraint]()
+        allConstraints += titleBarVerticalPin
+        allConstraints += titleBarHorizontalPin
+
+        
+        let collectionViewHorizontalPin = NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: views)
+        let collectionViewVerticalPin = NSLayoutConstraint.constraints(withVisualFormat: "V:[titleBar]-0-[collectionView]|", options: [], metrics: nil, views: views)
+        allConstraints += collectionViewVerticalPin
+        allConstraints += collectionViewHorizontalPin
+        
+        self.view.addConstraints(allConstraints)
+        self.titleBar?.view.frame = CGRect(x: 0, y: 0, width: self.containerViewController.frame.size.width, height: self.containerViewController.frame.size.height)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
