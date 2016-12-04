@@ -47,8 +47,8 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
     }
     
     func handleSearch() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SearchResults") as! SearchResultsViewController
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = SearchResultsViewController<SearchAdapter<TwitchGame>>.init()
         present(vc, animated: true)
     }
 }

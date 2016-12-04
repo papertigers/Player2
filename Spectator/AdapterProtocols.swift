@@ -65,3 +65,7 @@ extension Array where Element: Hashable {
 }
 
 
+protocol TwitchSearchItem {
+    
+}
+

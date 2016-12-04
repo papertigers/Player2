@@ -8,24 +8,46 @@
 
 import UIKit
 
-class SearchResultsViewController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
-    @IBOutlet weak var containerViewController: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
+class SearchResultsViewController<A: TwitchAdapter>: UIViewController, UICollectionViewDelegate {
+    var containerViewController: UIView!
+    //var collectionView: UICollectionView!
     
+    var adapter: A!
+    var searchType: TwitchSearch!
     var titleBar: TitleBar?
     
+
     convenience init() {
-        self.init()
+        self.init(nibName: nil, bundle: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.containerViewController = UIView()
+        self.containerViewController.translatesAutoresizingMaskIntoConstraints = false
+        self.containerViewController.backgroundColor = .red
+        self.view.addSubview(self.containerViewController)
+        setupConstraints()
+        return
 
-        collectionView.delegate = self
-        titleBar?.titleLabel.text = "Search Results"
-        titleBar?.searchBar.isHidden = true
-        titleBar?.reloadButton.isHidden = true
-        setupView(withConfig: GameCollectionViewConfig())
+        
+        
+        //collectionView.delegate = self
+//        titleBar?.titleLabel.text = "Search Results"
+//        titleBar?.searchBar.isHidden = true
+//        titleBar?.reloadButton.isHidden = true
+        
+        //setupView(withConfig: GameCollectionViewConfig())
+    }
+    
+    func setupConstraints() {
+        let views = ["titleBar": containerViewController]
+        let titleBarHorizontalPin = NSLayoutConstraint.constraints(withVisualFormat: "H:|[titleBar]|", options: [], metrics: nil, views: views)
+        let titleBarVerticalPin = NSLayoutConstraint.constraints(withVisualFormat: "V:|[titleBar(100)]", options: [], metrics: nil, views: views)
+        var titleBarConstraints = [NSLayoutConstraint]()
+        titleBarConstraints += titleBarVerticalPin
+        titleBarConstraints += titleBarHorizontalPin
+        self.view.addConstraints(titleBarConstraints)
     }
 
     override func didReceiveMemoryWarning() {

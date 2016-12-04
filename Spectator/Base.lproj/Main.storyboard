@@ -96,7 +96,7 @@
         <!--Title Bar-->
         <scene sceneID="vga-Pe-z2S">
             <objects>
-                <viewController id="vXl-W0-Bnh" customClass="TitleBar" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TitleBar" id="vXl-W0-Bnh" customClass="TitleBar" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t9E-Cv-QLF"/>
                         <viewControllerLayoutGuide type="bottom" id="1fC-dJ-fk8"/>

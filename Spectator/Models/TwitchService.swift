@@ -34,6 +34,7 @@ struct TwitchService: GameService {
         case noStreams
         case failedToRetrieveTokenOrSig
         case failedToParseM3U
+        case noSearchResults
     }
     
     /**
@@ -156,6 +157,50 @@ struct TwitchService: GameService {
             case .failure(let error):
                 self.log.error { "\(error)" }
                 Flurry.logError("GetFeaturedStreams", message: "Failed to get featured streams", error: error)
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
+    typealias SearchCallback = ((ServiceResult<[TwitchSearchItem]>) -> Void)
+    /**
+     Search for a game on Twitch
+     
+     - parameter query: Name of game
+     - parameter limit: Number of results to return
+     - parameter offset: Offset to start at
+     - parameter completionHandler: Callback called with possible array of top games
+     
+     */
+    func search(_ limit: Int = 10, offset: Int = 0, type: TwitchSearch, query: String, completionHandler: @escaping SearchCallback) {
+        let parameters: [String : Any] = [
+            "query": query,
+            "limit": limit,
+            "offset": offset
+        ]
+        Alamofire.request(tapi.search(type, parameters as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
+            switch self.checkResponse(response) {
+            case .success(let json):
+                self.log.debug{ "\(json)" }
+                self.log.info{ "🎮 Got search results for query \(query)" }
+                guard let items = json[type.rawValue].array else {
+                    return completionHandler(.failure(TwitchError.noSearchResults))
+                }
+                TwitchService.backgroundQueue.async {
+                    var i = [TwitchSearchItem]()
+                    switch type {
+                    case .games:
+                        i = items.flatMap { TwitchGame($0) }
+                    case .streams:
+                        i = items.flatMap { TwitchStream($0) }
+                    }
+                    DispatchQueue.main.async() {
+                        completionHandler(.success(i))
+                    }
+                }
+            case .failure(let error):
+                self.log.error { "\(error)" }
+                Flurry.logError("TwitchSearch", message: "Failed to search for query", error: error)
                 completionHandler(.failure(error))
             }
         }
