@@ -159,7 +159,7 @@
         <!--Streams-->
         <scene sceneID="RAB-Am-ulr">
             <objects>
-                <viewController id="rTG-aT-rSV" customClass="FeaturedStreamsSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeaturedStreams" id="rTG-aT-rSV" customClass="FeaturedStreamsSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ri3-Yy-8v5"/>
                         <viewControllerLayoutGuide type="bottom" id="dEl-E6-aqJ"/>
@@ -222,7 +222,7 @@
         <!--Streams-->
         <scene sceneID="Lgm-SG-q5a">
             <objects>
-                <viewController title="Streams" id="eTS-rx-i2P" customClass="StreamSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Streams" title="Streams" id="eTS-rx-i2P" customClass="StreamSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zc0-il-X3I"/>
                         <viewControllerLayoutGuide type="bottom" id="HA7-at-p0y"/>
@@ -293,7 +293,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sJc-XO-Uat"/>
-        <segue reference="AFK-TF-AYP"/>
+        <segue reference="J96-6z-NGE"/>
+        <segue reference="oPd-eY-j2L"/>
     </inferredMetricsTieBreakers>
 </document>

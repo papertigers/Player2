@@ -8,20 +8,35 @@
 
 import UIKit
 
-class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController,  TwitchSectionController, UICollectionViewDelegate where T: UICollectionViewDataSource {
+class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UICollectionViewDelegate, TwitchSectionController where T: UICollectionViewDataSource {
     var containerViewController: UIView!
     var collectionView: UICollectionView!
     
     var adapter: T!
-    var searchType: TwitchSearch!
+    var searchType: TwitchSearch
     var titleBar: TitleBar?
     var searchQuery: String!
     
-
-    convenience init(query: String) {
-        self.init(nibName: nil, bundle: nil)
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.searchType = .games
+        super.init(coder: aDecoder)
     }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        self.searchType = .games
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+
+    convenience init(query: String, type: TwitchSearch, adapter: T) {
+        self.init(nibName: nil, bundle: nil)
+        self.searchQuery = query
+        self.searchType = type
+        self.adapter = adapter
+    }
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +58,7 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController,  Tw
         
         adapter.setup(collectionView: collectionView, type: .games, query: searchQuery)
         collectionView.dataSource = adapter
+        collectionView.delegate = self
         self.view.addSubview(collectionView)
         
         setupConstraints()
@@ -74,6 +90,19 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController,  Tw
         self.view.addConstraints(allConstraints)
         self.titleBar?.view.frame = CGRect(x: 0, y: 0, width: self.containerViewController.frame.size.width, height: self.containerViewController.frame.size.height)
         
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        switch self.searchType {
+        case .games:
+            let streamsVC = storyboard.instantiateViewController(withIdentifier: "Streams") as! StreamSectionController
+            streamsVC.game = adapter.items[indexPath.row] as! TwitchGame
+            present(streamsVC, animated: true)
+        case .streams:
+            print("wtf do we do now")
+        }
         
     }
 
