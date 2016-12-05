@@ -286,7 +286,7 @@
         <!--AV Player View Controller-->
         <scene sceneID="dld-kG-gpt">
             <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="iM5-Ga-GsM" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
+                <avPlayerViewController storyboardIdentifier="StreamPlayer" videoGravity="AVLayerVideoGravityResizeAspect" id="iM5-Ga-GsM" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6f-yi-6hJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6591" y="4065"/>

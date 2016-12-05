@@ -107,7 +107,9 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
             present(streamsVC, animated: true)
         case .streams:
             // Load the stream player here
-            print("wtf do we do now")
+            let streamVC = storyboard.instantiateViewController(withIdentifier: "StreamPlayer") as! StreamController
+            streamVC.stream = adapter.items[indexPath.row] as! TwitchStream
+            present(streamVC, animated: true)
         }
         
     }
