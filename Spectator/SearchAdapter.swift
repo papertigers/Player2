@@ -11,45 +11,65 @@ import Dwifft_tvOS
 import Kingfisher
 import OrderedSet
 
-class SearchAdapter<T: TwitchSearchItem>: NSObject, TwitchAdapter where T: Hashable  {
+class GamesSearchAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionViewDataSource {
     private let api = TwitchService()
     weak var collectionView: UICollectionView?
-    let searchType: TwitchSearch
-    let searchQuery: String
-    fileprivate var diffCalculator: CollectionViewDiffCalculator<T>?
-    var items = OrderedSet<T>() {
+    var searchQuery: String = ""
+    fileprivate var diffCalculator: CollectionViewDiffCalculator<TwitchGame>?
+    var items = OrderedSet<TwitchGame>() {
         didSet {
+            print(items)
             self.diffCalculator?.rows = Array(items)
         }
     }
     var offset = 0
     var finished = false
     
-    init(collectionView: UICollectionView, type: TwitchSearch, query: String) {
-        self.collectionView = collectionView
-        self.diffCalculator = CollectionViewDiffCalculator<T>(collectionView: collectionView)
-        self.searchType = type
-        self.searchQuery = query
+    override init() {
         super.init()
     }
     
+    convenience init(_ searchQuery: String) {
+        self.init()
+        self.searchQuery = searchQuery
+    }
+    
+    func setup(collectionView: UICollectionView, type: TwitchSearch, query: String) {
+        self.collectionView = collectionView
+        self.diffCalculator = CollectionViewDiffCalculator<TwitchGame>(collectionView: collectionView)
+        self.searchQuery = query
+    }
+    
     func load() {
-        api.search(type: self.searchType, query: self.searchQuery) { [weak self] res in
+        api.searchGames(query: self.searchQuery) { [weak self] res in
             guard let results = res.results else {
                 return print("Failed to get search results")
             }
-//            self?.updateDatasource(withArray: results)
+            self?.updateDatasource(withArray: results)
         }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return items.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
-//        let viewModel = TwitchGameViewModel(game: items[indexPath.row])
-//        cell.configure(withPresenter: viewModel)
-//        return cell
-//    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
+        let viewModel = TwitchGameViewModel(game: items[indexPath.row])
+        cell.configure(withPresenter: viewModel)
+        return cell
+    }
+}
+
+extension GamesSearchAdapter: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        let urls: [URL] = indexPaths.flatMap { URL(string: items[$0.row].box.large) }
+        ImagePrefetcher(urls: urls).start()
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        let urls: [URL] = indexPaths.flatMap { URL(string: items[$0.row].box.large) }
+        ImagePrefetcher(urls: urls).stop()
+    }
 }

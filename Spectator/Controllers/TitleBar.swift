@@ -10,11 +10,11 @@ import UIKit
 
 protocol TitleBarDelegate {
     func handleReload()
-    func handleSearch()
+    func handleSearch(_ text: String)
 }
 
 extension TitleBarDelegate {
-    func handleSearch() {
+    func handleSearch(_ text: String) {
         // Override to handle searching
         // Swift protocols cant have optional functions
         // unless they are @objc
@@ -52,7 +52,7 @@ extension TitleBar: UITextFieldDelegate {
         guard let text = textField.text, text.characters.count > 0 else {
             return
         }
-        self.delegate?.handleSearch()
+        self.delegate?.handleSearch(text)
         //self.searchBar.text = nil
     }
 }

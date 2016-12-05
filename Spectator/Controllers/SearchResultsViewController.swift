@@ -8,13 +8,14 @@
 
 import UIKit
 
-class SearchResultsViewController<T: TwitchSearchItem>: UIViewController,  TwitchSectionController, UICollectionViewDelegate where T: Hashable {
+class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController,  TwitchSectionController, UICollectionViewDelegate where T: UICollectionViewDataSource {
     var containerViewController: UIView!
     var collectionView: UICollectionView!
     
-    var adapter: SearchAdapter<T>!
+    var adapter: T!
     var searchType: TwitchSearch!
     var titleBar: TitleBar?
+    var searchQuery: String!
     
 
     convenience init(query: String) {
@@ -39,7 +40,9 @@ class SearchResultsViewController<T: TwitchSearchItem>: UIViewController,  Twitc
         self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        adapter = SearchAdapter<T>.init(collectionView: collectionView, type: TwitchSearch.games, query: "over")
+        
+        adapter.setup(collectionView: collectionView, type: .games, query: searchQuery)
+        collectionView.dataSource = adapter
         self.view.addSubview(collectionView)
         
         setupConstraints()

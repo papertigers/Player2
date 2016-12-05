@@ -69,3 +69,8 @@ protocol TwitchSearchItem {
     
 }
 
+protocol TwitchSearchAdapter {
+    func setup(collectionView: UICollectionView, type: TwitchSearch, query: String)
+    func load()
+}
+

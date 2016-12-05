@@ -46,8 +46,10 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
         adapter.reload()
     }
     
-    func handleSearch() {
-        let vc = SearchResultsViewController<TwitchGame>.init(query: "test")
+    func handleSearch(_ text: String) {
+        let vc = SearchResultsViewController<GamesSearchAdapter>.init(query: "test")
+        vc.adapter = GamesSearchAdapter()
+        vc.searchQuery = text
         present(vc, animated: true)
     }
 }

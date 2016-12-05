@@ -49,7 +49,7 @@ protocol GameService {
     func getTopGames(_ limit: Int, offset: Int, completionHandler: @escaping((ServiceResult<[TwitchGame]>) -> Void))
     func streamsForGame(_ limit: Int, offset: Int, game: TwitchGame, completionHandler: @escaping ((ServiceResult<[TwitchStream]>) -> Void))
     func featuredStreams(_ limit: Int, offset: Int, completionHandler: @escaping((ServiceResult<[TwitchStream]>) -> Void))
-    func search(_ limit: Int, offset: Int, type: TwitchSearch, query: String, completionHandler: @escaping ((ServiceResult<[TwitchSearchItem]>) -> Void))
+    //func search(_ limit: Int, offset: Int, type: TwitchSearch, query: String, completionHandler: @escaping ((ServiceResult<[TwitchSearchItem]>) -> Void))
 }
 
 

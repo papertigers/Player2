@@ -162,7 +162,7 @@ struct TwitchService: GameService {
         }
     }
     
-    typealias SearchCallback = ((ServiceResult<[TwitchSearchItem]>) -> Void)
+    typealias SearchCallback = ((ServiceResult<[TwitchGame]>) -> Void)
     /**
      Search for a game on Twitch
      
@@ -172,30 +172,23 @@ struct TwitchService: GameService {
      - parameter completionHandler: Callback called with possible array of top games
      
      */
-    func search(_ limit: Int = 10, offset: Int = 0, type: TwitchSearch, query: String, completionHandler: @escaping SearchCallback) {
+    func searchGames(_ limit: Int = 10, offset: Int = 0, query: String, completionHandler: @escaping SearchCallback) {
         let parameters: [String : Any] = [
             "query": query,
             "type": "suggest",
             "limit": limit,
             "offset": offset
         ]
-        Alamofire.request(tapi.search(type, parameters as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
+        Alamofire.request(tapi.search(.games, parameters as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
             switch self.checkResponse(response) {
             case .success(let json):
                 self.log.debug{ "\(json)" }
                 self.log.info{ "🎮 Got search results for query \(query)" }
-                guard let items = json[type.rawValue].array else {
+                guard let items = json["games"].array else {
                     return completionHandler(.failure(TwitchError.noSearchResults))
                 }
                 TwitchService.backgroundQueue.async {
-                    var i = [TwitchSearchItem]()
-                    switch type {
-                    case .games:
-                        i = items.flatMap {
-                            return TwitchGame(searchResults: $0) }
-                    case .streams:
-                        i = items.flatMap { TwitchStream($0) }
-                    }
+                    let i = items.flatMap { TwitchGame(searchResults: $0) }
                     DispatchQueue.main.async() {
                         completionHandler(.success(i))
                     }
