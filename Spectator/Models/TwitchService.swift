@@ -175,6 +175,7 @@ struct TwitchService: GameService {
     func search(_ limit: Int = 10, offset: Int = 0, type: TwitchSearch, query: String, completionHandler: @escaping SearchCallback) {
         let parameters: [String : Any] = [
             "query": query,
+            "type": "suggest",
             "limit": limit,
             "offset": offset
         ]
@@ -190,7 +191,8 @@ struct TwitchService: GameService {
                     var i = [TwitchSearchItem]()
                     switch type {
                     case .games:
-                        i = items.flatMap { TwitchGame($0) }
+                        i = items.flatMap {
+                            return TwitchGame(searchResults: $0) }
                     case .streams:
                         i = items.flatMap { TwitchStream($0) }
                     }

@@ -8,17 +8,18 @@
 
 import UIKit
 
-class SearchResultsViewController<A: TwitchAdapter>: UIViewController,  TwitchSectionController, UICollectionViewDelegate {
+class SearchResultsViewController<T: TwitchSearchItem>: UIViewController,  TwitchSectionController, UICollectionViewDelegate where T: Hashable {
     var containerViewController: UIView!
     var collectionView: UICollectionView!
     
-    var adapter: A!
+    var adapter: SearchAdapter<T>!
     var searchType: TwitchSearch!
     var titleBar: TitleBar?
     
 
-    convenience init() {
+    convenience init(query: String) {
         self.init(nibName: nil, bundle: nil)
+
     }
 
     override func viewDidLoad() {
@@ -37,6 +38,8 @@ class SearchResultsViewController<A: TwitchAdapter>: UIViewController,  TwitchSe
         let layout = UICollectionViewLayout()
         self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        adapter = SearchAdapter<T>.init(collectionView: collectionView, type: TwitchSearch.games, query: "over")
         self.view.addSubview(collectionView)
         
         setupConstraints()
@@ -48,6 +51,7 @@ class SearchResultsViewController<A: TwitchAdapter>: UIViewController,  TwitchSe
         titleBar?.reloadButton.isHidden = true
         
         setupView(withConfig: GameCollectionViewConfig())
+        adapter.load()
     }
     
     func setupConstraints() {

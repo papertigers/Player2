@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  AdapterProtocols.swift
 //  Player2
 //
 //  Created by Michael Zeller on 11/19/16.

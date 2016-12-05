@@ -16,23 +16,40 @@ class SearchAdapter<T: TwitchSearchItem>: NSObject, TwitchAdapter where T: Hasha
     weak var collectionView: UICollectionView?
     let searchType: TwitchSearch
     let searchQuery: String
-    var items = OrderedSet<T>()
+    fileprivate var diffCalculator: CollectionViewDiffCalculator<T>?
+    var items = OrderedSet<T>() {
+        didSet {
+            self.diffCalculator?.rows = Array(items)
+        }
+    }
     var offset = 0
     var finished = false
     
     init(collectionView: UICollectionView, type: TwitchSearch, query: String) {
         self.collectionView = collectionView
+        self.diffCalculator = CollectionViewDiffCalculator<T>(collectionView: collectionView)
         self.searchType = type
         self.searchQuery = query
         super.init()
     }
     
     func load() {
-        api.search(type: self.searchType, query: self.searchQuery) { res in
+        api.search(type: self.searchType, query: self.searchQuery) { [weak self] res in
             guard let results = res.results else {
                 return print("Failed to get search results")
             }
-            print(results)
+//            self?.updateDatasource(withArray: results)
         }
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return items.count
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(for: indexPath) as TwitchCell
+//        let viewModel = TwitchGameViewModel(game: items[indexPath.row])
+//        cell.configure(withPresenter: viewModel)
+//        return cell
+//    }
 }
