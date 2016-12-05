@@ -46,6 +46,12 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
     func handleReload() {
         adapter.reload()
     }
+    
+    func handleSearch(_ text: String) {
+        print("handling search")
+        let vc = SearchResultsViewController<StreamSearchAdapter>.init(query: text, type: .streams, adapter: StreamSearchAdapter())
+        present(vc, animated: true)
+    }
 }
 
 extension FeaturedStreamsSectionController {

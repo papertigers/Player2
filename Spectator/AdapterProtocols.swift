@@ -69,9 +69,7 @@ protocol TwitchSearchItem {
     
 }
 
-protocol TwitchSearchAdapter {
-    associatedtype Item: Hashable
-    var items: OrderedSet<Item> { get }
+protocol TwitchSearchAdapter: TwitchAdapter {
     func setup(collectionView: UICollectionView, type: TwitchSearch, query: String)
     func load()
 }

@@ -68,8 +68,13 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
         titleBar?.titleLabel.text = "Search Results"
         titleBar?.searchBar.isHidden = true
         titleBar?.reloadButton.isHidden = true
+        switch searchType {
+        case .games:
+            setupView(withConfig: GameCollectionViewConfig())
+        case .streams:
+            setupView(withConfig: StreamCollectionViewConfig())
+        }
         
-        setupView(withConfig: GameCollectionViewConfig())
         adapter.load()
     }
     
@@ -101,6 +106,7 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
             streamsVC.game = adapter.items[indexPath.row] as! TwitchGame
             present(streamsVC, animated: true)
         case .streams:
+            // Load the stream player here
             print("wtf do we do now")
         }
         
@@ -117,16 +123,11 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
             
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+ 
+    // Can't put this in an extension becuase @objc is not supported for generic classes
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == adapter.items.count - 1 ) {
+            adapter.load()
+        }
     }
-    */
-
 }
