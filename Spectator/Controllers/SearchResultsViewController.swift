@@ -29,11 +29,10 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
     }
 
 
-    convenience init(query: String, type: TwitchSearch, adapter: T) {
+    convenience init(query: String, type: TwitchSearch) {
         self.init(nibName: nil, bundle: nil)
         self.searchQuery = query
         self.searchType = type
-        self.adapter = adapter
     }
     
 
@@ -55,9 +54,7 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
         self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        
-        adapter.setup(collectionView: collectionView, type: .games, query: searchQuery)
-        collectionView.dataSource = adapter
+
         collectionView.delegate = self
         self.view.addSubview(collectionView)
         
@@ -70,11 +67,14 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
         titleBar?.reloadButton.isHidden = true
         switch searchType {
         case .games:
+            adapter = GamesAdapter.init(collectionView: collectionView, type: .Search, query: searchQuery) as! T
             setupView(withConfig: GameCollectionViewConfig())
         case .streams:
+            adapter = FeaturedStreamsAdapter.init(collectionView: collectionView, type: .Search, query: searchQuery) as! T
             setupView(withConfig: StreamCollectionViewConfig())
         }
         
+        collectionView.dataSource = adapter
         adapter.load()
     }
     

@@ -22,7 +22,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
         titleBar?.setSearchBar(placeholder: "Search Games")
         titleBar?.delegate = self
         setupView(withConfig: GameCollectionViewConfig())
-        adapter = GamesAdapter(collectionView: collectionView!)
+        adapter = GamesAdapter(collectionView: collectionView!, type: .Normal)
         setupCollectionView(withAdapter: adapter)
         adapter?.load()
     }
@@ -47,7 +47,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
     }
     
     func handleSearch(_ text: String) {
-        let vc = SearchResultsViewController<GamesSearchAdapter>.init(query: text, type: .games, adapter: GamesSearchAdapter())
+        let vc = SearchResultsViewController<GamesAdapter>.init(query: text, type: .games)
         present(vc, animated: true)
     }
 }

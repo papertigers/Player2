@@ -20,6 +20,11 @@ struct P2ImageCache {
     static let GameCellCache = ImageCache(name: CellType.GameCell.rawValue)
 }
 
+enum TwitchAdapterType {
+    case Normal
+    case Search
+}
+
 protocol TwitchAdapter {
     associatedtype Item: Hashable
     var offset: Int { get set }
@@ -65,13 +70,13 @@ extension Array where Element: Hashable {
     }
 }
 
-
 protocol TwitchSearchItem {
     
 }
 
 protocol TwitchSearchAdapter: TwitchAdapter {
-    func setup(collectionView: UICollectionView, type: TwitchSearch, query: String)
+    var adapterType: TwitchAdapterType { get }
+    var searchQuery: String { get }
     func load()
 }
 

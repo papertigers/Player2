@@ -23,7 +23,7 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
         titleBar?.setSearchBar(placeholder: "Search Streams")
         titleBar?.delegate = self
         setupView(withConfig: StreamCollectionViewConfig())
-        adapter = FeaturedStreamsAdapter(collectionView: collectionView!)
+        adapter = FeaturedStreamsAdapter(collectionView: collectionView!, type: .Normal)
         setupCollectionView(withAdapter: adapter)
         adapter.load()
     }
@@ -49,7 +49,7 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
     
     func handleSearch(_ text: String) {
         print("handling search")
-        let vc = SearchResultsViewController<StreamSearchAdapter>.init(query: text, type: .streams, adapter: StreamSearchAdapter())
+        let vc = SearchResultsViewController<FeaturedStreamsAdapter>.init(query: text, type: .streams)
         present(vc, animated: true)
     }
 }
