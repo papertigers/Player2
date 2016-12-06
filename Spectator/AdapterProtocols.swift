@@ -45,9 +45,10 @@ extension TwitchAdapter {
     }
     
     mutating func reload() {
-        self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
-                                          at: .top,
-                                          animated: true)
+        if (items.count > 0) {
+            self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
+                                              at: .top, animated: true)
+        }
         self.offset = 0
         self.finished = false
         self.items = []
