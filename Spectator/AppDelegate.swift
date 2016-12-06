@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Setup Flurry
-
-        //Flurry.setDebugLogEnabled(true);
+        // Setup Flurry only if we are not in the simulator
+        #if !(arch(i386) || arch(x86_64)) && os(tvOS)
         Flurry.startSession("QQHPHPQDJ9FG2QQ8GMYW");
+        #endif
         
         // Set maximum GameCell cache duration for Kingfisher to 3 days
         P2ImageCache.GameCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
