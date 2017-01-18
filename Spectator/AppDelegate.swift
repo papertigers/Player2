@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Setup SearchController
         
         if let tabBarController =  self.window?.rootViewController as? TabBarViewController {
-            tabBarController.viewControllers?.append(searchContainterDisplay())
+            //tabBarController.viewControllers?.append(searchContainterDisplay())
         }
         
         return true

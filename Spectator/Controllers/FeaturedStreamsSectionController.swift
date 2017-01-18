@@ -10,6 +10,7 @@ import UIKit
 
 class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController, TitleBarDelegate {
     var adapter: FeaturedStreamsAdapter!
+    var shouldFocusTitleBar = false
     
     var titleBar: TitleBar?
     
@@ -63,17 +64,29 @@ extension FeaturedStreamsSectionController {
 }
 
 extension FeaturedStreamsSectionController {
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        // Hack to find out if the focused item is in the collectionView
+        if (Mirror(reflecting: context.nextFocusedView!).subjectType == TwitchCell.self) {
+            self.shouldFocusTitleBar = true
+        } else {
+            self.shouldFocusTitleBar = false
+        }
+        super.didUpdateFocus(in: context, with: coordinator)
+    }
+    
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        
         var environments = [UIFocusEnvironment]()
-        if let searchBar = self.titleBar?.searchBar, let parent = self.parent as? TabBarViewController {
-            if (searchBar.isFocused) {
-                parent.displayTabBarFocus = true
-                environments = environments + [parent]
+        if let parent = self.parent as? TabBarViewController {
+            if (shouldFocusTitleBar) {
+                if let titleBar = titleBar {
+                    environments = environments + [titleBar]
+                }
             }
+            environments = environments + [parent.tabBar]
         }
-        if let bar = self.titleBar {
-            environments = environments + [bar]
-        }
+        environments = environments + [containerViewController]
         return environments
     }
 }
+

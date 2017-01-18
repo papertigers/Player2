@@ -17,7 +17,8 @@ class StreamController: AVPlayerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.showsPlaybackControls = false  //Don't allow controls for livestreams
+        //self.showsPlaybackControls = false  //Don't allow controls for livestreams
+        self.requiresLinearPlayback = true //Twitch is a live stream so dont allow skipping
         
         twitch.getStreamsForChannel(stream.channel) { [weak self] res in
             guard let streams = res.results else {

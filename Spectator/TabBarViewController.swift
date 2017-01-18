@@ -58,17 +58,15 @@ class TabBarViewController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension TabBarViewController {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         var environments = [UIFocusEnvironment]()
-        if (displayTabBarFocus) {
-            environments = environments + [self.tabBar]
-            self.displayTabBarFocus = false
+        if let selected = self.selectedViewController {
+            environments = environments + [selected]
         }
-        environments = environments + self.childViewControllers
+        environments = environments + [self.tabBar]
         return environments
     }
 }
