@@ -62,7 +62,7 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return diffCalculator?.rows.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

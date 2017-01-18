@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Search Results View Controller-->
+        <scene sceneID="Acj-sH-9P7">
+            <objects>
+                <viewController storyboardIdentifier="SearchResults" id="iFC-5m-Aks" customClass="NewSearchResultsViewController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XHN-9z-uWA"/>
+                        <viewControllerLayoutGuide type="bottom" id="mcF-B2-r07"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VRd-fY-0Z7">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ig2-D7-XIp">
+                                <rect key="frame" x="0.0" y="85" width="1920" height="995"/>
+                                <connections>
+                                    <segue destination="lbM-S3-Mc6" kind="embed" id="GeW-ZH-40P"/>
+                                </connections>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="agO-iv-rVZ">
+                                <rect key="frame" x="783" y="8" width="354" height="70"/>
+                                <color key="backgroundColor" red="0.55621761819604221" green="0.28759749872266882" blue="0.78025404128385945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ig2-D7-XIp" secondAttribute="trailing" id="G62-zs-kff"/>
+                            <constraint firstItem="ig2-D7-XIp" firstAttribute="leading" secondItem="VRd-fY-0Z7" secondAttribute="leading" id="JUW-T2-rdO"/>
+                            <constraint firstItem="mcF-B2-r07" firstAttribute="top" secondItem="ig2-D7-XIp" secondAttribute="bottom" id="Lfe-kZ-amm"/>
+                            <constraint firstItem="agO-iv-rVZ" firstAttribute="centerX" secondItem="VRd-fY-0Z7" secondAttribute="centerX" id="MmB-Ii-SeL"/>
+                            <constraint firstItem="ig2-D7-XIp" firstAttribute="top" secondItem="agO-iv-rVZ" secondAttribute="bottom" constant="8" id="Wma-qT-7aU"/>
+                            <constraint firstItem="agO-iv-rVZ" firstAttribute="top" secondItem="XHN-9z-uWA" secondAttribute="bottom" constant="8" id="wXH-YG-Owp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AN6-kr-dga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-222" y="19"/>
+        </scene>
+        <!--Games-->
+        <scene sceneID="hb7-93-Er6">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" referencedIdentifier="Games" id="lbM-S3-Mc6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c05-hf-B78" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1067" y="1222"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="FXI-Vn-O57">
+            <objects>
+                <viewController id="nHW-1h-kSI" customClass="SearchResultsViewController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6r9-pw-qmE"/>
+                        <viewControllerLayoutGuide type="bottom" id="UZv-PR-e3c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JuE-Al-4hX">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rSM-ti-ZwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="1608"/>
+        </scene>
+    </scenes>
+</document>

@@ -35,6 +35,8 @@
 		3BAC492F1D28DB510034A972 /* Willow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC492E1D28DB510034A972 /* Willow.framework */; };
 		3BAC49311D28E7610034A972 /* TwitchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49301D28E7610034A972 /* TwitchServiceProtocol.swift */; };
 		3BAC49331D28EED70034A972 /* TwitchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49321D28EED70034A972 /* TwitchGame.swift */; };
+		3BAE6CD11E065A6B0017CAEB /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BAE6CD01E065A6B0017CAEB /* Search.storyboard */; };
+		3BAE6CD31E065A990017CAEB /* NewSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAE6CD21E065A990017CAEB /* NewSearchResultsViewController.swift */; };
 		3BB678EC1DD27DE800420C2F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */; };
 		3BB678EE1DD5329400420C2F /* GameSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB678ED1DD5329400420C2F /* GameSectionController.swift */; };
 		3BB678F11DD8D06300420C2F /* GamesAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB678F01DD8D06300420C2F /* GamesAdapter.swift */; };
@@ -102,6 +104,8 @@
 		3BAC492E1D28DB510034A972 /* Willow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Willow.framework; path = Carthage/Build/tvOS/Willow.framework; sourceTree = "<group>"; };
 		3BAC49301D28E7610034A972 /* TwitchServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchServiceProtocol.swift; path = Models/TwitchServiceProtocol.swift; sourceTree = "<group>"; };
 		3BAC49321D28EED70034A972 /* TwitchGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchGame.swift; path = Models/TwitchGame.swift; sourceTree = "<group>"; };
+		3BAE6CD01E065A6B0017CAEB /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Search.storyboard; path = Controllers/Search/Search.storyboard; sourceTree = "<group>"; };
+		3BAE6CD21E065A990017CAEB /* NewSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSearchResultsViewController.swift; path = Controllers/Search/NewSearchResultsViewController.swift; sourceTree = "<group>"; };
 		3BB678ED1DD5329400420C2F /* GameSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSectionController.swift; path = Controllers/GameSectionController.swift; sourceTree = "<group>"; };
 		3BB678F01DD8D06300420C2F /* GamesAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesAdapter.swift; sourceTree = "<group>"; };
 		3BB678F61DD8DD2400420C2F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/tvOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -254,6 +258,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		3BAE6CCF1E065A380017CAEB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3B2FFDB81DF4908400EFBCF3 /* SearchResultsViewController.swift */,
+				3BAE6CD01E065A6B0017CAEB /* Search.storyboard */,
+				3BAE6CD21E065A990017CAEB /* NewSearchResultsViewController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		3BB678EF1DD8D04700420C2F /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +315,7 @@
 		3BC00C651D2CAB7200A2D90D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3BAE6CCF1E065A380017CAEB /* Search */,
 				3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */,
 				3BC264B51DF0D30A00977AB7 /* TitleBar.swift */,
 				3B5B380A1DE17DFF0069F64A /* SectionController.swift */,
@@ -308,7 +323,6 @@
 				3B5B38071DE17D360069F64A /* StreamSectionController.swift */,
 				3B5B38061DE17D360069F64A /* StreamController.swift */,
 				3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */,
-				3B2FFDB81DF4908400EFBCF3 /* SearchResultsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -421,6 +435,7 @@
 			files = (
 				3BAC49011D28C2450034A972 /* Assets.xcassets in Resources */,
 				3BAC48FF1D28C2450034A972 /* Main.storyboard in Resources */,
+				3BAE6CD11E065A6B0017CAEB /* Search.storyboard in Resources */,
 				3B5B38161DE2B8020069F64A /* TwitchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +483,7 @@
 				3B49C6FE1D2B74FC0097CDFC /* TwitchStream.swift in Sources */,
 				3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */,
 				3B5B381A1DE2B8670069F64A /* NibOwnerLoadable.swift in Sources */,
+				3BAE6CD31E065A990017CAEB /* NewSearchResultsViewController.swift in Sources */,
 				3BC264B61DF0D30A00977AB7 /* TitleBar.swift in Sources */,
 				3BC264B31DEF966C00977AB7 /* FlurryEmpty.m in Sources */,
 				3BAC492D1D28CF750034A972 /* TwitchService.swift in Sources */,
@@ -571,7 +587,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = appletvos10.0;
+				SDKROOT = appletvos;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
@@ -613,7 +630,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = appletvos10.0;
+				SDKROOT = appletvos;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
@@ -628,6 +646,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = ZPQ7DPPR5V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -641,10 +660,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "571715a7-ab0d-47f1-893d-3af9c3432fad";
+				PROVISIONING_PROFILE_SPECIFIER = "XC tvOS: com.lightsandshapes.Player2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spectator/Player2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
@@ -654,6 +675,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = ZPQ7DPPR5V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -667,9 +689,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "571715a7-ab0d-47f1-893d-3af9c3432fad";
+				PROVISIONING_PROFILE_SPECIFIER = "XC tvOS: com.lightsandshapes.Player2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spectator/Player2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
 		};
