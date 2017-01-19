@@ -36,14 +36,15 @@ class TitleBar: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = ColorScheme.titleBarBackgroundColor
         self.titleLabel.textColor = ColorScheme.titleBarTextColor
-        self.reloadButton.tintColor = ColorScheme.unselectedTextColor
+        //self.reloadButton.tintColor = ColorScheme.unselectedTextColor
         self.setSearchBar(placeholder: "Search")
+        self.searchBar.backgroundColor = ColorScheme.unselectedTextColor
         self.searchBar.delegate = self
     }
     
     func setSearchBar(placeholder text: String) {
         self.searchBar.attributedPlaceholder = NSAttributedString(string: text,
-                           attributes:[NSForegroundColorAttributeName: ColorScheme.titleBarTextColor])
+                           attributes:[NSForegroundColorAttributeName: ColorScheme.unselectedTextColor])
     }
 }
 
@@ -59,6 +60,9 @@ extension TitleBar: UITextFieldDelegate {
 
 extension TitleBar {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        if (searchBar.isHidden) {
+            return [reloadButton]
+        }
         return [searchBar, reloadButton]
     }
 }

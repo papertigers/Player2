@@ -66,7 +66,7 @@ extension FeaturedStreamsSectionController {
 extension FeaturedStreamsSectionController {
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         // Hack to find out if the focused item is in the collectionView
-        if (Mirror(reflecting: context.nextFocusedView!).subjectType == TwitchCell.self) {
+        if let _ = context.nextFocusedView as? TwitchCell {
             self.shouldFocusTitleBar = true
         } else {
             self.shouldFocusTitleBar = false

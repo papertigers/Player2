@@ -63,6 +63,9 @@ extension StreamSectionController {
 extension StreamSectionController {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         var environments = [UIFocusEnvironment]()
+        if let titleBar = titleBar {
+            environments = environments + [titleBar]
+        }
         environments = environments + [collectionView, containerViewController]
         return environments
     }
