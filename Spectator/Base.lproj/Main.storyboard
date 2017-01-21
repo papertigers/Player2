@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rM-Wm-vE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4016" y="33"/>
+            <point key="canvasLocation" x="4016" y="-779"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -218,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5MI-dO-8jF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111" y="1894"/>
+            <point key="canvasLocation" x="2171" y="1884"/>
         </scene>
         <!--Streams-->
         <scene sceneID="Lgm-SG-q5a">
@@ -282,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOW-PV-CsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6591" y="33"/>
+            <point key="canvasLocation" x="6591" y="-779"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="dld-kG-gpt">
@@ -290,11 +290,11 @@
                 <avPlayerViewController storyboardIdentifier="StreamPlayer" videoGravity="AVLayerVideoGravityResizeAspect" id="iM5-Ga-GsM" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6f-yi-6hJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6591" y="4065"/>
+            <point key="canvasLocation" x="6591" y="4638"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oPd-eY-j2L"/>
-        <segue reference="cEx-El-Ymd"/>
+        <segue reference="AFK-TF-AYP"/>
+        <segue reference="sJc-XO-Uat"/>
     </inferredMetricsTieBreakers>
 </document>
