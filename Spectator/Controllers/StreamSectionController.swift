@@ -80,9 +80,12 @@ extension StreamSectionController {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         var environments = [UIFocusEnvironment]()
         if let titleBar = titleBar {
-            environments = environments + [titleBar]
+            if let _ = UIScreen.main.focusedView as? TwitchCell {
+                environments = environments + [titleBar, collectionView]
+                return environments
+            }
+            environments = environments + [collectionView, titleBar]
         }
-        environments = environments + [collectionView, containerViewController]
         return environments
     }
 }
