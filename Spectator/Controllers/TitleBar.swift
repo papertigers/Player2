@@ -36,7 +36,7 @@ class TitleBar: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = ColorScheme.titleBarBackgroundColor
         self.titleLabel.textColor = ColorScheme.titleBarTextColor
-        //self.reloadButton.tintColor = ColorScheme.unselectedTextColor
+        self.reloadButton.layer.cornerRadius = 6
         self.setSearchBar(placeholder: "Search")
         self.searchBar.backgroundColor = ColorScheme.unselectedTextColor
         self.searchBar.delegate = self
