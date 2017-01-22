@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct TwitchStream: Hashable {
+struct TwitchStream: Hashable, TwitchSearchItem {
     let id: Int
     var hashValue: Int {
         return id

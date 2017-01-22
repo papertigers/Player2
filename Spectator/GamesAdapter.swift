@@ -11,8 +11,10 @@ import Dwifft_tvOS
 import Kingfisher
 import OrderedSet
 
-class GamesAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
-    private weak var collectionView: UICollectionView?
+class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionViewDataSource {
+    let adapterType: TwitchAdapterType
+    let searchQuery: String
+    internal weak var collectionView: UICollectionView?
     fileprivate var diffCalculator: CollectionViewDiffCalculator<TwitchGame>?
     var items = OrderedSet<TwitchGame>() {
         didSet {
@@ -23,14 +25,15 @@ class GamesAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     var offset = 0
     var finished = false
     
-    init(collectionView: UICollectionView) {
+    init(collectionView: UICollectionView, type: TwitchAdapterType, query: String = "") {
+        self.adapterType = type
+        self.searchQuery = query
         self.collectionView = collectionView
         self.diffCalculator = CollectionViewDiffCalculator<TwitchGame>(collectionView: collectionView)
         super.init()
     }
     
-    func load() {
-        if (finished) { return }
+    func loadGames() {
         api.getTopGames(limit, offset: offset) { [weak self] res in
             guard let games = res.results else {
                 return print("Failed to get games")
@@ -39,8 +42,27 @@ class GamesAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
         }
     }
     
+    func searchGames() {
+        api.searchGames(limit, offset: offset, query: self.searchQuery) { [weak self] res in
+            guard let results = res.results else {
+                return print("Failed to get search results")
+            }
+            self?.updateDatasource(withArray: results)
+        }
+    }
+    
+    func load() {
+        if (finished) { return }
+        switch adapterType {
+        case .Normal:
+            return loadGames()
+        case .Search:
+            return searchGames()
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return diffCalculator?.rows.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

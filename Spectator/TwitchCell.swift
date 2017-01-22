@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MarqueeLabel
 
 typealias TwitchCellPresentable = ImagePresentable & TextPresentable
 
@@ -15,7 +16,7 @@ class TwitchCell: UICollectionViewCell, NibReusable {
     @IBOutlet weak var itemStack: UIStackView!
     @IBOutlet weak var labelStack: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var title: MarqueeLabel!
     @IBOutlet weak var subTitle: UILabel!
     
     static let kITEMSPACING: CGFloat = 10
@@ -46,6 +47,10 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         title.backgroundColor = .clear
         title.text = presenter.title
         title.textColor = ColorScheme.unselectedTextColor
+        title.holdScrolling = true
+        title.type = .leftRight
+        let scrollDuration: CGFloat = CGFloat(title.text?.characters.count ?? 0) * 0.09
+        title.speed = .duration(scrollDuration)
         
         subTitle.backgroundColor = .clear
         subTitle.text = presenter.subTitle
@@ -60,11 +65,13 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         var color: UIColor!
         var adjustY: CGFloat!
         var transform: CGAffineTransform!
+        var holdScrolling = true
 
         if(context.nextFocusedView == self){
             color = .white
             adjustY = self.imageView.focusedFrameGuide.layoutFrame.maxY - self.imageView.frame.maxY + TwitchCell.kITEMSPACING
             transform = CGAffineTransform(translationX: 0, y: adjustY)
+            holdScrolling = false
 
         } else {
             color = ColorScheme.unselectedTextColor
@@ -77,7 +84,8 @@ class TwitchCell: UICollectionViewCell, NibReusable {
                 labelStack.transform = transform
                 title?.textColor = color
                 subTitle?.textColor = color
-                
+                title?.holdScrolling = holdScrolling
+                title?.restartLabel()
             }
         }, completion: nil)
 

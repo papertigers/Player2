@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 /// A Twitch Game
-struct TwitchGame: Hashable {
+struct TwitchGame: Hashable, TwitchSearchItem {
     let name: String
     let box: TwitchPreview
     let logo: TwitchPreview
@@ -51,6 +51,21 @@ struct TwitchGame: Hashable {
         self.id = id
         self.viewers = viewers
         self.channels = channels
+    }
+    
+    init?(searchResults json: JSON) {
+        guard let id = json["_id"].int,
+            let name = json["name"].string,
+            let box = TwitchPreview(json["box"]),
+            let logo = TwitchPreview(json["logo"]) else {
+                return nil
+        }
+        self.name = name
+        self.box = box
+        self.logo = logo
+        self.id = id
+        self.viewers = 0
+        self.channels = 0
     }
 }
 

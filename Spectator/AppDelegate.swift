@@ -19,15 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Setup Flurry
-
-        //Flurry.setDebugLogEnabled(true);
+        // Setup Flurry only if we are not in the simulator
+        #if !(arch(i386) || arch(x86_64)) && os(tvOS)
         Flurry.startSession("QQHPHPQDJ9FG2QQ8GMYW");
+        #endif
         
         // Set maximum GameCell cache duration for Kingfisher to 3 days
         P2ImageCache.GameCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
         // Set maximum StreamCell cache duration for Kingfisher to 1hr
         P2ImageCache.StreamCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 1)
+        
+        //Setup SearchController
+        
+        if let tabBarController =  self.window?.rootViewController as? TabBarViewController {
+            //tabBarController.viewControllers?.append(searchContainterDisplay())
+        }
         
         return true
     }
@@ -54,6 +60,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    // MARK: SearchController
+    
+    func searchContainterDisplay() -> UIViewController {
+        let sb = UIStoryboard(name: "Search", bundle: nil)
+        let searchResults = sb.instantiateViewController(withIdentifier: "SearchResults") as! NewSearchResultsViewController
+        let searchController = UISearchController(searchResultsController: searchResults)
+        searchController.searchBar.delegate = searchResults
+        searchController.view.backgroundColor = .white
+        searchController.searchBar.placeholder = "Search for..."
+        
+        // Contain the searchController
+        let searchContainer = UISearchContainerViewController(searchController: searchController)
+        searchContainer.title = "Search"
+        
+        // Embed the container in a navigation controller
+        let searchNavigationController = UINavigationController(rootViewController: searchContainer)
+        return searchNavigationController
+    }
 }
 

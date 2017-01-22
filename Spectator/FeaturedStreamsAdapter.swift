@@ -11,8 +11,10 @@ import Dwifft_tvOS
 import Kingfisher
 import OrderedSet
 
-class FeaturedStreamsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
-    private weak var collectionView: UICollectionView?
+class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionViewDataSource {
+    let adapterType: TwitchAdapterType
+    let searchQuery: String
+    internal weak var collectionView: UICollectionView?
     fileprivate var diffCalculator: CollectionViewDiffCalculator<TwitchStream>?
     var items = OrderedSet<TwitchStream>() {
         didSet {
@@ -24,18 +26,39 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSourc
     var offset = 0
     var finished = false
     
-    init(collectionView: UICollectionView) {
+    init(collectionView: UICollectionView, type: TwitchAdapterType, query: String = "") {
+        self.adapterType = type
+        self.searchQuery = query
         self.collectionView = collectionView
         self.diffCalculator = CollectionViewDiffCalculator<TwitchStream>(collectionView: collectionView)
         super.init()
     }
     
-    func load() {
+    func loadStreams() {
         api.featuredStreams(100, offset: 0) { [weak self] res in
             guard let streams = res.results else {
                 return print("Couldn't load streams: \(res.error)") //print error
             }
             self?.updateDatasource(withArray: streams)
+        }
+    }
+    
+    func searchStreams() {
+        api.searchStreams(limit, offset: offset, query: self.searchQuery) { [weak self] res in
+            guard let results = res.results else {
+                return print("Failed to get search results")
+            }
+            self?.updateDatasource(withArray: results)
+        }
+    }
+    
+    func load() {
+        if (finished) { return }
+        switch adapterType {
+        case .Normal:
+            return loadStreams()
+        case .Search:
+            return searchStreams()
         }
     }
     

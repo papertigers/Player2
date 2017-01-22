@@ -10,6 +10,7 @@
 		3B15512A1DE0E01C0079A7B9 /* ViewModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1551291DE0E01C0079A7B9 /* ViewModelProtocols.swift */; };
 		3B15512C1DE0E2940079A7B9 /* TwitchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B15512B1DE0E2940079A7B9 /* TwitchGameViewModel.swift */; };
 		3B15512E1DE0E4530079A7B9 /* TwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B15512D1DE0E4530079A7B9 /* TwitchCell.swift */; };
+		3B2FFDB91DF4908400EFBCF3 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2FFDB81DF4908400EFBCF3 /* SearchResultsViewController.swift */; };
 		3B49C6F91D2B66C00097CDFC /* TwitchChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */; };
 		3B49C6FC1D2B6A140097CDFC /* ThirdPartyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6FB1D2B6A140097CDFC /* ThirdPartyExtensions.swift */; };
 		3B49C6FE1D2B74FC0097CDFC /* TwitchStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */; };
@@ -34,6 +35,8 @@
 		3BAC492F1D28DB510034A972 /* Willow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC492E1D28DB510034A972 /* Willow.framework */; };
 		3BAC49311D28E7610034A972 /* TwitchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49301D28E7610034A972 /* TwitchServiceProtocol.swift */; };
 		3BAC49331D28EED70034A972 /* TwitchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49321D28EED70034A972 /* TwitchGame.swift */; };
+		3BAE6CD11E065A6B0017CAEB /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BAE6CD01E065A6B0017CAEB /* Search.storyboard */; };
+		3BAE6CD31E065A990017CAEB /* NewSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAE6CD21E065A990017CAEB /* NewSearchResultsViewController.swift */; };
 		3BB678EC1DD27DE800420C2F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */; };
 		3BB678EE1DD5329400420C2F /* GameSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB678ED1DD5329400420C2F /* GameSectionController.swift */; };
 		3BB678F11DD8D06300420C2F /* GamesAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB678F01DD8D06300420C2F /* GamesAdapter.swift */; };
@@ -47,6 +50,7 @@
 		3BC264B41DEF966C00977AB7 /* libFlurry_7.8.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC264B11DEF966C00977AB7 /* libFlurry_7.8.2.a */; };
 		3BC264B61DF0D30A00977AB7 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC264B51DF0D30A00977AB7 /* TitleBar.swift */; };
 		3BC264B81DF1DEA700977AB7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */; };
+		3BD0C2351DF22499006AD058 /* MarqueeLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
@@ -70,6 +74,7 @@
 		3B1551291DE0E01C0079A7B9 /* ViewModelProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelProtocols.swift; path = Models/ViewModelProtocols.swift; sourceTree = "<group>"; };
 		3B15512B1DE0E2940079A7B9 /* TwitchGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchGameViewModel.swift; path = Models/TwitchGameViewModel.swift; sourceTree = "<group>"; };
 		3B15512D1DE0E4530079A7B9 /* TwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchCell.swift; sourceTree = "<group>"; };
+		3B2FFDB81DF4908400EFBCF3 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsViewController.swift; path = Controllers/SearchResultsViewController.swift; sourceTree = "<group>"; };
 		3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchChannel.swift; path = Models/TwitchChannel.swift; sourceTree = "<group>"; };
 		3B49C6FB1D2B6A140097CDFC /* ThirdPartyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyExtensions.swift; sourceTree = "<group>"; };
 		3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchStream.swift; path = Models/TwitchStream.swift; sourceTree = "<group>"; };
@@ -99,6 +104,8 @@
 		3BAC492E1D28DB510034A972 /* Willow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Willow.framework; path = Carthage/Build/tvOS/Willow.framework; sourceTree = "<group>"; };
 		3BAC49301D28E7610034A972 /* TwitchServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchServiceProtocol.swift; path = Models/TwitchServiceProtocol.swift; sourceTree = "<group>"; };
 		3BAC49321D28EED70034A972 /* TwitchGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchGame.swift; path = Models/TwitchGame.swift; sourceTree = "<group>"; };
+		3BAE6CD01E065A6B0017CAEB /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Search.storyboard; path = Controllers/Search/Search.storyboard; sourceTree = "<group>"; };
+		3BAE6CD21E065A990017CAEB /* NewSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSearchResultsViewController.swift; path = Controllers/Search/NewSearchResultsViewController.swift; sourceTree = "<group>"; };
 		3BB678ED1DD5329400420C2F /* GameSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSectionController.swift; path = Controllers/GameSectionController.swift; sourceTree = "<group>"; };
 		3BB678F01DD8D06300420C2F /* GamesAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesAdapter.swift; sourceTree = "<group>"; };
 		3BB678F61DD8DD2400420C2F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/tvOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -114,6 +121,8 @@
 		3BC264B11DEF966C00977AB7 /* libFlurry_7.8.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.8.2.a; sourceTree = "<group>"; };
 		3BC264B51DF0D30A00977AB7 /* TitleBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleBar.swift; path = Controllers/TitleBar.swift; sourceTree = "<group>"; };
 		3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabel.framework; path = Carthage/Build/tvOS/MarqueeLabel.framework; sourceTree = "<group>"; };
+		3BD0C2331DF22469006AD058 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
 		3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchPreview.swift; path = Models/TwitchPreview.swift; sourceTree = "<group>"; };
 		3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedStreamsSectionController.swift; path = Controllers/FeaturedStreamsSectionController.swift; sourceTree = "<group>"; };
@@ -139,6 +148,7 @@
 				3BC264B41DEF966C00977AB7 /* libFlurry_7.8.2.a in Frameworks */,
 				3BFE1E971DEF7F21008D6478 /* OrderedSet.framework in Frameworks */,
 				3BFE1E951DEF66D3008D6478 /* Dwifft_tvOS.framework in Frameworks */,
+				3BD0C2351DF22499006AD058 /* MarqueeLabel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +258,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		3BAE6CCF1E065A380017CAEB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3B2FFDB81DF4908400EFBCF3 /* SearchResultsViewController.swift */,
+				3BAE6CD01E065A6B0017CAEB /* Search.storyboard */,
+				3BAE6CD21E065A990017CAEB /* NewSearchResultsViewController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		3BB678EF1DD8D04700420C2F /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +290,8 @@
 		3BB678F51DD8DD2300420C2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BD0C2331DF22469006AD058 /* QuartzCore.framework */,
+				3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */,
 				3BFE1E961DEF7F21008D6478 /* OrderedSet.framework */,
 				3BFE1E941DEF66D3008D6478 /* Dwifft_tvOS.framework */,
 				3BB679001DDA73A100420C2F /* AVKit.framework */,
@@ -293,6 +315,7 @@
 		3BC00C651D2CAB7200A2D90D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3BAE6CCF1E065A380017CAEB /* Search */,
 				3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */,
 				3BC264B51DF0D30A00977AB7 /* TitleBar.swift */,
 				3B5B380A1DE17DFF0069F64A /* SectionController.swift */,
@@ -412,6 +435,7 @@
 			files = (
 				3BAC49011D28C2450034A972 /* Assets.xcassets in Resources */,
 				3BAC48FF1D28C2450034A972 /* Main.storyboard in Resources */,
+				3BAE6CD11E065A6B0017CAEB /* Search.storyboard in Resources */,
 				3B5B38161DE2B8020069F64A /* TwitchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +464,7 @@
 				"$(SRCROOT)/Carthage/Build/tvOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/Dwifft_tvOS.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/OrderedSet.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/MarqueeLabel.framework",
 			);
 			outputPaths = (
 			);
@@ -458,6 +483,7 @@
 				3B49C6FE1D2B74FC0097CDFC /* TwitchStream.swift in Sources */,
 				3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */,
 				3B5B381A1DE2B8670069F64A /* NibOwnerLoadable.swift in Sources */,
+				3BAE6CD31E065A990017CAEB /* NewSearchResultsViewController.swift in Sources */,
 				3BC264B61DF0D30A00977AB7 /* TitleBar.swift in Sources */,
 				3BC264B31DEF966C00977AB7 /* FlurryEmpty.m in Sources */,
 				3BAC492D1D28CF750034A972 /* TwitchService.swift in Sources */,
@@ -479,6 +505,7 @@
 				3B5B38141DE2B3B90069F64A /* UICollectionView+Reusable.swift in Sources */,
 				3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */,
 				3BC00C671D2CABA900A2D90D /* M3UParser.swift in Sources */,
+				3B2FFDB91DF4908400EFBCF3 /* SearchResultsViewController.swift in Sources */,
 				3BB678F11DD8D06300420C2F /* GamesAdapter.swift in Sources */,
 				3B49C6FC1D2B6A140097CDFC /* ThirdPartyExtensions.swift in Sources */,
 				3B5B380B1DE17DFF0069F64A /* SectionController.swift in Sources */,
@@ -560,7 +587,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = appletvos10.0;
+				SDKROOT = appletvos;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
@@ -602,7 +630,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = appletvos10.0;
+				SDKROOT = appletvos;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
@@ -617,6 +646,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = ZPQ7DPPR5V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -630,10 +660,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "571715a7-ab0d-47f1-893d-3af9c3432fad";
+				PROVISIONING_PROFILE_SPECIFIER = "XC tvOS: com.lightsandshapes.Player2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spectator/Player2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
@@ -643,6 +675,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = ZPQ7DPPR5V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -656,9 +689,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "571715a7-ab0d-47f1-893d-3af9c3432fad";
+				PROVISIONING_PROFILE_SPECIFIER = "XC tvOS: com.lightsandshapes.Player2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spectator/Player2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
 		};

@@ -34,6 +34,7 @@ struct TwitchService: GameService {
         case noStreams
         case failedToRetrieveTokenOrSig
         case failedToParseM3U
+        case noSearchResults
     }
     
     /**
@@ -156,6 +157,84 @@ struct TwitchService: GameService {
             case .failure(let error):
                 self.log.error { "\(error)" }
                 Flurry.logError("GetFeaturedStreams", message: "Failed to get featured streams", error: error)
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
+    typealias GameSearchCallback = ((ServiceResult<[TwitchGame]>) -> Void)
+    /**
+     Search for a game on Twitch
+     
+     - parameter query: Name of game
+     - parameter limit: Number of results to return
+     - parameter offset: Offset to start at
+     - parameter completionHandler: Callback called with possible array of search results
+     
+     */
+    func searchGames(_ limit: Int = 10, offset: Int = 0, query: String, completionHandler: @escaping GameSearchCallback) {
+        let parameters: [String : Any] = [
+            "query": query,
+            "type": "suggest",
+            "limit": limit,
+            "offset": offset
+        ]
+        Alamofire.request(tapi.search(.games, parameters as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
+            switch self.checkResponse(response) {
+            case .success(let json):
+                self.log.debug{ "\(json)" }
+                self.log.info{ "🎮 Got search results for query \(query)" }
+                guard let items = json[TwitchSearch.games.rawValue].array else {
+                    return completionHandler(.failure(TwitchError.noSearchResults))
+                }
+                TwitchService.backgroundQueue.async {
+                    let i = items.flatMap { TwitchGame(searchResults: $0) }
+                    DispatchQueue.main.async() {
+                        completionHandler(.success(i))
+                    }
+                }
+            case .failure(let error):
+                self.log.error { "\(error)" }
+                Flurry.logError("TwitchSearch", message: "Failed to search for query", error: error)
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
+    typealias StreamSearchCallback = ((ServiceResult<[TwitchStream]>) -> Void)
+    /**
+     Search for a stream on Twitch
+     
+     - parameter query: search query
+     - parameter limit: Number of results to return
+     - parameter offset: Offset to start at
+     - parameter completionHandler: Callback called with possible array of search results
+     
+     */
+    func searchStreams(_ limit: Int = 10, offset: Int = 0, query: String, completionHandler: @escaping StreamSearchCallback) {
+        let parameters: [String : Any] = [
+            "query": query,
+            "type": "suggest",
+            "limit": limit,
+            "offset": offset
+        ]
+        Alamofire.request(tapi.search(.streams, parameters as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
+            switch self.checkResponse(response) {
+            case .success(let json):
+                self.log.debug{ "\(json)" }
+                self.log.info{ "🎮 Got search results for query \(query)" }
+                guard let items = json[TwitchSearch.streams.rawValue].array else {
+                    return completionHandler(.failure(TwitchError.noSearchResults))
+                }
+                TwitchService.backgroundQueue.async {
+                    let i = items.flatMap { TwitchStream($0) }
+                    DispatchQueue.main.async() {
+                        completionHandler(.success(i))
+                    }
+                }
+            case .failure(let error):
+                self.log.error { "\(error)" }
+                Flurry.logError("TwitchSearch", message: "Failed to search for query", error: error)
                 completionHandler(.failure(error))
             }
         }

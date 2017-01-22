@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="appleTV" orientation="landscape">
         <adaptation id="light"/>
     </device>
     <dependencies>
         <deployment identifier="tvOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Top Games-->
         <scene sceneID="47p-xF-z9j">
             <objects>
-                <viewController id="i0d-FS-zg3" customClass="GameSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Games" id="i0d-FS-zg3" customClass="GameSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gj6-mQ-EkT"/>
                         <viewControllerLayoutGuide type="bottom" id="RbT-Ps-ZWx"/>
@@ -23,16 +23,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-ch-hsx">
-                                <rect key="frame" x="0.0" y="0.0" width="1920" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="a7j-ny-gEQ"/>
+                                    <constraint firstAttribute="height" constant="120" id="a7j-ny-gEQ"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="vXl-W0-Bnh" kind="embed" identifier="titlebar" id="cEx-El-Ymd"/>
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aIj-Rq-dsX">
-                                <rect key="frame" x="0.0" y="100" width="1920" height="980"/>
+                                <rect key="frame" x="0.0" y="120" width="1920" height="960"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vs5-em-g6G">
                                     <size key="itemSize" width="50" height="50"/>
@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rM-Wm-vE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4063" y="33"/>
+            <point key="canvasLocation" x="4016" y="-779"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -96,35 +96,39 @@
         <!--Title Bar-->
         <scene sceneID="vga-Pe-z2S">
             <objects>
-                <viewController id="vXl-W0-Bnh" customClass="TitleBar" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TitleBar" id="vXl-W0-Bnh" customClass="TitleBar" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t9E-Cv-QLF"/>
                         <viewControllerLayoutGuide type="bottom" id="1fC-dJ-fk8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8EC-Pa-i76">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nwy-ro-T4S">
-                                <rect key="frame" x="40" y="27" width="500" height="46"/>
+                                <rect key="frame" x="110" y="37" width="410" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="500" id="EKh-MS-vJQ"/>
+                                    <constraint firstAttribute="width" constant="410" id="EKh-MS-vJQ"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAS-FF-ia4">
-                                <rect key="frame" x="1702" y="25" width="198" height="50"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAS-FF-ia4">
+                                <rect key="frame" x="1612" y="35" width="198" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="BGz-gI-XMd"/>
                                     <constraint firstAttribute="height" constant="50" id="xCi-f4-flO"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Reload"/>
+                                <connections>
+                                    <action selector="reloadPressed:" destination="vXl-W0-Bnh" eventType="primaryActionTriggered" id="gog-Fp-L5y"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEr-4Y-6ng">
-                                <rect key="frame" x="660" y="27" width="600" height="46"/>
+                                <rect key="frame" x="660" y="37" width="600" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="eM7-2n-YVo"/>
                                 </constraints>
@@ -137,8 +141,8 @@
                         <constraints>
                             <constraint firstItem="Nwy-ro-T4S" firstAttribute="centerY" secondItem="8EC-Pa-i76" secondAttribute="centerY" id="aSE-Il-cZr"/>
                             <constraint firstItem="LAS-FF-ia4" firstAttribute="centerY" secondItem="8EC-Pa-i76" secondAttribute="centerY" id="bgy-iA-4CV"/>
-                            <constraint firstItem="LAS-FF-ia4" firstAttribute="trailing" secondItem="8EC-Pa-i76" secondAttribute="trailingMargin" id="dIf-BN-SaJ"/>
-                            <constraint firstItem="Nwy-ro-T4S" firstAttribute="leading" secondItem="8EC-Pa-i76" secondAttribute="leadingMargin" constant="20" id="gOh-nf-IvA"/>
+                            <constraint firstItem="Nwy-ro-T4S" firstAttribute="leading" secondItem="8EC-Pa-i76" secondAttribute="leadingMargin" constant="90" id="gOh-nf-IvA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LAS-FF-ia4" secondAttribute="trailing" constant="90" id="oYb-Au-7AT"/>
                             <constraint firstItem="jEr-4Y-6ng" firstAttribute="centerY" secondItem="8EC-Pa-i76" secondAttribute="centerY" id="s4O-gb-Otx"/>
                             <constraint firstItem="jEr-4Y-6ng" firstAttribute="centerX" secondItem="8EC-Pa-i76" secondAttribute="centerX" id="sHR-Al-KHE"/>
                         </constraints>
@@ -156,7 +160,7 @@
         <!--Streams-->
         <scene sceneID="RAB-Am-ulr">
             <objects>
-                <viewController id="rTG-aT-rSV" customClass="FeaturedStreamsSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeaturedStreams" id="rTG-aT-rSV" customClass="FeaturedStreamsSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ri3-Yy-8v5"/>
                         <viewControllerLayoutGuide type="bottom" id="dEl-E6-aqJ"/>
@@ -166,16 +170,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lI2-9N-Xv9">
-                                <rect key="frame" x="0.0" y="0.0" width="1920" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="IJa-xs-cdM"/>
+                                    <constraint firstAttribute="height" constant="120" id="IJa-xs-cdM"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="vXl-W0-Bnh" kind="embed" identifier="titlebar" id="sJc-XO-Uat"/>
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6B3-1A-x0f">
-                                <rect key="frame" x="0.0" y="100" width="1920" height="980"/>
+                                <rect key="frame" x="0.0" y="120" width="1920" height="960"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g7N-6B-zKm">
                                     <size key="itemSize" width="50" height="50"/>
@@ -184,7 +188,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="bwh-Hs-PBg">
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="bwh-Hs-PBg">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -208,18 +212,18 @@
                     <tabBarItem key="tabBarItem" title="Streams" id="lzz-xm-Ibe"/>
                     <connections>
                         <outlet property="collectionView" destination="6B3-1A-x0f" id="DqL-Mv-t0A"/>
-                        <outlet property="containerViewController" destination="lI2-9N-Xv9" id="k5v-In-Rav"/>
+                        <outlet property="containerViewController" destination="lI2-9N-Xv9" id="KUc-2o-tPG"/>
                         <segue destination="iM5-Ga-GsM" kind="show" identifier="showstream" id="AFK-TF-AYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5MI-dO-8jF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111" y="1894"/>
+            <point key="canvasLocation" x="2171" y="1884"/>
         </scene>
         <!--Streams-->
         <scene sceneID="Lgm-SG-q5a">
             <objects>
-                <viewController title="Streams" id="eTS-rx-i2P" customClass="StreamSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Streams" title="Streams" id="eTS-rx-i2P" customClass="StreamSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zc0-il-X3I"/>
                         <viewControllerLayoutGuide type="bottom" id="HA7-at-p0y"/>
@@ -229,16 +233,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjA-jA-O8X">
-                                <rect key="frame" x="0.0" y="0.0" width="1920" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="KIv-WN-Siq"/>
+                                    <constraint firstAttribute="height" constant="120" id="KIv-WN-Siq"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="vXl-W0-Bnh" kind="embed" identifier="titlebar" id="J96-6z-NGE"/>
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b2f-Bl-Rdq">
-                                <rect key="frame" x="0.0" y="100" width="1920" height="980"/>
+                                <rect key="frame" x="0.0" y="120" width="1920" height="960"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r1R-9g-JME">
                                     <size key="itemSize" width="50" height="50"/>
@@ -271,25 +275,26 @@
                     <tabBarItem key="tabBarItem" title="Top Games" id="Ukb-Ob-ZHe"/>
                     <connections>
                         <outlet property="collectionView" destination="b2f-Bl-Rdq" id="lAl-TU-v0n"/>
+                        <outlet property="containerViewController" destination="cjA-jA-O8X" id="uL0-2V-raH"/>
                         <outlet property="titleBar" destination="cjA-jA-O8X" id="pWu-eB-KMP"/>
                         <segue destination="iM5-Ga-GsM" kind="show" identifier="showstream" id="oPd-eY-j2L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOW-PV-CsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6591" y="33"/>
+            <point key="canvasLocation" x="6591" y="-779"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="dld-kG-gpt">
             <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="iM5-Ga-GsM" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
+                <avPlayerViewController storyboardIdentifier="StreamPlayer" videoGravity="AVLayerVideoGravityResizeAspect" id="iM5-Ga-GsM" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6f-yi-6hJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6591" y="4065"/>
+            <point key="canvasLocation" x="6591" y="4638"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AFK-TF-AYP"/>
-        <segue reference="cEx-El-Ymd"/>
+        <segue reference="sJc-XO-Uat"/>
     </inferredMetricsTieBreakers>
 </document>

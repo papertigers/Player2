@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController {
+class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController, TitleBarDelegate {
     var adapter: FeaturedStreamsAdapter!
-    var game: TwitchGame!
+    var shouldFocusTitleBar = false
     
     var titleBar: TitleBar?
     
@@ -21,8 +21,10 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
         super.viewDidLoad()
         collectionView.delegate = self
         titleBar?.titleLabel.text = "Featured Streams"
+        titleBar?.setSearchBar(placeholder: "Search Streams")
+        titleBar?.delegate = self
         setupView(withConfig: StreamCollectionViewConfig())
-        adapter = FeaturedStreamsAdapter(collectionView: collectionView!)
+        adapter = FeaturedStreamsAdapter(collectionView: collectionView!, type: .Normal)
         setupCollectionView(withAdapter: adapter)
         adapter.load()
     }
@@ -39,8 +41,17 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
         }
         if segue.identifier == "titlebar"{
             titleBar = segue.destination as? TitleBar
-            
         }
+    }
+    
+    func handleReload() {
+        adapter.reload()
+    }
+    
+    func handleSearch(_ text: String) {
+        print("handling search")
+        let vc = SearchResultsViewController<FeaturedStreamsAdapter>.init(query: text, type: .streams)
+        present(vc, animated: true)
     }
 }
 
@@ -53,15 +64,29 @@ extension FeaturedStreamsSectionController {
 }
 
 extension FeaturedStreamsSectionController {
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        // Hack to find out if the focused item is in the collectionView
+        if let _ = context.nextFocusedView as? TwitchCell {
+            self.shouldFocusTitleBar = true
+        } else {
+            self.shouldFocusTitleBar = false
+        }
+        super.didUpdateFocus(in: context, with: coordinator)
+    }
+    
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        
         var environments = [UIFocusEnvironment]()
-        if let searchBar = self.titleBar?.searchBar, let parent = self.parent as? TabBarViewController {
-            if (searchBar.isFocused) {
-                parent.displayTabBarFocus = true
-                environments = environments + [parent]
+        if let parent = self.parent as? TabBarViewController {
+            if (shouldFocusTitleBar) {
+                if let titleBar = titleBar {
+                    environments = environments + [titleBar]
+                }
             }
+            environments = environments + [parent.tabBar]
         }
         environments = environments + [containerViewController]
         return environments
     }
 }
+

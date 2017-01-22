@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  AdapterProtocols.swift
 //  Player2
 //
 //  Created by Michael Zeller on 11/19/16.
@@ -20,12 +20,18 @@ struct P2ImageCache {
     static let GameCellCache = ImageCache(name: CellType.GameCell.rawValue)
 }
 
+enum TwitchAdapterType {
+    case Normal
+    case Search
+}
+
 protocol TwitchAdapter {
     associatedtype Item: Hashable
     var offset: Int { get set }
     var limit: Int { get }
     var items: OrderedSet<Item> { get set}
     var finished: Bool { get set }
+    var collectionView: UICollectionView? { get }
     func load()
 }
 
@@ -42,6 +48,18 @@ extension TwitchAdapter {
         self.items += array
         self.offset += limit
     }
+    
+    mutating func reload() {
+        if (items.count > 0) {
+            self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
+                                              at: .top, animated: true)
+        }
+        self.offset = 0
+        self.finished = false
+        self.items = []
+        self.load()
+        
+    }
 }
 
 // Handy function to generate a new datasource that can be used to Diff
@@ -52,4 +70,13 @@ extension Array where Element: Hashable {
     }
 }
 
+protocol TwitchSearchItem {
+    
+}
+
+protocol TwitchSearchAdapter: TwitchAdapter {
+    var adapterType: TwitchAdapterType { get }
+    var searchQuery: String { get }
+    func load()
+}
 

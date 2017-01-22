@@ -9,6 +9,10 @@
 import Foundation
 import Alamofire
 
+enum TwitchSearch: String {
+    case games = "games"
+    case streams = "streams"
+}
 enum TwitchAPIVersion: String {
     case v2 = "application/vnd.twitchtv.v2+json"
     case v3 = "application/vnd.twitchtv.v3+json"
@@ -27,6 +31,8 @@ enum tapi: URLRequestConvertible {
     // Streams
     case streams([String:AnyObject])
     case featuredStreams([String:Int])
+    // Search
+    case search(TwitchSearch, [String:AnyObject])
     // Undocumented API for VideoStreams
     case channelToken(TwitchChannel)
     case videoStreams(TwitchChannel, [String:AnyObject])
@@ -38,6 +44,8 @@ enum tapi: URLRequestConvertible {
         case .streams:
             return .get
         case .featuredStreams:
+            return .get
+        case .search:
             return .get
         case .channelToken:
             return .get
@@ -54,6 +62,8 @@ enum tapi: URLRequestConvertible {
             return "/streams"
         case .featuredStreams:
             return "/streams/featured"
+        case .search(let type, _):
+            return "/search/\(type.rawValue)"
         case .channelToken(let channel):
             return "/channels/\(channel.name)/access_token"
         case .videoStreams(let channel, _):
@@ -103,6 +113,8 @@ enum tapi: URLRequestConvertible {
         case .streams(let parameters):
             mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
         case .featuredStreams(let parameters):
+            mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
+        case .search( _, let parameters):
             mutableURLRequest = try URLEncoding.default.encode(mutableURLRequest, with: parameters)
         case .videoStreams(_, let parameters):
             //We have to nil out the accept header or twitch gets cranky

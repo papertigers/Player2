@@ -27,6 +27,9 @@ extension TwitchGameViewModel: TextPresentable {
         return game.name
     }
     var subTitle: String {
+        if (game.channels == 0) {
+            return ""
+        }
         return "\(game.channels) channels"
     }
 }

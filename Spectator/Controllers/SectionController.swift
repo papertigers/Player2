@@ -25,6 +25,7 @@ struct StreamCollectionViewConfig: CollectionViewConfig {
 typealias Adapter = UICollectionViewDataSource & UICollectionViewDataSourcePrefetching
 protocol TwitchSectionController {
     var collectionView: UICollectionView! { get }
+    var titleBar: TitleBar? { get }
 }
 
 extension TwitchSectionController where Self: UIViewController {

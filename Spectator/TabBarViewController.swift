@@ -11,6 +11,25 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     var displayTabBarFocus = false
+//    
+//    override func viewWillAppear(_ animated: Bool) {
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let gs = sb.instantiateViewController(withIdentifier: "Games") as! GameSectionController
+//        let resultsController = gs
+//        let searchController = UISearchController(searchResultsController: resultsController)
+//        //searchController.searchResultsUpdater = resultsController
+//        
+//        searchController.obscuresBackgroundDuringPresentation = true
+//        searchController.hidesNavigationBarDuringPresentation = false
+//        
+//        searchController.searchBar.placeholder = "Search Game"
+//        
+//        let searchContainerViewController = UISearchContainerViewController(searchController: searchController)
+//        searchController.tabBarItem = UITabBarItem(title: "Search", image: nil, tag: 3)
+//        var tbViewControllers = self.viewControllers
+//        tbViewControllers?.append(searchController)
+//        self.viewControllers = tbViewControllers
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +38,9 @@ class TabBarViewController: UITabBarController {
 //        for item in self.preferredFocusEnvironments {
 //            print(item.debugDescription)
 //        }
+        
+
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,19 +58,15 @@ class TabBarViewController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension TabBarViewController {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         var environments = [UIFocusEnvironment]()
-        if (displayTabBarFocus) {
-            print("value set to true")
-            environments = environments + [self.tabBar]
-            self.displayTabBarFocus = false
+        if let selected = self.selectedViewController {
+            environments = environments + [selected]
         }
-        environments = environments + self.childViewControllers
-        print(environments)
+        environments = environments + [self.tabBar]
         return environments
     }
 }
