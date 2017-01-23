@@ -34,9 +34,15 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     }
     
     func load() {
+        if (finished) { return }
         api.streamsForGame(limit, offset: offset, game: game) { [weak self] res in
             guard let streams = res.results else {
                 return print("Couldn't load channels: \(res.error)") //print error
+            }
+            if let strongSelf = self {
+                if (streams.count < strongSelf.limit) {
+                    strongSelf.finished = true
+                }
             }
             self?.updateDatasource(withArray: streams)
         }
