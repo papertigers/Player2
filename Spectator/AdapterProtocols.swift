@@ -25,7 +25,7 @@ enum TwitchAdapterType {
     case Search
 }
 
-protocol TwitchAdapter {
+protocol TwitchAdapter: class {
     associatedtype Item: Hashable
     var offset: Int { get set }
     var limit: Int { get }
@@ -40,7 +40,7 @@ extension TwitchAdapter {
         return 100
     }
     
-    mutating func updateDatasource(withArray array: [Item]) {
+     func updateDatasource(withArray array: [Item]) {
         if (array.count == 0) {
             self.finished = true
             return
@@ -49,7 +49,8 @@ extension TwitchAdapter {
         self.offset += limit
     }
     
-    mutating func reload() {
+     func reload() {
+        removeErrorView()
         if (items.count > 0) {
             self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
                                               at: .top, animated: true)
@@ -61,7 +62,7 @@ extension TwitchAdapter {
         
     }
     
-    func displayErrorView(error: String = "Failed to load") {
+    func displayErrorView(error: String = "Failed to load", withDelegate delegate: AdapterErrorViewDelegate? = nil) {
         guard let collectionView = collectionView else {
             return
         }
@@ -69,6 +70,7 @@ extension TwitchAdapter {
             return
         }
         errorView.configure(error: error)
+        errorView.delegate = delegate
         collectionView.backgroundView = errorView
     }
     
