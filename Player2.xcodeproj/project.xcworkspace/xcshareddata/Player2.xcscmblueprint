@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "745017D941DF76947D50BD5E82B059F25FC2F86C" : 9223372036854775807,
+    "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CDDCD56F-2C2B-468D-8D62-43B4C9B9CA76",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "745017D941DF76947D50BD5E82B059F25FC2F86C" : "",
+    "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F" : "Player2\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Player2",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Player2.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:papertigers\/salt-formulas.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "745017D941DF76947D50BD5E82B059F25FC2F86C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:papertigers\/Player2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EDCEBD662D7CF1904B3D3B90E8B0BB76CB695C8F"
+    }
+  ]
+}

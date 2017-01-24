@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AdapterErrorView" customModule="Player2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed to load." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqa-zN-p8m">
+                    <rect key="frame" x="0.0" y="522" width="1920" height="37"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.30133668457111984" blue="0.32259876756660522" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Rqa-zN-p8m" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Gh-bu-1fU"/>
+                <constraint firstItem="Rqa-zN-p8m" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="38d-XN-wf2"/>
+                <constraint firstItem="Rqa-zN-p8m" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="N4s-9g-VBf"/>
+                <constraint firstAttribute="trailing" secondItem="Rqa-zN-p8m" secondAttribute="trailing" id="Nef-gM-yL6"/>
+            </constraints>
+            <connections>
+                <outlet property="errorMessage" destination="Rqa-zN-p8m" id="274-wV-3Lt"/>
+            </connections>
+        </view>
+    </objects>
+</document>

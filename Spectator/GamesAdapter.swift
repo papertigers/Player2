@@ -36,7 +36,8 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     func loadGames() {
         api.getTopGames(limit, offset: offset) { [weak self] res in
             guard let games = res.results else {
-                return print("Failed to get games")
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
+                return print("Failed to get top games")
             }
             self?.updateDatasource(withArray: games)
         }

@@ -60,6 +60,21 @@ extension TwitchAdapter {
         self.load()
         
     }
+    
+    func displayErrorView(error: String = "Failed to load") {
+        guard let collectionView = collectionView else {
+            return
+        }
+        guard let errorView = Bundle.main.loadNibNamed("AdapterErrorView", owner: nil, options: nil)?.first as? AdapterErrorView else {
+            return
+        }
+        errorView.configure(error: error)
+        collectionView.backgroundView = errorView
+    }
+    
+    func removeErrorView() {
+        collectionView?.backgroundView = nil
+    }
 }
 
 // Handy function to generate a new datasource that can be used to Diff
