@@ -19,6 +19,7 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     var items = OrderedSet<TwitchGame>() {
         didSet {
             self.diffCalculator?.rows = Array(items)
+            if (collectionView?.backgroundView != nil) { self.removeErrorView() }
         }
     }
     private let api = TwitchService()
@@ -36,7 +37,7 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     func loadGames() {
         api.getTopGames(limit, offset: offset) { [weak self] res in
             guard let games = res.results else {
-                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.", withDelegate: self)
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
                 return print("Failed to get top games")
             }
             self?.updateDatasource(withArray: games)
@@ -46,8 +47,11 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     func searchGames() {
         api.searchGames(limit, offset: offset, query: self.searchQuery) { [weak self] res in
             guard let results = res.results else {
-                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.", withDelegate: self)
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
                 return print("Failed to get search results")
+            }
+            if (results.count == 0) {
+                self?.displayErrorView(error: "No results for \(self?.searchQuery ?? "search term")")
             }
             self?.updateDatasource(withArray: results)
         }
@@ -72,12 +76,6 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
         let viewModel = TwitchGameViewModel(game: items[indexPath.row])
         cell.configure(withPresenter: viewModel)
         return cell
-    }
-}
-
-extension GamesAdapter: AdapterErrorViewDelegate {
-    func retry() {
-        reload()
     }
 }
 

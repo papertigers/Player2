@@ -8,13 +8,7 @@
 
 import UIKit
 
-protocol AdapterErrorViewDelegate: class {
-    func retry()
-}
-
 class AdapterErrorView: UIView {
-    weak var delegate: AdapterErrorViewDelegate?
-    
     @IBOutlet weak var errorMessage: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,9 +22,5 @@ class AdapterErrorView: UIView {
     
     func configure(error: String) {
         errorMessage.text = error
-    }
-    
-    @IBAction func retryButtonPressed(_ sender: Any) {
-        delegate?.retry()
     }
 }

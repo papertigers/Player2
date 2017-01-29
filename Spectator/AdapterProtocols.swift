@@ -62,7 +62,7 @@ extension TwitchAdapter {
         
     }
     
-    func displayErrorView(error: String = "Failed to load", withDelegate delegate: AdapterErrorViewDelegate? = nil) {
+    func displayErrorView(error: String = "Failed to load") {
         guard let collectionView = collectionView else {
             return
         }
@@ -70,7 +70,6 @@ extension TwitchAdapter {
             return
         }
         errorView.configure(error: error)
-        errorView.delegate = delegate
         collectionView.backgroundView = errorView
     }
     

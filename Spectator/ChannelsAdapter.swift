@@ -17,6 +17,7 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     var items = OrderedSet<TwitchStream>() {
         didSet {
             self.diffCalculator?.rows = Array(items)
+            if (collectionView?.backgroundView != nil) { self.removeErrorView() }
         }
     }
     private let api = TwitchService()
@@ -37,13 +38,16 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
         if (finished) { return }
         api.streamsForGame(limit, offset: offset, game: game) { [weak self] res in
             guard let streams = res.results else {
-                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.", withDelegate: self)
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
                 return print("Couldn't load channels: \(res.error)") //print error
             }
             if let strongSelf = self {
                 if (streams.count < strongSelf.limit) {
                     strongSelf.finished = true
                 }
+            }
+            if (streams.count == 0) {
+                self?.displayErrorView(error: "No current streams for \"\(self?.game.name ?? "this game")\"")
             }
             self?.updateDatasource(withArray: streams)
         }
@@ -61,11 +65,6 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     }
 }
 
-extension ChannelsAdapter: AdapterErrorViewDelegate {
-    func retry() {
-        reload()
-    }
-}
 
 extension ChannelsAdapter: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {

@@ -19,6 +19,7 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
     var items = OrderedSet<TwitchStream>() {
         didSet {
             self.diffCalculator?.rows = Array(items)
+            if (collectionView?.backgroundView != nil) { self.removeErrorView() }
         }
     }
 
@@ -37,7 +38,7 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
     func loadStreams() {
         api.featuredStreams(100, offset: 0) { [weak self] res in
             guard let streams = res.results else {
-                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.", withDelegate: self)
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
                 return print("Couldn't load streams: \(res.error)") //print error
             }
             self?.updateDatasource(withArray: streams)
@@ -47,8 +48,11 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
     func searchStreams() {
         api.searchStreams(limit, offset: offset, query: self.searchQuery) { [weak self] res in
             guard let results = res.results else {
-                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.", withDelegate: self)
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
                 return print("Failed to get search results")
+            }
+            if (results.count == 0) {
+                self?.displayErrorView(error: "No results for \"\(self?.searchQuery ?? "the query")\"")
             }
             self?.updateDatasource(withArray: results)
         }
@@ -76,11 +80,6 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
     }
 }
 
-extension FeaturedStreamsAdapter: AdapterErrorViewDelegate {
-    func retry() {
-        reload()
-    }
-}
 
 extension FeaturedStreamsAdapter: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {

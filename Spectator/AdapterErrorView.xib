@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="appleTV" orientation="landscape">
         <adaptation id="light"/>
     </device>
@@ -21,22 +21,11 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoW-YD-pHo">
-                    <rect key="frame" x="874" y="583" width="172" height="86"/>
-                    <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                    <state key="normal" title="Retry"/>
-                    <connections>
-                        <action selector="retryButtonPressed:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="iNj-hb-6D2"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
             <constraints>
                 <constraint firstItem="Rqa-zN-p8m" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Gh-bu-1fU"/>
                 <constraint firstItem="Rqa-zN-p8m" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="38d-XN-wf2"/>
-                <constraint firstItem="XoW-YD-pHo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6sX-0i-Fiq"/>
-                <constraint firstItem="XoW-YD-pHo" firstAttribute="top" secondItem="Rqa-zN-p8m" secondAttribute="bottom" constant="24" id="6sf-br-qnT"/>
-                <constraint firstItem="XoW-YD-pHo" firstAttribute="top" secondItem="Rqa-zN-p8m" secondAttribute="bottom" constant="24" id="GwQ-sC-5dY"/>
                 <constraint firstItem="Rqa-zN-p8m" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="N4s-9g-VBf"/>
                 <constraint firstAttribute="trailing" secondItem="Rqa-zN-p8m" secondAttribute="trailing" id="Nef-gM-yL6"/>
             </constraints>
