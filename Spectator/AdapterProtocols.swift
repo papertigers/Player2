@@ -79,6 +79,7 @@ extension TwitchAdapter {
     }
 }
 
+
 // Handy function to generate a new datasource that can be used to Diff
 extension Array where Element: Hashable {
     func appendAndDeduplicate(to array: [Element]) -> [Element] {

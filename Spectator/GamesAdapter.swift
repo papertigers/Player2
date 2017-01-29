@@ -46,6 +46,7 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     func searchGames() {
         api.searchGames(limit, offset: offset, query: self.searchQuery) { [weak self] res in
             guard let results = res.results else {
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.", withDelegate: self)
                 return print("Failed to get search results")
             }
             self?.updateDatasource(withArray: results)

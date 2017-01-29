@@ -37,6 +37,7 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
     func loadStreams() {
         api.featuredStreams(100, offset: 0) { [weak self] res in
             guard let streams = res.results else {
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.", withDelegate: self)
                 return print("Couldn't load streams: \(res.error)") //print error
             }
             self?.updateDatasource(withArray: streams)
@@ -46,6 +47,7 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
     func searchStreams() {
         api.searchStreams(limit, offset: offset, query: self.searchQuery) { [weak self] res in
             guard let results = res.results else {
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.", withDelegate: self)
                 return print("Failed to get search results")
             }
             self?.updateDatasource(withArray: results)
@@ -71,6 +73,12 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
         let viewModel = TwitchFeaturedStreamViewModel(stream: items[indexPath.row])
         cell.configure(withPresenter: viewModel)
         return cell
+    }
+}
+
+extension FeaturedStreamsAdapter: AdapterErrorViewDelegate {
+    func retry() {
+        reload()
     }
 }
 
