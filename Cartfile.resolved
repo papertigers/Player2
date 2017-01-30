@@ -1,6 +1,6 @@
 github "Alamofire/Alamofire" "4.3.0"
 github "papertigers/Dwifft" "13aecd0b21f3e22bb89eddbff6d80734566f3d45"
-github "onevcat/Kingfisher" "3.2.4"
+github "onevcat/Kingfisher" "3.3.3"
 github "cbpowell/MarqueeLabel" "3.0.1"
 github "papertigers/OrderedSet" "7bcd7f6f37020841588c13951bcdb1aaa481d8dd"
 github "SwiftyJSON/SwiftyJSON" "3.1.4"

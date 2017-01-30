@@ -37,6 +37,7 @@ struct TwitchService: GameService {
         case noSearchResults
     }
     
+    
     /**
      Checks a Twitch API response was successful and if so, returns the JSON payload
      
@@ -111,7 +112,7 @@ struct TwitchService: GameService {
                 guard let streams = json["streams"].array else {
                     return completionHandler(.failure(TwitchError.noStreams))
                 }
-                self.log.info{ "Got streams for game: \(game.name)" }
+                self.log.info{ "🎮 Got streams for game: \(game.name)" }
                 TwitchService.backgroundQueue.async {
                     let s = streams.flatMap { TwitchStream($0) }
                     DispatchQueue.main.async {
@@ -313,6 +314,16 @@ extension TwitchService: UndocumentedTwitchAPI {
                 completionHandler(.failure(error))
                 Flurry.logError("GetStreamsForChannel", message: "Failed to get streams for channel", error: error)
             }
+        }
+    }
+}
+
+// We shouldn't ever hit a TwitchError unless the Twitch API is broken
+extension TwitchService.TwitchError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        default:
+            return NSLocalizedString("Twitch API returned bad data.", comment: "Twitch API Error")
         }
     }
 }

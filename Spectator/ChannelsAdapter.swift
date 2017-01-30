@@ -47,7 +47,7 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
                 }
             }
             if (streams.count == 0) {
-                self?.displayErrorView(error: "No current streams for \"\(self?.game.name ?? "this game")\"")
+                self?.displayErrorView(error: "There are 0 streams for  \"\(self?.game.name ?? "this game")\"")
             }
             self?.updateDatasource(withArray: streams)
         }

@@ -9,6 +9,7 @@
 import Foundation
 import OrderedSet
 import Kingfisher
+import Alamofire
 
 struct P2ImageCache {
     enum CellType: String {
