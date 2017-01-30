@@ -11,6 +11,8 @@ import OrderedSet
 import Kingfisher
 import Alamofire
 
+let serialQueue = DispatchQueue(label: "com.lightsandshapes.serial-queue")
+
 struct P2ImageCache {
     enum CellType: String {
         case GameCell = "GameCell"
@@ -48,6 +50,12 @@ extension TwitchAdapter {
         }
         self.items += array
         self.offset += limit
+    }
+    
+    func safeLoad() {
+        serialQueue.sync {
+            load()
+        }
     }
     
      func reload() {

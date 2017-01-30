@@ -28,7 +28,7 @@ class StreamSectionController: UIViewController, UICollectionViewDelegate, Twitc
         adapter = ChannelsAdapter(collectionView: collectionView!, game: self.game)
         Flurry.logEvent("Get Streams", withParameters: ["Game": game.name])
         setupCollectionView(withAdapter: adapter)
-        adapter.load()
+        adapter.safeLoad()
         
         //Setup capture of menu button
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMenuPress))
@@ -71,7 +71,7 @@ class StreamSectionController: UIViewController, UICollectionViewDelegate, Twitc
 extension StreamSectionController {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.row == adapter.items.count - 1 ) {
-            adapter.load()
+            adapter.safeLoad()
         }
     }
 }

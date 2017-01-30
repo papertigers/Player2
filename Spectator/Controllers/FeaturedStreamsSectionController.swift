@@ -26,7 +26,7 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = FeaturedStreamsAdapter(collectionView: collectionView!, type: .Normal)
         setupCollectionView(withAdapter: adapter)
-        adapter.load()
+        adapter.safeLoad()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -58,7 +58,7 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
 extension FeaturedStreamsSectionController {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.row == adapter.items.count - 1 ) {
-            adapter.load()
+            adapter.safeLoad()
         }
     }
 }

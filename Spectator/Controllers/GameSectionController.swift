@@ -25,7 +25,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
         setupView(withConfig: GameCollectionViewConfig())
         adapter = GamesAdapter(collectionView: collectionView!, type: .Normal)
         setupCollectionView(withAdapter: adapter)
-        adapter?.load()
+        adapter?.safeLoad()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -56,7 +56,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
 extension GameSectionController {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.row == adapter.items.count - 1 ) {
-            adapter.load()
+            adapter.safeLoad()
         }
     }
 }
