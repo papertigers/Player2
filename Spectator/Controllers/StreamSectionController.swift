@@ -53,7 +53,7 @@ class StreamSectionController: UIViewController, UICollectionViewDelegate, Twitc
     }
     
     func handleReload() {
-        adapter.reload()
+        adapter.safeReload()
     }
     
     func handleMenuPress() {

@@ -44,7 +44,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
     }
     
     func handleReload() {
-        adapter.reload()
+        adapter.safeReload()
     }
     
     func handleSearch(_ text: String) {

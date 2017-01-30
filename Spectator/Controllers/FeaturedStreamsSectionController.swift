@@ -45,7 +45,7 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
     }
     
     func handleReload() {
-        adapter.reload()
+        adapter.safeReload()
     }
     
     func handleSearch(_ text: String) {

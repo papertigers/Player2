@@ -58,7 +58,13 @@ extension TwitchAdapter {
         }
     }
     
-     func reload() {
+    func safeReload() {
+        serialQueue.sync {
+            reload()
+        }
+    }
+    
+     private func reload() {
         removeErrorView()
         if (items.count > 0) {
             self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
