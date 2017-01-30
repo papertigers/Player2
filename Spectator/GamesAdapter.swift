@@ -19,6 +19,7 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     var items = OrderedSet<TwitchGame>() {
         didSet {
             self.diffCalculator?.rows = Array(items)
+            if (collectionView?.backgroundView != nil) { self.removeErrorView() }
         }
     }
     private let api = TwitchService()
@@ -36,7 +37,16 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     func loadGames() {
         api.getTopGames(limit, offset: offset) { [weak self] res in
             guard let games = res.results else {
-                return print("Failed to get games")
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
+                return print("Failed to get top games")
+            }
+            if let strongSelf = self {
+                if (games.count < strongSelf.limit) {
+                    strongSelf.finished = true
+                }
+            }
+            if (games.count == 0) {
+                self?.displayErrorView(error: "Twitch is experiencing an issue, please try to reload")
             }
             self?.updateDatasource(withArray: games)
         }
@@ -45,7 +55,12 @@ class GamesAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICollectionVi
     func searchGames() {
         api.searchGames(limit, offset: offset, query: self.searchQuery) { [weak self] res in
             guard let results = res.results else {
+                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
                 return print("Failed to get search results")
+            }
+            if (results.count == 0) {
+                self?.finished = true
+                self?.displayErrorView(error: "No results for \"\(self?.searchQuery ?? "search term")\"")
             }
             self?.updateDatasource(withArray: results)
         }

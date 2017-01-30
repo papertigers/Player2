@@ -9,6 +9,7 @@
 import Foundation
 import OrderedSet
 import Kingfisher
+import Alamofire
 
 struct P2ImageCache {
     enum CellType: String {
@@ -25,7 +26,7 @@ enum TwitchAdapterType {
     case Search
 }
 
-protocol TwitchAdapter {
+protocol TwitchAdapter: class {
     associatedtype Item: Hashable
     var offset: Int { get set }
     var limit: Int { get }
@@ -40,7 +41,7 @@ extension TwitchAdapter {
         return 100
     }
     
-    mutating func updateDatasource(withArray array: [Item]) {
+     func updateDatasource(withArray array: [Item]) {
         if (array.count == 0) {
             self.finished = true
             return
@@ -49,7 +50,8 @@ extension TwitchAdapter {
         self.offset += limit
     }
     
-    mutating func reload() {
+     func reload() {
+        removeErrorView()
         if (items.count > 0) {
             self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
                                               at: .top, animated: true)
@@ -60,7 +62,23 @@ extension TwitchAdapter {
         self.load()
         
     }
+    
+    func displayErrorView(error: String = "Failed to load") {
+        guard let collectionView = collectionView else {
+            return
+        }
+        guard let errorView = Bundle.main.loadNibNamed("AdapterErrorView", owner: nil, options: nil)?.first as? AdapterErrorView else {
+            return
+        }
+        errorView.configure(error: error)
+        collectionView.backgroundView = errorView
+    }
+    
+    func removeErrorView() {
+        collectionView?.backgroundView = nil
+    }
 }
+
 
 // Handy function to generate a new datasource that can be used to Diff
 extension Array where Element: Hashable {

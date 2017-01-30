@@ -106,6 +106,7 @@ enum tapi: URLRequestConvertible {
         
         mutableURLRequest.setValue(CLIENT_ID, forHTTPHeaderField: "Client-ID")
         mutableURLRequest.setValue(apiVersion.rawValue, forHTTPHeaderField: "Accept")
+        mutableURLRequest.timeoutInterval = 5.0
         
         switch self {
         case .topGames(let parameters):
