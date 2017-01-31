@@ -73,7 +73,7 @@ extension TwitchAdapter {
         self.offset = 0
         self.finished = false
         self.items = []
-        self.safeLoad()
+        self.load()
         
     }
     
