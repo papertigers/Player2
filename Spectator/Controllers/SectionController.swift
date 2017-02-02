@@ -43,6 +43,7 @@ extension TwitchSectionController where Self: UIViewController {
         collectionView.contentInset = UIEdgeInsetsMake(60, 90, 60, 90)
         collectionView.register(cellType: TwitchCell.self)
         collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.showsVerticalScrollIndicator = false  //tvOS 10.2 seems to display this by default
     }
     
     func setupCollectionView(withAdapter adapter: Adapter) {

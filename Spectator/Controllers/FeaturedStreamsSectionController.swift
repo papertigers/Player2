@@ -20,8 +20,8 @@ class FeaturedStreamsSectionController: UIViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
-        titleBar?.titleLabel.text = "Featured Streams"
-        titleBar?.setSearchBar(placeholder: "Search Streams")
+        titleBar?.titleLabel.text = "Channels"
+        titleBar?.setSearchBar(placeholder: "Search streams")
         titleBar?.delegate = self
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = FeaturedStreamsAdapter(collectionView: collectionView!, type: .Normal)

@@ -19,7 +19,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
-        titleBar?.titleLabel.text = "Top Games"
+        titleBar?.titleLabel.text = "Games"
         titleBar?.setSearchBar(placeholder: "Search Games")
         titleBar?.delegate = self
         setupView(withConfig: GameCollectionViewConfig())
