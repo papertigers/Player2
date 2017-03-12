@@ -11,7 +11,8 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     var displayTabBarFocus = false
-//    
+    
+//  This is for loading a Search Controller in swift.  Currently we manage search ourselves.  
 //    override func viewWillAppear(_ animated: Bool) {
 //        let sb = UIStoryboard(name: "Main", bundle: nil)
 //        let gs = sb.instantiateViewController(withIdentifier: "Games") as! GameSectionController
