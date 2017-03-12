@@ -895,6 +895,7 @@
 				3BCBEA231E40351C00A80DE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
