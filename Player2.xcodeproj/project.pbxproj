@@ -456,7 +456,6 @@
 				3BCBEA131E40351C00A80DE8 /* Sources */,
 				3BCBEA141E40351C00A80DE8 /* Frameworks */,
 				3BCBEA151E40351C00A80DE8 /* Resources */,
-				3BF62CEE1E8B7F8600B7CB39 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -560,21 +559,6 @@
 				"$(SRCROOT)/Carthage/Build/tvOS/Dwifft_tvOS.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/OrderedSet.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/MarqueeLabel.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		3BF62CEE1E8B7F8600B7CB39 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/tvOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/tvOS/SwiftyJSON.framework",
 			);
 			outputPaths = (
 			);

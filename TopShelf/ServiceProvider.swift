@@ -54,6 +54,7 @@ class ServiceProvider: NSObject, TVTopShelfProvider {
                 let poster = game["game"]["box"]["large"].stringValue
                 let gameIdentifier = TVContentIdentifier(identifier: name, container: nil)
                 let gameItem = TVContentItem(contentIdentifier: gameIdentifier!)
+                gameItem?.title = name
                 gameItem?.imageURL = URL(string: poster)!
                 gameItem?.imageShape = .poster
                 topGamesSection.topShelfItems?.append(gameItem!)
