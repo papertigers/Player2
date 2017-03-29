@@ -59,6 +59,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    // MARK: Custom URL scheme
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if (url.path == "/game") {
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+            if let items = components?.queryItems {
+                let game = items.filter {
+                    $0.name == "name"
+                }.first?.value
+                
+                if let game = game {
+                    // Use the game to set the initial view controller.
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let streams = storyboard.instantiateViewController(withIdentifier: "Streams") as! StreamSectionController
+                    print(game)
+                }
+            }
+        }
+        return true
+    }
 
     // MARK: SearchController
     

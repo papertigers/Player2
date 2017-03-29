@@ -16,6 +16,16 @@ class ServiceProvider: NSObject, TVTopShelfProvider {
     override init() {
         super.init()
     }
+    
+    // MARK: - TopShelf helper functions 
+    func urlFor(game: TwitchGame) -> URL {
+        var components = URLComponents()
+        components.scheme = "player2"
+        components.path = "/game"
+        components.queryItems = [URLQueryItem(name: "name", value: game.name)]
+        
+        return components.url!
+    }
 
     // MARK: - TVTopShelfProvider protocol
 
@@ -50,13 +60,17 @@ class ServiceProvider: NSObject, TVTopShelfProvider {
             }
             
             for game in games {
-                let name = game["game"]["name"].stringValue
-                let poster = game["game"]["box"]["large"].stringValue
-                let gameIdentifier = TVContentIdentifier(identifier: name, container: nil)
+                guard let game = TwitchGame(game) else {
+                    return
+                }
+                let gameIdentifier = TVContentIdentifier(identifier: game.name, container: nil)
                 let gameItem = TVContentItem(contentIdentifier: gameIdentifier!)
-                gameItem?.title = name
-                gameItem?.imageURL = URL(string: poster)!
+                gameItem?.title = game.name
+                gameItem?.imageURL = URL(string: game.box.large)
                 gameItem?.imageShape = .poster
+                let deepLink = self.urlFor(game: game)
+                gameItem?.playURL = deepLink
+                gameItem?.displayURL = deepLink
                 topGamesSection.topShelfItems?.append(gameItem!)
             }
         }
