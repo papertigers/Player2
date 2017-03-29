@@ -74,6 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let streams = storyboard.instantiateViewController(withIdentifier: "Streams") as! StreamSectionController
                     streams.game = game
                     let mainVC = self.window?.rootViewController as? TabBarViewController
+                    mainVC?.dismiss(animated: false, completion: nil)
+                    mainVC?.selectedIndex = 0
                     mainVC?.present(streams, animated: true, completion: nil)
                 }
             }
