@@ -70,10 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }.first?.value
                 
                 if let game = game {
-                    // Use the game to set the initial view controller.
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let streams = storyboard.instantiateViewController(withIdentifier: "Streams") as! StreamSectionController
-                    print(game)
+                    streams.game = game
+                    let mainVC = self.window?.rootViewController as? TabBarViewController
+                    mainVC?.present(streams, animated: true, completion: nil)
                 }
             }
         }

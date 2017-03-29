@@ -36,7 +36,7 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showchannels" {
             let channelsVC = segue.destination as! StreamSectionController
-            channelsVC.game = adapter.items[(sender as! NSIndexPath).row]
+            channelsVC.game = adapter.items[(sender as! NSIndexPath).row].name
         }
         if segue.identifier == "titlebar"{
             titleBar = segue.destination as? TitleBar
