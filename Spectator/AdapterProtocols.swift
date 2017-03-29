@@ -11,6 +11,8 @@ import OrderedSet
 import Kingfisher
 import Alamofire
 
+let serialQueue = DispatchQueue(label: "com.lightsandshapes.serial-queue")
+
 struct P2ImageCache {
     enum CellType: String {
         case GameCell = "GameCell"
@@ -50,7 +52,19 @@ extension TwitchAdapter {
         self.offset += limit
     }
     
-     func reload() {
+    func safeLoad() {
+        serialQueue.sync {
+            load()
+        }
+    }
+    
+    func safeReload() {
+        serialQueue.sync {
+            reload()
+        }
+    }
+    
+     private func reload() {
         removeErrorView()
         if (items.count > 0) {
             self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),

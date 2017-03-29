@@ -15,7 +15,8 @@ import Willow
 struct TwitchService: GameService {
     
     let log: Logger
-    static let backgroundQueue = DispatchQueue(label: "com.lightsandshapes.response-queue", attributes: DispatchQueue.Attributes.concurrent)
+    static let backgroundQueue = DispatchQueue(label: "com.lightsandshapes.response-queue",
+                                               qos: .userInitiated, attributes: DispatchQueue.Attributes.concurrent)
 
     /**
      Initializes a new TwitchService used to interact with the Twitch API
