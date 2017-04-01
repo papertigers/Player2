@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Reusable
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -24,7 +25,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.register(cellType: SettingsCell.self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,26 +62,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(for: indexPath) as SettingsCell
         let settingsArray = self.settings[Section(rawValue: indexPath.section)!]!
-        cell.textLabel?.text = settingsArray[indexPath.row].text
-        cell.textLabel?.textColor = .white
-        
+        cell.settingLabel.text = settingsArray[indexPath.row].text
+        cell.settingLabel.textColor = .white
+        cell.layer.cornerRadius = 8
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        if let prevIndexPath = context.previouslyFocusedIndexPath {
-            let prevCell = tableView.cellForRow(at: prevIndexPath)
-            prevCell?.contentView.backgroundColor = .clear
-            prevCell?.textLabel?.textColor = .white
-        }
-        
-        if let nextIndexPath = context.nextFocusedIndexPath {
-            let nextCell = tableView.cellForRow(at: nextIndexPath)
-            nextCell?.contentView.backgroundColor = .white
-            nextCell?.textLabel?.textColor = .black
-        }
     }
 
     /*

@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import MarqueeLabel
+import Reusable
 
 typealias TwitchCellPresentable = ImagePresentable & TextPresentable
 
