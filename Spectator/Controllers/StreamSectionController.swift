@@ -10,7 +10,7 @@ import UIKit
 
 class StreamSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController, TitleBarDelegate {
     var adapter: ChannelsAdapter!
-    var game: TwitchGame!
+    var game: String!
     
     var titleBar: TitleBar?
     
@@ -21,12 +21,12 @@ class StreamSectionController: UIViewController, UICollectionViewDelegate, Twitc
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
-        titleBar?.titleLabel.text = game.name
+        titleBar?.titleLabel.text = game
         titleBar?.searchBar.isHidden = true
         titleBar?.delegate = self
         setupView(withConfig: StreamCollectionViewConfig())
         adapter = ChannelsAdapter(collectionView: collectionView!, game: self.game)
-        Flurry.logEvent("Get Streams", withParameters: ["Game": game.name])
+        Flurry.logEvent("Get Streams", withParameters: ["Game": game])
         setupCollectionView(withAdapter: adapter)
         adapter.safeLoad()
         

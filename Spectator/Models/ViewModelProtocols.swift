@@ -30,6 +30,7 @@ extension TextPresentable {
 
 struct ColorScheme {
     static let unselectedTextColor = UIColor(red:0.66, green:0.56, blue:0.84, alpha:1.0)
+    //static let backgroundColor = UIColor.black //OLED
     static let backgroundColor = UIColor(red:0.17, green:0.17, blue:0.17, alpha:1.0)
     // Titlebar
     static let titleBarBackgroundColor =  UIColor(red:0.39, green:0.25, blue:0.64, alpha:1.0)

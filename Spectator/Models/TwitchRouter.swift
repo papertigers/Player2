@@ -16,6 +16,7 @@ enum TwitchSearch: String {
 enum TwitchAPIVersion: String {
     case v2 = "application/vnd.twitchtv.v2+json"
     case v3 = "application/vnd.twitchtv.v3+json"
+    case v5 = "application/vnd.twitchtv.v5+json"
 }
 
 let CLIENT_ID  = "4t85h8m64oxmccc25iqpbg9amuy4x57"

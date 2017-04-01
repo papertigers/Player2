@@ -10,6 +10,10 @@
 		3B15512A1DE0E01C0079A7B9 /* ViewModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1551291DE0E01C0079A7B9 /* ViewModelProtocols.swift */; };
 		3B15512C1DE0E2940079A7B9 /* TwitchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B15512B1DE0E2940079A7B9 /* TwitchGameViewModel.swift */; };
 		3B15512E1DE0E4530079A7B9 /* TwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B15512D1DE0E4530079A7B9 /* TwitchCell.swift */; };
+		3B256F161E8C4F0B008A465C /* TwitchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49321D28EED70034A972 /* TwitchGame.swift */; };
+		3B256F171E8C4F0F008A465C /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
+		3B256F181E8C4F1E008A465C /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
+		3B256F191E8C4F39008A465C /* AdapterErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DF9301E36F7200043CD4C /* AdapterErrorView.swift */; };
 		3B2FFDB91DF4908400EFBCF3 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2FFDB81DF4908400EFBCF3 /* SearchResultsViewController.swift */; };
 		3B49C6F91D2B66C00097CDFC /* TwitchChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */; };
 		3B49C6FC1D2B6A140097CDFC /* ThirdPartyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6FB1D2B6A140097CDFC /* ThirdPartyExtensions.swift */; };
@@ -54,6 +58,10 @@
 		3BCBEA1C1E40351C00A80DE8 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBEA1B1E40351C00A80DE8 /* ServiceProvider.swift */; };
 		3BCBEA201E40351C00A80DE8 /* TopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3BCBEA171E40351C00A80DE8 /* TopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3BD0C2351DF22499006AD058 /* MarqueeLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */; };
+		3BF62CEA1E8B75D100B7CB39 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491A1D28C47D0034A972 /* Alamofire.framework */; };
+		3BF62CEB1E8B75D100B7CB39 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */; };
+		3BF62CEC1E8B760100B7CB39 /* TwitchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49181D28C3800034A972 /* TwitchRouter.swift */; };
+		3BF62CED1E8B761200B7CB39 /* TwitchChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49C6F81D2B66C00097CDFC /* TwitchChannel.swift */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
@@ -196,6 +204,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BCBEA191E40351C00A80DE8 /* TVServices.framework in Frameworks */,
+				3BF62CEA1E8B75D100B7CB39 /* Alamofire.framework in Frameworks */,
+				3BF62CEB1E8B75D100B7CB39 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +627,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B256F171E8C4F0F008A465C /* TwitchPreview.swift in Sources */,
+				3B256F191E8C4F39008A465C /* AdapterErrorView.swift in Sources */,
+				3B256F161E8C4F0B008A465C /* TwitchGame.swift in Sources */,
 				3BCBEA1C1E40351C00A80DE8 /* ServiceProvider.swift in Sources */,
+				3BF62CED1E8B761200B7CB39 /* TwitchChannel.swift in Sources */,
+				3BF62CEC1E8B760100B7CB39 /* TwitchRouter.swift in Sources */,
+				3B256F181E8C4F1E008A465C /* AdapterProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +848,10 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = ZPQ7DPPR5V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = TopShelf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2.TopShelf;
@@ -848,6 +868,10 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = ZPQ7DPPR5V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = TopShelf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightsandshapes.Player2.TopShelf;

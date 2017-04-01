@@ -10,6 +10,7 @@ import Foundation
 import OrderedSet
 import Kingfisher
 import Alamofire
+import UIKit
 
 let serialQueue = DispatchQueue(label: "com.lightsandshapes.serial-queue")
 

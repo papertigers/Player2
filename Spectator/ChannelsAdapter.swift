@@ -24,10 +24,10 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     var offset = 0
     var finished = false
     
-    let game: TwitchGame
+    let game: String
     
     
-    init(collectionView: UICollectionView, game: TwitchGame) {
+    init(collectionView: UICollectionView, game: String) {
         self.collectionView = collectionView
         self.diffCalculator = CollectionViewDiffCalculator<TwitchStream>(collectionView: collectionView)
         self.game = game
@@ -47,7 +47,7 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
                 }
             }
             if (streams.count == 0) {
-                self?.displayErrorView(error: "There are 0 streams for  \"\(self?.game.name ?? "this game")\"")
+                self?.displayErrorView(error: "There are 0 streams for  \"\(self?.game ?? "this game")\"")
             }
             self?.updateDatasource(withArray: streams)
         }

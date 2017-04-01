@@ -99,12 +99,12 @@ struct TwitchService: GameService {
      - parameter completionHandler: Callback called with possible array of top streams
 
     */
-    func streamsForGame(_ limit: Int = 25 , offset: Int = 0, game: TwitchGame, completionHandler: @escaping ((ServiceResult<[TwitchStream]>) -> Void)) {
+    func streamsForGame(_ limit: Int = 25 , offset: Int = 0, game: String, completionHandler: @escaping ((ServiceResult<[TwitchStream]>) -> Void)) {
         let parameteres = [
             "limit": limit,
             "offset": offset,
             "live": true,
-            "game": game.name
+            "game": game
         ] as [String : Any]
         Alamofire.request(tapi.streams(parameteres as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
             switch self.checkResponse(response) {
@@ -113,7 +113,7 @@ struct TwitchService: GameService {
                 guard let streams = json["streams"].array else {
                     return completionHandler(.failure(TwitchError.noStreams))
                 }
-                self.log.info{ "🎮 Got streams for game: \(game.name)" }
+                self.log.info{ "🎮 Got streams for game: \(game)" }
                 TwitchService.backgroundQueue.async {
                     let s = streams.flatMap { TwitchStream($0) }
                     DispatchQueue.main.async {

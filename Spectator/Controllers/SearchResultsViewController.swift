@@ -103,7 +103,7 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
         switch self.searchType {
         case .games:
             let streamsVC = storyboard.instantiateViewController(withIdentifier: "Streams") as! StreamSectionController
-            streamsVC.game = adapter.items[indexPath.row] as! TwitchGame
+            streamsVC.game = (adapter.items[indexPath.row] as! TwitchGame).name
             present(streamsVC, animated: true)
         case .streams:
             // Load the stream player here
