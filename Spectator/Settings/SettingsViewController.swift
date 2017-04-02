@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     let settings: [Section: [Settings]] = [
         .general: [Settings.login],
         .experience: [Settings.quality, Settings.theme],
-        .about: [Settings.acknowledgements]
+        .about: [Settings.acknowledgements, Settings.version]
     ]
 
     override func viewDidLoad() {
@@ -82,7 +82,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: - Animate the click
         let setting = self.settings[Section(rawValue: indexPath.section)!]![indexPath.row]
         if let segue = setting.segue {
             performSegue(withIdentifier: segue, sender: indexPath)
@@ -126,6 +125,7 @@ enum Settings {
     case theme
     case quality
     case acknowledgements
+    case version
 }
 
 protocol SettingsPresentable {
@@ -144,6 +144,8 @@ extension Settings: SettingsPresentable {
             return "Stream Quality"
         case .acknowledgements:
             return "Acknowledgements"
+        case .version:
+            return "Version"
         }
     }
     var subText: String {
@@ -156,6 +158,10 @@ extension Settings: SettingsPresentable {
             return "Best"
         case .acknowledgements:
             return ""
+        case .version:
+            let version = Bundle.main.releaseVersionNumber ?? ""
+            let build = Bundle.main.buildVersionNumber ?? ""
+            return "\(version) (\(build))"
         }
     }
 }
@@ -176,5 +182,14 @@ extension Settings {
         default:
             return nil
         }
+    }
+}
+
+extension Bundle {
+    var releaseVersionNumber: String? {
+        return infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    var buildVersionNumber: String? {
+        return infoDictionary?["CFBundleVersion"] as? String
     }
 }
