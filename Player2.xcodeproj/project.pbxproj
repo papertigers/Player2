@@ -60,6 +60,8 @@
 		3BFDB80B1E8F7A690050FBE1 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDB80A1E8F7A690050FBE1 /* SettingsCell.swift */; };
 		3BFDB80D1E90094D0050FBE1 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFDB80C1E90094D0050FBE1 /* SettingsCell.xib */; };
 		3BFDB80F1E900D990050FBE1 /* Reusable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFDB80E1E900D990050FBE1 /* Reusable.framework */; };
+		3BFDB8131E915BF40050FBE1 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDB8121E915BF40050FBE1 /* AcknowledgementsViewController.swift */; };
+		3BFDB8151E915D3C0050FBE1 /* Acknowledgements.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
@@ -158,6 +160,8 @@
 		3BFDB80A1E8F7A690050FBE1 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = Settings/SettingsCell.swift; sourceTree = "<group>"; };
 		3BFDB80C1E90094D0050FBE1 /* SettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsCell.xib; path = Settings/SettingsCell.xib; sourceTree = "<group>"; };
 		3BFDB80E1E900D990050FBE1 /* Reusable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reusable.framework; path = Carthage/Build/tvOS/Reusable.framework; sourceTree = "<group>"; };
+		3BFDB8121E915BF40050FBE1 /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcknowledgementsViewController.swift; path = Settings/AcknowledgementsViewController.swift; sourceTree = "<group>"; };
+		3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Acknowledgements.txt; path = Settings/Acknowledgements.txt; sourceTree = "<group>"; };
 		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
 		3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchPreview.swift; path = Models/TwitchPreview.swift; sourceTree = "<group>"; };
 		3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedStreamsSectionController.swift; path = Controllers/FeaturedStreamsSectionController.swift; sourceTree = "<group>"; };
@@ -404,6 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				3BFDB8081E8F5FBE0050FBE1 /* SettingsViewController.swift */,
+				3BFDB8121E915BF40050FBE1 /* AcknowledgementsViewController.swift */,
+				3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 			files = (
 				3BFDB80D1E90094D0050FBE1 /* SettingsCell.xib in Resources */,
 				3BAC49011D28C2450034A972 /* Assets.xcassets in Resources */,
+				3BFDB8151E915D3C0050FBE1 /* Acknowledgements.txt in Resources */,
 				3BAC48FF1D28C2450034A972 /* Main.storyboard in Resources */,
 				3BAE6CD11E065A6B0017CAEB /* Search.storyboard in Resources */,
 				E69DF92F1E36F5370043CD4C /* AdapterErrorView.xib in Resources */,
@@ -600,6 +607,7 @@
 				3BC00C671D2CABA900A2D90D /* M3UParser.swift in Sources */,
 				3B2FFDB91DF4908400EFBCF3 /* SearchResultsViewController.swift in Sources */,
 				3BB678F11DD8D06300420C2F /* GamesAdapter.swift in Sources */,
+				3BFDB8131E915BF40050FBE1 /* AcknowledgementsViewController.swift in Sources */,
 				3B5B380B1DE17DFF0069F64A /* SectionController.swift in Sources */,
 				3BB678EE1DD5329400420C2F /* GameSectionController.swift in Sources */,
 				3BB678F91DDA679400420C2F /* ChannelsAdapter.swift in Sources */,

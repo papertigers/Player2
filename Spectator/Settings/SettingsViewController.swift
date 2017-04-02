@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     let settings: [Section: [Settings]] = [
         .general: [Settings.login],
-        .experience: [Settings.theme],
+        .experience: [Settings.quality, Settings.theme],
         .about: [Settings.acknowledgements]
     ]
 
@@ -58,16 +58,41 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as? UITableViewHeaderFooterView
-        header?.textLabel?.textColor = .lightGray
+        header?.textLabel?.textColor = .gray
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as SettingsCell
-        let settingsArray = self.settings[Section(rawValue: indexPath.section)!]!
-        cell.settingLabel.text = settingsArray[indexPath.row].text
-        cell.settingLabel.textColor = .white
-        cell.layer.cornerRadius = 8
+        let setting = self.settings[Section(rawValue: indexPath.section)!]![indexPath.row]
+        cell.configure(withPresenter: setting)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        let setting = self.settings[Section(rawValue: indexPath.section)!]![indexPath.row]
+        return setting.shouldHighlight
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        // Do nothing
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        // Do nothing
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: - Animate the click
+        let setting = self.settings[Section(rawValue: indexPath.section)!]![indexPath.row]
+        if let segue = setting.segue {
+            performSegue(withIdentifier: segue, sender: indexPath)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Acknowledgements" {
+            print("TODO: segue setup")
+        }
     }
 
     /*
@@ -82,11 +107,24 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
 }
 
+// MARK: - SettingsViewController Extension
+extension SettingsViewController {
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        
+        var environments = [UIFocusEnvironment]()
+        if let parent = self.parent as? TabBarViewController {
+            environments = environments + [parent.tabBar]
+        }
+        return environments
+    }
+}
+
 // MARK: - Settings Enum
 
 enum Settings {
     case login
     case theme
+    case quality
     case acknowledgements
 }
 
@@ -102,6 +140,8 @@ extension Settings: SettingsPresentable {
             return "Login"
         case .theme:
             return "Theme"
+        case .quality:
+            return "Stream Quality"
         case .acknowledgements:
             return "Acknowledgements"
         }
@@ -112,8 +152,29 @@ extension Settings: SettingsPresentable {
             return "(Coming Soon)"
         case .theme:
             return "Default"
+        case .quality:
+            return "Best"
         case .acknowledgements:
             return ""
+        }
+    }
+}
+
+extension Settings {
+    var shouldHighlight: Bool {
+        switch self {
+        case .acknowledgements:
+            return true
+        default:
+            return false
+        }
+    }
+    var segue: String? {
+        switch self {
+        case .acknowledgements:
+            return "Acknowledgements"
+        default:
+            return nil
         }
     }
 }

@@ -22,15 +22,25 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZU-av-1nU">
+                    <rect key="frame" x="998" y="517" width="892" height="46"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="KFh-5y-xZE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="6Mu-2P-yuz"/>
+                <constraint firstItem="1ZU-av-1nU" firstAttribute="leading" secondItem="KFh-5y-xZE" secondAttribute="trailing" constant="8" id="DLL-CR-B4N"/>
+                <constraint firstAttribute="trailing" secondItem="1ZU-av-1nU" secondAttribute="trailing" constant="30" id="MxM-iJ-HSp"/>
                 <constraint firstItem="KFh-5y-xZE" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2" id="PNq-Bo-66d"/>
                 <constraint firstItem="KFh-5y-xZE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YEz-vI-aqJ"/>
+                <constraint firstItem="1ZU-av-1nU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rCf-M1-3mk"/>
             </constraints>
             <connections>
                 <outlet property="settingLabel" destination="KFh-5y-xZE" id="p86-nh-L2w"/>
+                <outlet property="subText" destination="1ZU-av-1nU" id="8wH-wx-5yB"/>
             </connections>
         </view>
     </objects>

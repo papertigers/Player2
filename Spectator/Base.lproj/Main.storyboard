@@ -143,7 +143,7 @@
                                             <constraint firstItem="eQw-ha-Qgd" firstAttribute="leading" secondItem="NIF-SJ-5OL" secondAttribute="leading" id="wxT-Yo-6qR"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="91L-PB-iVr">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" sectionHeaderHeight="100" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="91L-PB-iVr">
                                         <rect key="frame" x="80" y="128" width="800" height="952"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -178,11 +178,69 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="b2L-s6-TyG"/>
                     <connections>
                         <outlet property="tableView" destination="91L-PB-iVr" id="R8U-6c-ixY"/>
+                        <segue destination="RAi-vG-7EA" kind="showDetail" identifier="Acknowledgements" id="4w9-Xv-xag"/>
+                        <segue destination="FHJ-nc-wsJ" kind="showDetail" id="6k0-tS-UD7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9i-U5-uWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1750" y="3633"/>
+            <point key="canvasLocation" x="-1750" y="10262"/>
+        </scene>
+        <!--Acknowledgements View Controller-->
+        <scene sceneID="E8B-Wf-9L7">
+            <objects>
+                <viewController id="RAi-vG-7EA" customClass="AcknowledgementsViewController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hfo-zj-w8V"/>
+                        <viewControllerLayoutGuide type="bottom" id="cyc-tk-i9W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gRe-x3-cEh">
+                        <rect key="frame" x="0.0" y="0.0" width="1285" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" indicatorStyle="white" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-hU-zEl">
+                                <rect key="frame" x="100" y="100" width="1085" height="880"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16873978079999999" green="0.16873981060000001" blue="0.16873948280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="gWQ-hU-zEl" firstAttribute="centerX" secondItem="gRe-x3-cEh" secondAttribute="centerX" id="2UG-zu-Bvw"/>
+                            <constraint firstItem="gWQ-hU-zEl" firstAttribute="centerY" secondItem="gRe-x3-cEh" secondAttribute="centerY" id="Bqe-a7-vUe"/>
+                            <constraint firstItem="gWQ-hU-zEl" firstAttribute="leading" secondItem="gRe-x3-cEh" secondAttribute="leading" constant="100" id="ahm-ye-NSK"/>
+                            <constraint firstItem="gWQ-hU-zEl" firstAttribute="top" secondItem="Hfo-zj-w8V" secondAttribute="bottom" constant="100" id="dFA-m0-Gdi"/>
+                            <constraint firstItem="cyc-tk-i9W" firstAttribute="top" secondItem="gWQ-hU-zEl" secondAttribute="bottom" constant="100" id="dZB-hR-3ht"/>
+                            <constraint firstAttribute="trailing" secondItem="gWQ-hU-zEl" secondAttribute="trailing" constant="100" id="eVv-S2-V8F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="text" destination="gWQ-hU-zEl" id="48D-eu-c7T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JRB-P5-hFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="8282"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Mf2-ie-PHR">
+            <objects>
+                <viewController id="FHJ-nc-wsJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pxl-zl-VbO"/>
+                        <viewControllerLayoutGuide type="bottom" id="otb-8q-SVA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="74k-32-WCs">
+                        <rect key="frame" x="0.0" y="0.0" width="1285" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1p-rX-FFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="10262"/>
         </scene>
         <!--Title Bar-->
         <scene sceneID="vga-Pe-z2S">
