@@ -57,19 +57,6 @@ class SettingsCell: UITableViewCell, NibReusable {
         
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        if (selected) {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
-            }, completion: { finished in
-                // Set back
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.transform = CGAffineTransform.identity
-                })
-            })
-        }
-    }
-    
  
     func setShadow(on: Bool) {
         if on {

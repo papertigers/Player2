@@ -1,3 +1,6 @@
+Player2 is powered by the Twitch API.
+
+
 ## Alamofire
 
 

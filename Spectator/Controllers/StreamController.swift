@@ -28,7 +28,11 @@ class StreamController: AVPlayerViewController {
                 return
             }
             
-            let chunked = streams.filter({$0.quality == "chunked"}).first
+            let userDefaults = UserDefaults.standard
+            let value  = userDefaults.integer(forKey: "VideoQuality")
+            let quality = StreamQuality(rawValue: value) ?? StreamQuality.source
+            
+            let chunked = streams.filter({$0.quality == quality.qualityValue}).first
             Flurry.logEvent("Streaming", withParameters: ["Streamer": self?.stream.channel.name ?? "Unknown", "Game": self?.stream.game ?? "Unknown"])
             self?.player = AVPlayer(url: chunked!.url)
             self?.player?.play()

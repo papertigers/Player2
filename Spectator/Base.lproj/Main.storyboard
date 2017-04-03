@@ -179,7 +179,7 @@
                     <connections>
                         <outlet property="tableView" destination="91L-PB-iVr" id="R8U-6c-ixY"/>
                         <segue destination="RAi-vG-7EA" kind="showDetail" identifier="Acknowledgements" id="4w9-Xv-xag"/>
-                        <segue destination="FHJ-nc-wsJ" kind="showDetail" id="6k0-tS-UD7"/>
+                        <segue destination="FHJ-nc-wsJ" kind="presentation" identifier="Quality" id="Kdk-LM-2fX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9i-U5-uWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -223,24 +223,121 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRB-P5-hFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="8282"/>
+            <point key="canvasLocation" x="722" y="10262"/>
         </scene>
-        <!--View Controller-->
+        <!--Quality View Controller-->
         <scene sceneID="Mf2-ie-PHR">
             <objects>
-                <viewController id="FHJ-nc-wsJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Video Quality" id="FHJ-nc-wsJ" customClass="QualityViewController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pxl-zl-VbO"/>
                         <viewControllerLayoutGuide type="bottom" id="otb-8q-SVA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="74k-32-WCs">
-                        <rect key="frame" x="0.0" y="0.0" width="1285" height="1080"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i73-ek-mSb">
+                                <rect key="frame" x="692" y="185" width="537" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="537" id="JtO-o1-2ch"/>
+                                    <constraint firstAttribute="height" constant="86" id="RtJ-QS-sKI"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Source"/>
+                                <connections>
+                                    <action selector="handleButton:" destination="FHJ-nc-wsJ" eventType="primaryActionTriggered" id="bNP-tC-RNb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgO-bq-JPI">
+                                <rect key="frame" x="692" y="295" width="537" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="537" id="QUx-iv-Uua"/>
+                                    <constraint firstAttribute="height" constant="86" id="np7-z4-mVg"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="High"/>
+                                <connections>
+                                    <action selector="handleButton:" destination="FHJ-nc-wsJ" eventType="primaryActionTriggered" id="7hu-u3-QHE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ia2-C8-n4d">
+                                <rect key="frame" x="692" y="405" width="537" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="9y1-Wf-HfC"/>
+                                    <constraint firstAttribute="width" constant="537" id="RJv-Pv-vXW"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Medium"/>
+                                <connections>
+                                    <action selector="handleButton:" destination="FHJ-nc-wsJ" eventType="primaryActionTriggered" id="Cx1-uL-Rxn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-4f-zhH">
+                                <rect key="frame" x="692" y="515" width="537" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="5sQ-a5-Deq"/>
+                                    <constraint firstAttribute="width" constant="537" id="P1W-6l-UG6"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Low"/>
+                                <connections>
+                                    <action selector="handleButton:" destination="FHJ-nc-wsJ" eventType="primaryActionTriggered" id="Kyi-pw-8LB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iml-I0-V9r">
+                                <rect key="frame" x="692" y="625" width="537" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="Lwa-Js-FCd"/>
+                                    <constraint firstAttribute="width" constant="537" id="RoR-90-tx6"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Mobile"/>
+                                <connections>
+                                    <action selector="handleButton:" destination="FHJ-nc-wsJ" eventType="primaryActionTriggered" id="h5c-FK-Kdd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdB-QZ-MFK">
+                                <rect key="frame" x="692" y="735" width="537" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="8Ws-pK-77e"/>
+                                    <constraint firstAttribute="width" constant="537" id="Her-lc-kAL"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Audio"/>
+                                <connections>
+                                    <action selector="handleButton:" destination="FHJ-nc-wsJ" eventType="primaryActionTriggered" id="8tx-vB-A5e"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DdB-QZ-MFK" firstAttribute="centerX" secondItem="74k-32-WCs" secondAttribute="centerX" id="0wR-3s-eOY"/>
+                            <constraint firstItem="i73-ek-mSb" firstAttribute="centerX" secondItem="74k-32-WCs" secondAttribute="centerX" id="8z7-5V-Zll"/>
+                            <constraint firstItem="HI5-4f-zhH" firstAttribute="centerX" secondItem="74k-32-WCs" secondAttribute="centerX" id="9T0-rC-fdi"/>
+                            <constraint firstItem="MgO-bq-JPI" firstAttribute="top" secondItem="i73-ek-mSb" secondAttribute="bottom" constant="24" id="A4g-A5-Xuh"/>
+                            <constraint firstItem="i73-ek-mSb" firstAttribute="top" secondItem="pxl-zl-VbO" secondAttribute="bottom" constant="185" id="Pce-ea-5Cl"/>
+                            <constraint firstItem="Iml-I0-V9r" firstAttribute="top" secondItem="HI5-4f-zhH" secondAttribute="bottom" constant="24" id="SSV-sg-JmN"/>
+                            <constraint firstItem="ia2-C8-n4d" firstAttribute="top" secondItem="MgO-bq-JPI" secondAttribute="bottom" constant="24" id="XOa-Yp-uQm"/>
+                            <constraint firstItem="HI5-4f-zhH" firstAttribute="top" secondItem="ia2-C8-n4d" secondAttribute="bottom" constant="24" id="hke-YO-GLP"/>
+                            <constraint firstItem="Iml-I0-V9r" firstAttribute="centerX" secondItem="74k-32-WCs" secondAttribute="centerX" id="rNv-TL-Svl"/>
+                            <constraint firstItem="MgO-bq-JPI" firstAttribute="centerX" secondItem="74k-32-WCs" secondAttribute="centerX" id="tNA-q0-ud2"/>
+                            <constraint firstItem="ia2-C8-n4d" firstAttribute="centerX" secondItem="74k-32-WCs" secondAttribute="centerX" id="toz-5p-Kgs"/>
+                            <constraint firstItem="DdB-QZ-MFK" firstAttribute="top" secondItem="Iml-I0-V9r" secondAttribute="bottom" constant="24" id="yJu-Jm-NMe"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="audioButton" destination="DdB-QZ-MFK" id="gYO-0q-eMu"/>
+                        <outlet property="highButton" destination="MgO-bq-JPI" id="ejP-uk-jV3"/>
+                        <outlet property="lowButton" destination="HI5-4f-zhH" id="gfN-SK-5k8"/>
+                        <outlet property="mediumButton" destination="ia2-C8-n4d" id="EIf-cr-mhy"/>
+                        <outlet property="mobileButton" destination="Iml-I0-V9r" id="NRE-lp-3pZ"/>
+                        <outlet property="sourceButton" destination="i73-ek-mSb" id="H2y-FQ-nSl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1p-rX-FFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="10262"/>
+            <point key="canvasLocation" x="722" y="8726"/>
         </scene>
         <!--Title Bar-->
         <scene sceneID="vga-Pe-z2S">

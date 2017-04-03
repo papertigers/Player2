@@ -9,8 +9,14 @@
 import UIKit
 import Reusable
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol UpdateSettingsDelegate: class {
+    func updateSettings()
+}
+
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateSettingsDelegate {
     @IBOutlet weak var tableView: UITableView!
+    
+    var focuseTableView = false
     
     enum Section: Int {
         case general = 0, experience, about
@@ -18,7 +24,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     let settings: [Section: [Settings]] = [
         .general: [Settings.login],
-        .experience: [Settings.quality, Settings.theme],
+        .experience: [Settings.quality],
         .about: [Settings.acknowledgements, Settings.version]
     ]
 
@@ -26,6 +32,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         tableView.register(cellType: SettingsCell.self)
+        tableView.remembersLastFocusedIndexPath = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        
+        self.tableView.setNeedsDisplay()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,8 +82,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        // Uncoment the following to only allow selction of settings based on shouldHighlight property
         let setting = self.settings[Section(rawValue: indexPath.section)!]![indexPath.row]
         return setting.shouldHighlight
+        //return true
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
@@ -83,14 +98,29 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let setting = self.settings[Section(rawValue: indexPath.section)!]![indexPath.row]
-        if let segue = setting.segue {
-            performSegue(withIdentifier: segue, sender: indexPath)
-        }
+        let cell = self.tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.1, animations: {
+            cell?.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+        }, completion: { (val) in
+            UIView.animate(withDuration: 0.1, animations: {
+                cell?.transform = CGAffineTransform.identity
+            }, completion: { (_) in
+                if let segue = setting.segue {
+                    self.performSegue(withIdentifier: segue, sender: indexPath)
+                }
+                
+            })
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Acknowledgements" {
-            print("TODO: segue setup")
+        if segue.identifier == Settings.quality.segue {
+            let qualityVC = segue.destination as! QualityViewController
+            qualityVC.delegate = self
+            let userDefaults = UserDefaults.standard
+            let value  = userDefaults.integer(forKey: "VideoQuality")
+            let quality = StreamQuality(rawValue: value) ?? StreamQuality.source
+            qualityVC.focusItem = quality.rawValue
         }
     }
 
@@ -103,6 +133,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - UpdateSettingsDelegate
+    func updateSettings() {
+        self.focuseTableView = true
+        self.tableView.reloadData()
+    }
 
 }
 
@@ -111,6 +147,10 @@ extension SettingsViewController {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         
         var environments = [UIFocusEnvironment]()
+        if focuseTableView {
+            environments = environments + [self.tableView]
+            self.focuseTableView = false
+        }
         if let parent = self.parent as? TabBarViewController {
             environments = environments + [parent.tabBar]
         }
@@ -155,7 +195,10 @@ extension Settings: SettingsPresentable {
         case .theme:
             return "Default"
         case .quality:
-            return "Best"
+            let userDefaults = UserDefaults.standard
+            let value  = userDefaults.integer(forKey: "VideoQuality")
+            let quality = StreamQuality(rawValue: value) ?? StreamQuality.source
+            return quality.qualityString
         case .acknowledgements:
             return ""
         case .version:
@@ -171,6 +214,8 @@ extension Settings {
         switch self {
         case .acknowledgements:
             return true
+        case .quality:
+            return true
         default:
             return false
         }
@@ -179,6 +224,8 @@ extension Settings {
         switch self {
         case .acknowledgements:
             return "Acknowledgements"
+        case .quality:
+            return "Quality"
         default:
             return nil
         }

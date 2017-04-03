@@ -62,6 +62,7 @@
 		3BFDB80F1E900D990050FBE1 /* Reusable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFDB80E1E900D990050FBE1 /* Reusable.framework */; };
 		3BFDB8131E915BF40050FBE1 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDB8121E915BF40050FBE1 /* AcknowledgementsViewController.swift */; };
 		3BFDB8151E915D3C0050FBE1 /* Acknowledgements.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */; };
+		3BFDB8171E92FAFE0050FBE1 /* QualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDB8161E92FAFE0050FBE1 /* QualityViewController.swift */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
@@ -162,6 +163,7 @@
 		3BFDB80E1E900D990050FBE1 /* Reusable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reusable.framework; path = Carthage/Build/tvOS/Reusable.framework; sourceTree = "<group>"; };
 		3BFDB8121E915BF40050FBE1 /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcknowledgementsViewController.swift; path = Settings/AcknowledgementsViewController.swift; sourceTree = "<group>"; };
 		3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Acknowledgements.txt; path = Settings/Acknowledgements.txt; sourceTree = "<group>"; };
+		3BFDB8161E92FAFE0050FBE1 /* QualityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualityViewController.swift; path = Settings/QualityViewController.swift; sourceTree = "<group>"; };
 		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
 		3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchPreview.swift; path = Models/TwitchPreview.swift; sourceTree = "<group>"; };
 		3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedStreamsSectionController.swift; path = Controllers/FeaturedStreamsSectionController.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				3BFDB8081E8F5FBE0050FBE1 /* SettingsViewController.swift */,
 				3BFDB8121E915BF40050FBE1 /* AcknowledgementsViewController.swift */,
 				3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */,
+				3BFDB8161E92FAFE0050FBE1 /* QualityViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				3BFDB80B1E8F7A690050FBE1 /* SettingsCell.swift in Sources */,
 				3BAE6CD31E065A990017CAEB /* NewSearchResultsViewController.swift in Sources */,
 				3BC264B61DF0D30A00977AB7 /* TitleBar.swift in Sources */,
+				3BFDB8171E92FAFE0050FBE1 /* QualityViewController.swift in Sources */,
 				3BC264B31DEF966C00977AB7 /* FlurryEmpty.m in Sources */,
 				3BAC492D1D28CF750034A972 /* TwitchService.swift in Sources */,
 				3B5B37FD1DE0E8A40069F64A /* TwitchStreamViewModel.swift in Sources */,
