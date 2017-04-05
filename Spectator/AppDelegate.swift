@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set maximum StreamCell cache duration for Kingfisher to 1hr
         P2ImageCache.StreamCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 1)
         
+        
         //Setup SearchController
         
         if let tabBarController =  self.window?.rootViewController as? TabBarViewController {

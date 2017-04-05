@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SettingsCell" customModule="Player2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFh-5y-xZE">
+                    <rect key="frame" x="30" y="517" width="960" height="46"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZU-av-1nU">
+                    <rect key="frame" x="998" y="517" width="892" height="46"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KFh-5y-xZE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="6Mu-2P-yuz"/>
+                <constraint firstItem="1ZU-av-1nU" firstAttribute="leading" secondItem="KFh-5y-xZE" secondAttribute="trailing" constant="8" id="DLL-CR-B4N"/>
+                <constraint firstAttribute="trailing" secondItem="1ZU-av-1nU" secondAttribute="trailing" constant="30" id="MxM-iJ-HSp"/>
+                <constraint firstItem="KFh-5y-xZE" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2" id="PNq-Bo-66d"/>
+                <constraint firstItem="KFh-5y-xZE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YEz-vI-aqJ"/>
+                <constraint firstItem="1ZU-av-1nU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rCf-M1-3mk"/>
+            </constraints>
+            <connections>
+                <outlet property="settingLabel" destination="KFh-5y-xZE" id="p86-nh-L2w"/>
+                <outlet property="subText" destination="1ZU-av-1nU" id="8wH-wx-5yB"/>
+            </connections>
+        </view>
+    </objects>
+</document>
