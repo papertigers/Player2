@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import SwiftyStoreKit
+import COLORAdFramework
 
 class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController, TitleBarDelegate {
     var adapter: GamesAdapter!
     var titleBar: TitleBar?
     var shouldFocusTitleBar = false
+    var ad: UIViewController?
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerViewController: UIView!
@@ -26,11 +29,32 @@ class GameSectionController: UIViewController, UICollectionViewDelegate, TwitchS
         adapter = GamesAdapter(collectionView: collectionView!, type: .Normal)
         setupCollectionView(withAdapter: adapter)
         adapter?.safeLoad()
+        
+        COLORAdController.sharedAdController().adViewController(forPlacement: "VideoStart", withCompletion: { (vc , error) in
+            guard let vc = vc else {
+                print("Failed to initialize ad view controller")
+                return
+            }
+            
+            vc.addCompletionHandler({ (video) in
+                self.dismiss(animated: true, completion: nil)
+                self.ad = nil
+            })
+            
+            self.ad = vc
+            
+        }, expirationHandler: { (expiredVc) in
+            self.ad = nil
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(adapter.items[indexPath.row])
-        performSegue(withIdentifier: "showchannels", sender: indexPath)
+        if let adVC = self.ad {
+            self.present(adVC, animated: false)
+        } else {
+            performSegue(withIdentifier: "showchannels", sender: indexPath)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

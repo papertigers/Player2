@@ -10,6 +10,9 @@ import UIKit
 
 import Kingfisher
 import SwiftyStoreKit
+import COLORAdFramework
+
+let removeAdsIAP = "com.lightsandshapes.Player2.RemoveAds"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //if let tabBarController =  self.window?.rootViewController as? TabBarViewController {
             //tabBarController.viewControllers?.append(searchContainterDisplay())
         //}
+        
+        // Setup Ads
+        COLORAdController.sharedAdController().start(withAppIdentifier: "493d9694-1386-4da0-b63a-6f85f4dc4fcb")
         
         // Setup StoreKit
         setUpStoreKit()
@@ -125,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Test products
-        SwiftyStoreKit.retrieveProductsInfo(["com.lightsandshapes.Player2.RemoveAds"]) { result in
+        SwiftyStoreKit.retrieveProductsInfo([removeAdsIAP]) { result in
             if let product = result.retrievedProducts.first {
                 let priceString = product.localizedPrice!
                 print("Product: \(product.localizedDescription), price: \(priceString)")

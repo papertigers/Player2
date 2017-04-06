@@ -52,6 +52,9 @@
 		3BCBEA1C1E40351C00A80DE8 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCBEA1B1E40351C00A80DE8 /* ServiceProvider.swift */; };
 		3BCBEA201E40351C00A80DE8 /* TopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3BCBEA171E40351C00A80DE8 /* TopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3BD0C2351DF22499006AD058 /* MarqueeLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */; };
+		3BEFEBE91E96EA3C00FF2A5A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEFEBE81E96EA3C00FF2A5A /* StoreKit.framework */; };
+		3BEFEBFC1E96F67C00FF2A5A /* COLORAdFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEFEBFB1E96F67C00FF2A5A /* COLORAdFramework.framework */; };
+		3BEFEBFD1E96F67C00FF2A5A /* COLORAdFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEFEBFB1E96F67C00FF2A5A /* COLORAdFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3BF62CEA1E8B75D100B7CB39 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491A1D28C47D0034A972 /* Alamofire.framework */; };
 		3BF62CEB1E8B75D100B7CB39 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC491D1D28C47D0034A972 /* SwiftyJSON.framework */; };
 		3BF62CEC1E8B760100B7CB39 /* TwitchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC49181D28C3800034A972 /* TwitchRouter.swift */; };
@@ -64,7 +67,6 @@
 		3BFDB8151E915D3C0050FBE1 /* Acknowledgements.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */; };
 		3BFDB8171E92FAFE0050FBE1 /* QualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDB8161E92FAFE0050FBE1 /* QualityViewController.swift */; };
 		3BFDB8191E96ACE50050FBE1 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFDB8181E96ACE50050FBE1 /* SwiftyStoreKit.framework */; };
-		3BFDB81B1E96E0870050FBE1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFDB81A1E96E0870050FBE1 /* StoreKit.framework */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
@@ -103,6 +105,17 @@
 				3BCBEA201E40351C00A80DE8 /* TopShelf.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BEFEBFE1E96F67C00FF2A5A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3BEFEBFD1E96F67C00FF2A5A /* COLORAdFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -159,6 +172,9 @@
 		3BCBEA1D1E40351C00A80DE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabel.framework; path = Carthage/Build/tvOS/MarqueeLabel.framework; sourceTree = "<group>"; };
 		3BD0C2331DF22469006AD058 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3BEFEBE81E96EA3C00FF2A5A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3BEFEBEA1E96EE5700FF2A5A /* COLORAdFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = COLORAdFramework.framework; path = "../../Downloads/Color-tvOS-SDK-2.5.0/ColorTV Framework/COLORAdFramework.framework"; sourceTree = "<group>"; };
+		3BEFEBFB1E96F67C00FF2A5A /* COLORAdFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = COLORAdFramework.framework; sourceTree = SOURCE_ROOT; };
 		3BFDB8081E8F5FBE0050FBE1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		3BFDB80A1E8F7A690050FBE1 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = Settings/SettingsCell.swift; sourceTree = "<group>"; };
 		3BFDB80C1E90094D0050FBE1 /* SettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsCell.xib; path = Settings/SettingsCell.xib; sourceTree = "<group>"; };
@@ -167,7 +183,6 @@
 		3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Acknowledgements.txt; path = Settings/Acknowledgements.txt; sourceTree = "<group>"; };
 		3BFDB8161E92FAFE0050FBE1 /* QualityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualityViewController.swift; path = Settings/QualityViewController.swift; sourceTree = "<group>"; };
 		3BFDB8181E96ACE50050FBE1 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyStoreKit.framework; path = Carthage/Build/tvOS/SwiftyStoreKit.framework; sourceTree = "<group>"; };
-		3BFDB81A1E96E0870050FBE1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
 		3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchPreview.swift; path = Models/TwitchPreview.swift; sourceTree = "<group>"; };
 		3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedStreamsSectionController.swift; path = Controllers/FeaturedStreamsSectionController.swift; sourceTree = "<group>"; };
@@ -184,8 +199,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BFDB81B1E96E0870050FBE1 /* StoreKit.framework in Frameworks */,
+				3BEFEBFC1E96F67C00FF2A5A /* COLORAdFramework.framework in Frameworks */,
 				3BB679011DDA73A100420C2F /* AVKit.framework in Frameworks */,
+				3BEFEBE91E96EA3C00FF2A5A /* StoreKit.framework in Frameworks */,
 				3BAC49271D28C52A0034A972 /* Alamofire.framework in Frameworks */,
 				3BAC49281D28C52A0034A972 /* KeychainSwift.framework in Frameworks */,
 				3BB678EC1DD27DE800420C2F /* SwiftyJSON.framework in Frameworks */,
@@ -235,6 +251,7 @@
 		3BAC48EB1D28C2450034A972 = {
 			isa = PBXGroup;
 			children = (
+				3BEFEBFB1E96F67C00FF2A5A /* COLORAdFramework.framework */,
 				3BAC492E1D28DB510034A972 /* Willow.framework */,
 				3BAC491A1D28C47D0034A972 /* Alamofire.framework */,
 				3BAC491B1D28C47D0034A972 /* KeychainSwift.framework */,
@@ -339,7 +356,8 @@
 		3BB678F51DD8DD2300420C2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3BFDB81A1E96E0870050FBE1 /* StoreKit.framework */,
+				3BEFEBEA1E96EE5700FF2A5A /* COLORAdFramework.framework */,
+				3BEFEBE81E96EA3C00FF2A5A /* StoreKit.framework */,
 				3BFDB8181E96ACE50050FBE1 /* SwiftyStoreKit.framework */,
 				3BFDB80E1E900D990050FBE1 /* Reusable.framework */,
 				3BD0C2331DF22469006AD058 /* QuartzCore.framework */,
@@ -437,6 +455,7 @@
 				3BAC48F21D28C2450034A972 /* Resources */,
 				3BAC492B1D28C54B0034A972 /* ShellScript */,
 				3BCBEA241E40351C00A80DE8 /* Embed App Extensions */,
+				3BEFEBFE1E96F67C00FF2A5A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -790,6 +809,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+					"$(PROJECT_DIR)/Spectator",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Spectator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -820,6 +841,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+					"$(PROJECT_DIR)/Spectator",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Spectator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
