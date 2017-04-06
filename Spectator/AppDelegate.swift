@@ -9,6 +9,7 @@
 import UIKit
 
 import Kingfisher
+import SwiftyStoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,9 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup SearchController
         
-        if let tabBarController =  self.window?.rootViewController as? TabBarViewController {
+        //if let tabBarController =  self.window?.rootViewController as? TabBarViewController {
             //tabBarController.viewControllers?.append(searchContainterDisplay())
-        }
+        //}
+        
+        // Setup StoreKit
+        setUpStoreKit()
         
         return true
     }
@@ -61,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    // MARK: Custom URL scheme
+    // MARK: - Custom URL scheme
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if (url.path == "/game") {
             let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
@@ -84,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    // MARK: SearchController
+    // MARK: - SearchController
     
     func searchContainterDisplay() -> UIViewController {
         let sb = UIStoryboard(name: "Search", bundle: nil)
@@ -102,5 +106,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let searchNavigationController = UINavigationController(rootViewController: searchContainer)
         return searchNavigationController
     }
+    
+    // MARK: - SwiftyStoreKit
+    func setUpStoreKit() {
+        SwiftyStoreKit.completeTransactions(atomically: true) { products in
+            
+            for product in products {
+                print(product)
+                if product.transaction.transactionState == .purchased || product.transaction.transactionState == .restored {
+                    
+                    if product.needsFinishTransaction {
+                        // Deliver content from server, then:
+                        SwiftyStoreKit.finishTransaction(product.transaction)
+                    }
+                    print("purchased: \(product)")
+                }
+            }
+        }
+        
+        // Test products
+        SwiftyStoreKit.retrieveProductsInfo(["com.lightsandshapes.Player2.RemoveAds"]) { result in
+            if let product = result.retrievedProducts.first {
+                let priceString = product.localizedPrice!
+                print("Product: \(product.localizedDescription), price: \(priceString)")
+            } else {
+                print("Invalid: ")
+                print(result.invalidProductIDs)
+            }
+        }
+    }
 }
+
 

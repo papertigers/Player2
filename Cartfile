@@ -7,3 +7,4 @@ github "papertigers/Dwifft" "master"
 github "papertigers/OrderedSet" "master"
 github "cbpowell/MarqueeLabel" ~> 3.0
 github "AliSoftware/Reusable" ~> 4.0
+github "bizz84/SwiftyStoreKit"

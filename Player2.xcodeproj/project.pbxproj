@@ -63,6 +63,8 @@
 		3BFDB8131E915BF40050FBE1 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDB8121E915BF40050FBE1 /* AcknowledgementsViewController.swift */; };
 		3BFDB8151E915D3C0050FBE1 /* Acknowledgements.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */; };
 		3BFDB8171E92FAFE0050FBE1 /* QualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDB8161E92FAFE0050FBE1 /* QualityViewController.swift */; };
+		3BFDB8191E96ACE50050FBE1 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFDB8181E96ACE50050FBE1 /* SwiftyStoreKit.framework */; };
+		3BFDB81B1E96E0870050FBE1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFDB81A1E96E0870050FBE1 /* StoreKit.framework */; };
 		3BFE1E8B1DED04DD008D6478 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */; };
 		3BFE1E8D1DEE06F0008D6478 /* TwitchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */; };
 		3BFE1E8F1DEE123C008D6478 /* FeaturedStreamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */; };
@@ -164,6 +166,8 @@
 		3BFDB8121E915BF40050FBE1 /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcknowledgementsViewController.swift; path = Settings/AcknowledgementsViewController.swift; sourceTree = "<group>"; };
 		3BFDB8141E915D3C0050FBE1 /* Acknowledgements.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Acknowledgements.txt; path = Settings/Acknowledgements.txt; sourceTree = "<group>"; };
 		3BFDB8161E92FAFE0050FBE1 /* QualityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualityViewController.swift; path = Settings/QualityViewController.swift; sourceTree = "<group>"; };
+		3BFDB8181E96ACE50050FBE1 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyStoreKit.framework; path = Carthage/Build/tvOS/SwiftyStoreKit.framework; sourceTree = "<group>"; };
+		3BFDB81A1E96E0870050FBE1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3BFE1E8A1DED04DD008D6478 /* AdapterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdapterProtocols.swift; sourceTree = "<group>"; };
 		3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchPreview.swift; path = Models/TwitchPreview.swift; sourceTree = "<group>"; };
 		3BFE1E8E1DEE123C008D6478 /* FeaturedStreamsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedStreamsSectionController.swift; path = Controllers/FeaturedStreamsSectionController.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BFDB81B1E96E0870050FBE1 /* StoreKit.framework in Frameworks */,
 				3BB679011DDA73A100420C2F /* AVKit.framework in Frameworks */,
 				3BAC49271D28C52A0034A972 /* Alamofire.framework in Frameworks */,
 				3BAC49281D28C52A0034A972 /* KeychainSwift.framework in Frameworks */,
@@ -190,6 +195,7 @@
 				3BB678F71DD8DD2400420C2F /* Kingfisher.framework in Frameworks */,
 				3BC264B41DEF966C00977AB7 /* libFlurry_7.8.2.a in Frameworks */,
 				3BFE1E971DEF7F21008D6478 /* OrderedSet.framework in Frameworks */,
+				3BFDB8191E96ACE50050FBE1 /* SwiftyStoreKit.framework in Frameworks */,
 				3BFE1E951DEF66D3008D6478 /* Dwifft_tvOS.framework in Frameworks */,
 				3BD0C2351DF22499006AD058 /* MarqueeLabel.framework in Frameworks */,
 			);
@@ -333,6 +339,8 @@
 		3BB678F51DD8DD2300420C2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BFDB81A1E96E0870050FBE1 /* StoreKit.framework */,
+				3BFDB8181E96ACE50050FBE1 /* SwiftyStoreKit.framework */,
 				3BFDB80E1E900D990050FBE1 /* Reusable.framework */,
 				3BD0C2331DF22469006AD058 /* QuartzCore.framework */,
 				3BD0C2311DF222BC006AD058 /* MarqueeLabel.framework */,
@@ -490,6 +498,11 @@
 						DevelopmentTeam = ZPQ7DPPR5V;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					3BAC49061D28C2450034A972 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -570,6 +583,7 @@
 				"$(SRCROOT)/Carthage/Build/tvOS/Dwifft_tvOS.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/OrderedSet.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/MarqueeLabel.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/SwiftyStoreKit.framework",
 			);
 			outputPaths = (
 			);
