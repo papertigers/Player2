@@ -79,7 +79,7 @@ class SearchResultsViewController<T: TwitchSearchAdapter>: UIViewController, UIC
     }
     
     func setupConstraints() {
-        let views = ["titleBar": containerViewController, "collectionView": collectionView]
+        let views: [String:UIView] = ["titleBar": containerViewController, "collectionView": collectionView]
         let titleBarHorizontalPin = NSLayoutConstraint.constraints(withVisualFormat: "H:|[titleBar]|", options: [], metrics: nil, views: views)
         let titleBarVerticalPin = NSLayoutConstraint.constraints(withVisualFormat: "V:|[titleBar(120)]", options: [], metrics: nil, views: views)
         var allConstraints = [NSLayoutConstraint]()

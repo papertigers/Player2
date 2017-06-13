@@ -39,7 +39,7 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
         api.streamsForGame(limit, offset: offset, game: game) { [weak self] res in
             guard let streams = res.results else {
                 self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
-                return print("Couldn't load channels: \(res.error)") //print error
+                return print("Couldn't load channels: \(String(describing: res.error))") //print error
             }
             if let strongSelf = self {
                 if (streams.count < strongSelf.limit) {
