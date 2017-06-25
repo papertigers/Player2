@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         P2ImageCache.GameCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
         // Set maximum StreamCell cache duration for Kingfisher to 1hr
         P2ImageCache.StreamCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 1)
+        // Set maximum ChannelCell cache duration for Kingfisher to 2 days
+        P2ImageCache.ChannelCellCache.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 2)
         
         
         //Setup SearchController

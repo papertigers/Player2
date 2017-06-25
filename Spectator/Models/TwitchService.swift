@@ -128,6 +128,41 @@ struct TwitchService: GameService {
         }
     }
     
+    /**
+     Get a list of channels
+     
+     - parameter limit: Number of results to return
+     - parameter offset: Offset to start at
+     - parameter completionHandler: Callback called with possible array of twitch channels
+     
+     */
+    func getChannels(_ limit: Int = 25 , offset: Int = 0, completionHandler: @escaping ((ServiceResult<[TwitchChannel]>) -> Void)) {
+        let parameteres = [
+            "limit": limit,
+            "offset": offset,
+            ] as [String : Any]
+        Alamofire.request(tapi.streams(parameteres as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
+            switch self.checkResponse(response) {
+            case .success(let json):
+                self.log.debug{ "\(json)" }
+                guard let streams = json["streams"].array else {
+                    return completionHandler(.failure(TwitchError.noStreams))
+                }
+                self.log.info{ "🎮 Got streams+channels" }
+                TwitchService.backgroundQueue.async {
+                    let c = streams.flatMap { TwitchStream($0) }.map { $0.channel }
+                    DispatchQueue.main.async {
+                        completionHandler(.success(c))
+                    }
+                }
+            case .failure(let error):
+                self.log.error { "\(error)" }
+                Flurry.logError("GetChannels", message: "Failed to get streams+channels", error: error)
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
     typealias FeaturedStreamsCallback = ((ServiceResult<[TwitchStream]>) -> Void)
     /**
      Gets the featured streams from Twitch

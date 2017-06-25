@@ -8,16 +8,15 @@
 
 import Foundation
 
+let defaultBanner = "https://us-east.manta.joyent.com/papertigers/public/Player2/VideoBanner.png"
+
 func getTwitchId(value: Any) -> Int? {
     switch value {
     case is Int:
         return value as? Int
     case is String:
         let s = value as! String
-        if let id = Int(s) {
-            return id
-        }
-        return nil
+        return Int(s)
     default:
         return nil
     }

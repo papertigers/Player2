@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="appleTV" orientation="landscape">
         <adaptation id="light"/>
     </device>
     <dependencies>
         <deployment identifier="tvOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -88,7 +88,8 @@
                     <connections>
                         <segue destination="i0d-FS-zg3" kind="relationship" relationship="viewControllers" id="3qn-Er-X2B"/>
                         <segue destination="rTG-aT-rSV" kind="relationship" relationship="viewControllers" id="wxe-Q5-beF"/>
-                        <segue destination="a8z-b5-igz" kind="relationship" relationship="viewControllers" id="bkd-J3-8sg"/>
+                        <segue destination="Bac-4Z-EHT" kind="relationship" relationship="viewControllers" id="WFU-IF-04x"/>
+                        <segue destination="a8z-b5-igz" kind="relationship" relationship="viewControllers" id="ewa-ct-dbm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -225,6 +226,69 @@
             </objects>
             <point key="canvasLocation" x="722" y="10262"/>
         </scene>
+        <!--Channels-->
+        <scene sceneID="5rO-FI-YX5">
+            <objects>
+                <viewController id="Bac-4Z-EHT" customClass="ChannelSectionController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1x5-Bk-m0e"/>
+                        <viewControllerLayoutGuide type="bottom" id="2ZF-Cv-sN3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zby-nA-lyN">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-Ti-7Hf">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="c43-we-Jog"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="vXl-W0-Bnh" kind="embed" identifier="titlebar" id="iPu-5m-kEI"/>
+                                </connections>
+                            </containerView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MbI-bC-caT">
+                                <rect key="frame" x="0.0" y="120" width="1920" height="960"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kV6-qb-HZ4">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="UXv-9Z-dSu">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MbI-bC-caT" firstAttribute="top" secondItem="Jy1-Ti-7Hf" secondAttribute="bottom" id="0q5-rs-YD2"/>
+                            <constraint firstItem="2ZF-Cv-sN3" firstAttribute="top" secondItem="MbI-bC-caT" secondAttribute="bottom" id="E83-Ls-EiP"/>
+                            <constraint firstItem="Jy1-Ti-7Hf" firstAttribute="top" secondItem="1x5-Bk-m0e" secondAttribute="bottom" id="IWt-P1-grU"/>
+                            <constraint firstAttribute="trailing" secondItem="Jy1-Ti-7Hf" secondAttribute="trailing" id="PFN-BX-MRn"/>
+                            <constraint firstAttribute="trailing" secondItem="MbI-bC-caT" secondAttribute="trailing" id="SRA-Mx-gta"/>
+                            <constraint firstItem="Jy1-Ti-7Hf" firstAttribute="leading" secondItem="zby-nA-lyN" secondAttribute="leading" id="Xx1-q7-OB2"/>
+                            <constraint firstItem="MbI-bC-caT" firstAttribute="leading" secondItem="zby-nA-lyN" secondAttribute="leading" id="rBK-2p-lJM"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Channels" id="2Ye-sQ-GGF"/>
+                    <connections>
+                        <outlet property="collectionView" destination="MbI-bC-caT" id="49j-3k-tcG"/>
+                        <outlet property="containerViewController" destination="Jy1-Ti-7Hf" id="R3d-K5-fm4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3zb-Re-DPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2171" y="4764"/>
+        </scene>
         <!--Quality View Controller-->
         <scene sceneID="Mf2-ie-PHR">
             <objects>
@@ -337,7 +401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1p-rX-FFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="722" y="8726"/>
+            <point key="canvasLocation" x="722" y="8229"/>
         </scene>
         <!--Title Bar-->
         <scene sceneID="vga-Pe-z2S">
@@ -401,7 +465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4g-6m-YRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5386" y="1404"/>
+            <point key="canvasLocation" x="5482" y="1839"/>
         </scene>
         <!--Streams-->
         <scene sceneID="RAB-Am-ulr">
@@ -528,7 +592,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOW-PV-CsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6591" y="-779"/>
+            <point key="canvasLocation" x="8242" y="-779"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="dld-kG-gpt">
@@ -536,14 +600,14 @@
                 <avPlayerViewController storyboardIdentifier="StreamPlayer" videoGravity="AVLayerVideoGravityResizeAspect" id="iM5-Ga-GsM" customClass="StreamController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6f-yi-6hJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6591" y="4638"/>
+            <point key="canvasLocation" x="9461" y="1884"/>
         </scene>
     </scenes>
     <resources>
         <image name="Player2 - Controller" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sJc-XO-Uat"/>
-        <segue reference="AFK-TF-AYP"/>
+        <segue reference="iPu-5m-kEI"/>
+        <segue reference="oPd-eY-j2L"/>
     </inferredMetricsTieBreakers>
 </document>

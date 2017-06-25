@@ -6,12 +6,13 @@
 //  Copyright © 2016 Lights and Shapes. All rights reserved.
 //
 
-import UIKit
+import Kingfisher
 
 struct TwitchGameViewModel: ImagePresentable {
     let icon: String
     let game: TwitchGame
     let iconMultiplier: CGFloat
+    let kf_processor: ImageProcessor?
     let placeholder = "GameDefault"
     let cache = P2ImageCache.GameCellCache
     
@@ -19,6 +20,7 @@ struct TwitchGameViewModel: ImagePresentable {
         self.game = game
         self.iconMultiplier = 380.0/272.0
         self.icon = game.box.large
+        self.kf_processor = nil
     }
 }
 

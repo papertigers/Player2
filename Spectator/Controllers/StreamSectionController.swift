@@ -9,7 +9,7 @@
 import UIKit
 
 class StreamSectionController: UIViewController, UICollectionViewDelegate, TwitchSectionController, TitleBarDelegate {
-    var adapter: ChannelsAdapter!
+    var adapter: ChannelStreamsAdapter!
     var game: String!
     
     var titleBar: TitleBar?
@@ -25,7 +25,7 @@ class StreamSectionController: UIViewController, UICollectionViewDelegate, Twitc
         titleBar?.searchBar.isHidden = true
         titleBar?.delegate = self
         setupView(withConfig: StreamCollectionViewConfig())
-        adapter = ChannelsAdapter(collectionView: collectionView!, game: self.game)
+        adapter = ChannelStreamsAdapter(collectionView: collectionView!, game: self.game)
         Flurry.logEvent("Get Streams", withParameters: ["Game": game])
         setupCollectionView(withAdapter: adapter)
         adapter.safeLoad()

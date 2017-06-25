@@ -36,7 +36,7 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
     }
     
     func loadStreams() {
-        api.featuredStreams(100, offset: 0) { [weak self] res in
+        api.featuredStreams(100, offset: offset) { [weak self] res in
             guard let streams = res.results else {
                 self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
                 return print("Couldn't load streams: \(String(describing: res.error))")

@@ -14,8 +14,8 @@ enum TwitchSearch: String {
     case streams = "streams"
 }
 enum TwitchAPIVersion: String {
-    case v2 = "application/vnd.twitchtv.v2+json"
-    case v3 = "application/vnd.twitchtv.v3+json"
+    case v2 = "application/vnd.twitchtv.v2+json" //deprecated
+    case v3 = "application/vnd.twitchtv.v3+json" //deprecated
     case v5 = "application/vnd.twitchtv.v5+json"
 }
 

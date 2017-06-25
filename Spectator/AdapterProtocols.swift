@@ -18,10 +18,12 @@ struct P2ImageCache {
     enum CellType: String {
         case GameCell = "GameCell"
         case StreamCell = "StreamCell"
+        case ChannelCell = "ChannelCell"
     }
     
     static let StreamCellCache = ImageCache(name: CellType.StreamCell.rawValue)
     static let GameCellCache = ImageCache(name: CellType.GameCell.rawValue)
+    static let ChannelCellCache = ImageCache(name: CellType.ChannelCell.rawValue)
 }
 
 enum TwitchAdapterType {

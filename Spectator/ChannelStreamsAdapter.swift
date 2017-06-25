@@ -11,7 +11,7 @@ import Dwifft_tvOS
 import Kingfisher
 import OrderedSet
 
-class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
+class ChannelStreamsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
     internal weak var collectionView: UICollectionView?
     fileprivate var diffCalculator: CollectionViewDiffCalculator<TwitchStream>?
     var items = OrderedSet<TwitchStream>() {
@@ -66,7 +66,7 @@ class ChannelsAdapter: NSObject, TwitchAdapter, UICollectionViewDataSource {
 }
 
 
-extension ChannelsAdapter: UICollectionViewDataSourcePrefetching {
+extension ChannelStreamsAdapter: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         let urls: [URL] = indexPaths.flatMap { URL(string: items[$0.row].preview.large) }
         ImagePrefetcher(urls: urls).start()
