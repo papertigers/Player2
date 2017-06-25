@@ -56,6 +56,7 @@ func metadataItem(identifier: String, value: (NSCopying & NSObjectProtocol)?) ->
         item.value = actualValue
         item.identifier = identifier
         item.extendedLanguageTag = "und"
+        item.duration = kCMTimeIndefinite
         return item.copy() as? AVMetadataItem
     }
     return nil

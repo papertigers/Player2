@@ -47,7 +47,7 @@ struct TwitchChannel: Hashable {
      - returns: TwitchChannel
      */
     init?(_ json: JSON) {
-        guard let id = json["_id"].int,
+        guard let id = getTwitchId(value: json["_id"].rawValue),
             let name = json["name"].string,
             let displayName = json["display_name"].string,
             let followers = json["followers"].int,

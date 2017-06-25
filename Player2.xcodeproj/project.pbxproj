@@ -43,6 +43,8 @@
 		3BB679011DDA73A100420C2F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB679001DDA73A100420C2F /* AVKit.framework */; };
 		3BC00C641D2CAADC00A2D90D /* TwitchStreamVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */; };
 		3BC00C671D2CABA900A2D90D /* M3UParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00C661D2CABA900A2D90D /* M3UParser.swift */; };
+		3BC178F51F0032C6002680E7 /* TwitchUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC178F41F0032C6002680E7 /* TwitchUtils.swift */; };
+		3BC178F61F003350002680E7 /* TwitchUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC178F41F0032C6002680E7 /* TwitchUtils.swift */; };
 		3BC264B21DEF966C00977AB7 /* libFlurryTVOS_7.8.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC264AD1DEF966C00977AB7 /* libFlurryTVOS_7.8.2.a */; };
 		3BC264B31DEF966C00977AB7 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC264AF1DEF966C00977AB7 /* FlurryEmpty.m */; };
 		3BC264B41DEF966C00977AB7 /* libFlurry_7.8.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC264B11DEF966C00977AB7 /* libFlurry_7.8.2.a */; };
@@ -143,6 +145,7 @@
 		3BB679001DDA73A100420C2F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchStreamVideo.swift; path = Models/TwitchStreamVideo.swift; sourceTree = "<group>"; };
 		3BC00C661D2CABA900A2D90D /* M3UParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = M3UParser.swift; path = Models/M3UParser.swift; sourceTree = "<group>"; };
+		3BC178F41F0032C6002680E7 /* TwitchUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchUtils.swift; path = Models/TwitchUtils.swift; sourceTree = "<group>"; };
 		3BC264A31DEF962800977AB7 /* Player2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Player2-Bridging-Header.h"; sourceTree = "<group>"; };
 		3BC264AD1DEF966C00977AB7 /* libFlurryTVOS_7.8.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryTVOS_7.8.2.a; sourceTree = "<group>"; };
 		3BC264AE1DEF966C00977AB7 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
@@ -353,6 +356,7 @@
 				3B49C6FD1D2B74FC0097CDFC /* TwitchStream.swift */,
 				3BC00C631D2CAADC00A2D90D /* TwitchStreamVideo.swift */,
 				3BFE1E8C1DEE06F0008D6478 /* TwitchPreview.swift */,
+				3BC178F41F0032C6002680E7 /* TwitchUtils.swift */,
 			);
 			name = "Twitch Models";
 			sourceTree = "<group>";
@@ -595,6 +599,7 @@
 				3BAC492D1D28CF750034A972 /* TwitchService.swift in Sources */,
 				3B5B37FD1DE0E8A40069F64A /* TwitchStreamViewModel.swift in Sources */,
 				3B49C6F91D2B66C00097CDFC /* TwitchChannel.swift in Sources */,
+				3BC178F51F0032C6002680E7 /* TwitchUtils.swift in Sources */,
 				3BAC49311D28E7610034A972 /* TwitchServiceProtocol.swift in Sources */,
 				3B15512A1DE0E01C0079A7B9 /* ViewModelProtocols.swift in Sources */,
 				3B15512E1DE0E4530079A7B9 /* TwitchCell.swift in Sources */,
@@ -633,6 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BC178F61F003350002680E7 /* TwitchUtils.swift in Sources */,
 				3B256F171E8C4F0F008A465C /* TwitchPreview.swift in Sources */,
 				3B256F191E8C4F39008A465C /* AdapterErrorView.swift in Sources */,
 				3B256F161E8C4F0B008A465C /* TwitchGame.swift in Sources */,

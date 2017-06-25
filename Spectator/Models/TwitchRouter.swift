@@ -75,7 +75,7 @@ enum tapi: URLRequestConvertible {
     var apiVersion: TwitchAPIVersion {
         switch self {
         default:
-            return .v3
+            return .v5
         }
     }
     

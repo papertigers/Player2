@@ -29,7 +29,7 @@ struct TwitchStream: Hashable, TwitchSearchItem {
      - returns: TwitchStream
      */
     init?(_ json: JSON) {
-        guard let id = json["_id"].int,
+        guard let id = getTwitchId(value: json["_id"].rawValue),
             let game = json["game"].string,
             let videoHeight = json["video_height"].int,
             let isPlaylist = json["is_playlist"].bool,
@@ -37,8 +37,10 @@ struct TwitchStream: Hashable, TwitchSearchItem {
             let preview = TwitchPreview(json["preview"]),
             let channel = TwitchChannel(json["channel"])
             else {
+                print("Failed to parse Stream")
                 return nil
         }
+        
         
         self.id = id
         self.game = game

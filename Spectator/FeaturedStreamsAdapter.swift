@@ -39,7 +39,7 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
         api.featuredStreams(100, offset: 0) { [weak self] res in
             guard let streams = res.results else {
                 self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
-                return print("Couldn't load streams: \(String(describing: res.error))") //print error
+                return print("Couldn't load streams: \(String(describing: res.error))")
             }
             self?.updateDatasource(withArray: streams)
         }
@@ -48,9 +48,21 @@ class FeaturedStreamsAdapter: NSObject, TwitchAdapter, TwitchSearchAdapter, UICo
     func searchStreams() {
         api.searchStreams(limit, offset: offset, query: self.searchQuery) { [weak self] res in
             guard let results = res.results else {
-                self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
+                if let error = res.error {
+                    switch error {
+                    case TwitchService.TwitchError.noSearchResults:
+                        self?.displayErrorView(error: "No results for \"\(self?.searchQuery ?? "search term")\"")
+                    default:
+                        self?.displayErrorView(error: res.error?.localizedDescription ?? "Failed to load.")
+                    }
+                } else {
+                    self?.displayErrorView(error: "Failed to load search results from Twitch.")
+                }
+                
                 return print("Failed to get search results")
             }
+            //v5 does not paginate results
+            self?.finished = true
             if (results.count == 0) {
                 self?.displayErrorView(error: "No results for \"\(self?.searchQuery ?? "the query")\"")
             }

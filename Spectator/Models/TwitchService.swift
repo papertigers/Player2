@@ -176,10 +176,7 @@ struct TwitchService: GameService {
      */
     func searchGames(_ limit: Int = 10, offset: Int = 0, query: String, completionHandler: @escaping GameSearchCallback) {
         let parameters: [String : Any] = [
-            "query": query,
-            "type": "suggest",
-            "limit": limit,
-            "offset": offset
+            "query": query
         ]
         Alamofire.request(tapi.search(.games, parameters as [String : AnyObject])).validate(statusCode: 200..<300).responseJSON { response in
             switch self.checkResponse(response) {
@@ -216,7 +213,6 @@ struct TwitchService: GameService {
     func searchStreams(_ limit: Int = 10, offset: Int = 0, query: String, completionHandler: @escaping StreamSearchCallback) {
         let parameters: [String : Any] = [
             "query": query,
-            "type": "suggest",
             "limit": limit,
             "offset": offset
         ]
