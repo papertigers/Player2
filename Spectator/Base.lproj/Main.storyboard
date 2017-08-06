@@ -283,11 +283,12 @@
                     <connections>
                         <outlet property="collectionView" destination="MbI-bC-caT" id="49j-3k-tcG"/>
                         <outlet property="containerViewController" destination="Jy1-Ti-7Hf" id="R3d-K5-fm4"/>
+                        <segue destination="s24-2h-1PB" kind="show" identifier="showchannel" id="HSO-7D-wZ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zb-Re-DPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2171" y="4764"/>
+            <point key="canvasLocation" x="2171" y="4835"/>
         </scene>
         <!--Quality View Controller-->
         <scene sceneID="Mf2-ie-PHR">
@@ -467,6 +468,90 @@
             </objects>
             <point key="canvasLocation" x="5482" y="1839"/>
         </scene>
+        <!--Channel View Controller-->
+        <scene sceneID="8wZ-dR-iHy">
+            <objects>
+                <viewController id="s24-2h-1PB" customClass="ChannelViewController" customModule="Player2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yuc-PU-Mkd"/>
+                        <viewControllerLayoutGuide type="bottom" id="3do-n6-Jxx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="faN-CO-cxs">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VideoBanner" translatesAutoresizingMaskIntoConstraints="NO" id="jFF-Zc-xRP">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="JNq-Eu-BOP"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StreamDefault" translatesAutoresizingMaskIntoConstraints="NO" id="8wh-yu-1Mk">
+                                <rect key="frame" x="90" y="250" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Iri-Rk-4FS"/>
+                                    <constraint firstAttribute="width" constant="300" id="Mk6-Hq-CUz"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llm-0J-QDv">
+                                <rect key="frame" x="90" y="558" width="300" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7C-HN-VgH" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="398" y="408" width="1502" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFLINE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M11-b4-Dz7">
+                                <rect key="frame" x="398" y="462" width="1502" height="35"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knr-3J-wNn">
+                                <rect key="frame" x="450" y="518" width="293" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Watch Live"/>
+                                <connections>
+                                    <action selector="watchClicked:" destination="s24-2h-1PB" eventType="primaryActionTriggered" id="ZTM-e1-Bn9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Llm-0J-QDv" firstAttribute="centerX" secondItem="8wh-yu-1Mk" secondAttribute="centerX" id="2cb-VG-MI7"/>
+                            <constraint firstItem="Llm-0J-QDv" firstAttribute="top" secondItem="8wh-yu-1Mk" secondAttribute="bottom" constant="8" id="5mK-Ku-Ggr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M11-b4-Dz7" secondAttribute="trailing" id="NWF-f7-85m"/>
+                            <constraint firstItem="M11-b4-Dz7" firstAttribute="leading" secondItem="8wh-yu-1Mk" secondAttribute="trailing" constant="8" id="Nih-VO-xta"/>
+                            <constraint firstItem="jFF-Zc-xRP" firstAttribute="leading" secondItem="faN-CO-cxs" secondAttribute="leading" id="Vjs-jV-frU"/>
+                            <constraint firstItem="M11-b4-Dz7" firstAttribute="top" secondItem="c7C-HN-VgH" secondAttribute="bottom" constant="8" id="W4h-y7-Jeo"/>
+                            <constraint firstItem="8wh-yu-1Mk" firstAttribute="leading" secondItem="faN-CO-cxs" secondAttribute="leadingMargin" constant="70" id="W9o-1d-vIT"/>
+                            <constraint firstItem="8wh-yu-1Mk" firstAttribute="top" secondItem="Yuc-PU-Mkd" secondAttribute="bottom" constant="250" id="ais-S6-xYf"/>
+                            <constraint firstItem="Llm-0J-QDv" firstAttribute="width" secondItem="8wh-yu-1Mk" secondAttribute="width" id="cDg-Ic-uBb"/>
+                            <constraint firstAttribute="trailing" secondItem="jFF-Zc-xRP" secondAttribute="trailing" id="hsm-lp-qqU"/>
+                            <constraint firstItem="c7C-HN-VgH" firstAttribute="top" secondItem="jFF-Zc-xRP" secondAttribute="bottom" constant="8" id="kdy-Xk-TDS"/>
+                            <constraint firstItem="c7C-HN-VgH" firstAttribute="leading" secondItem="8wh-yu-1Mk" secondAttribute="trailing" constant="8" id="uPL-q0-QGE"/>
+                            <constraint firstItem="jFF-Zc-xRP" firstAttribute="top" secondItem="Yuc-PU-Mkd" secondAttribute="bottom" id="uQW-55-dR4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c7C-HN-VgH" secondAttribute="trailing" id="yde-Tm-A8y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="banner" destination="jFF-Zc-xRP" id="fnB-ud-NeW"/>
+                        <outlet property="game" destination="M11-b4-Dz7" id="na5-Bf-3Eb"/>
+                        <outlet property="icon" destination="8wh-yu-1Mk" id="lUB-CW-y1n"/>
+                        <outlet property="status" destination="c7C-HN-VgH" id="TPt-aT-Quk"/>
+                        <outlet property="username" destination="Llm-0J-QDv" id="Tae-V8-kcP"/>
+                        <outlet property="watchButton" destination="Knr-3J-wNn" id="ZF3-ho-2I6"/>
+                        <segue destination="iM5-Ga-GsM" kind="show" identifier="showstream" id="vdq-zi-UIA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jNd-ph-oil" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5482" y="4835"/>
+        </scene>
         <!--Streams-->
         <scene sceneID="RAB-Am-ulr">
             <objects>
@@ -605,9 +690,11 @@
     </scenes>
     <resources>
         <image name="Player2 - Controller" width="16" height="16"/>
+        <image name="StreamDefault" width="1920" height="1080"/>
+        <image name="VideoBanner" width="960" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iPu-5m-kEI"/>
-        <segue reference="oPd-eY-j2L"/>
+        <segue reference="vdq-zi-UIA"/>
     </inferredMetricsTieBreakers>
 </document>

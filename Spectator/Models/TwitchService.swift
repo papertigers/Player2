@@ -163,6 +163,35 @@ struct TwitchService: GameService {
         }
     }
     
+    /**
+     Get a channels stream (if live)
+     
+     - parameter id: Channel ID
+     - parameter completionHandler: Callback called with possible array of twitch channels
+     
+     */
+    func streamForChannel(id: Int, completionHandler: @escaping ((ServiceResult<TwitchStream>) -> Void)) {
+        Alamofire.request(tapi.getUserStream(id)).validate(statusCode: 200..<300).responseJSON { response in
+            switch self.checkResponse(response) {
+            case .success(let json):
+                self.log.debug{ "\(json)" }
+                self.log.info{ "🎮 Looked up possible stream for channel \(id)" }
+                TwitchService.backgroundQueue.async {
+                    guard let s = TwitchStream(json["stream"]) else {
+                        return completionHandler(.failure(TwitchError.noStreams))
+                    }
+                    DispatchQueue.main.async {
+                        completionHandler(.success(s))
+                    }
+                }
+            case .failure(let error):
+                self.log.error { "\(error)" }
+                Flurry.logError("GetChannels", message: "Failed to get stream for channel \(id)", error: error)
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
     typealias FeaturedStreamsCallback = ((ServiceResult<[TwitchStream]>) -> Void)
     /**
      Gets the featured streams from Twitch

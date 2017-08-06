@@ -52,6 +52,7 @@ struct TwitchChannel: Hashable {
             let displayName = json["display_name"].string,
             let followers = json["followers"].int,
             let views = json["views"].int else {
+                print("failed to parse channel")
                 return nil
         }
         

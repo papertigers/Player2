@@ -26,9 +26,17 @@ class ChannelSectionController: UIViewController, UICollectionViewDelegate, Twit
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerViewController: UIView!
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showchannel", sender: indexPath)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "titlebar"{
             titleBar = segue.destination as? TitleBar
+        }
+        if segue.identifier == "showchannel"{
+            let channelVC = segue.destination as! ChannelViewController
+            channelVC.channel = adapter.items[(sender as! NSIndexPath).row]
         }
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B11603A1F364D8F007049FE /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1160391F364D8F007049FE /* ChannelViewController.swift */; };
 		3B15512A1DE0E01C0079A7B9 /* ViewModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1551291DE0E01C0079A7B9 /* ViewModelProtocols.swift */; };
 		3B15512C1DE0E2940079A7B9 /* TwitchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B15512B1DE0E2940079A7B9 /* TwitchGameViewModel.swift */; };
 		3B15512E1DE0E4530079A7B9 /* TwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B15512D1DE0E4530079A7B9 /* TwitchCell.swift */; };
@@ -111,6 +112,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B1160391F364D8F007049FE /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelViewController.swift; path = Controllers/ChannelViewController.swift; sourceTree = "<group>"; };
 		3B1551291DE0E01C0079A7B9 /* ViewModelProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelProtocols.swift; path = Models/ViewModelProtocols.swift; sourceTree = "<group>"; };
 		3B15512B1DE0E2940079A7B9 /* TwitchGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitchGameViewModel.swift; path = Models/TwitchGameViewModel.swift; sourceTree = "<group>"; };
 		3B15512D1DE0E4530079A7B9 /* TwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchCell.swift; sourceTree = "<group>"; };
@@ -224,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B1160381F364D59007049FE /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				3B1160391F364D8F007049FE /* ChannelViewController.swift */,
+			);
+			name = Channels;
+			sourceTree = "<group>";
+		};
 		3B1551281DE0DFEF0079A7B9 /* Twitch View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +382,7 @@
 		3BC00C651D2CAB7200A2D90D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B1160381F364D59007049FE /* Channels */,
 				3BFDB8051E8F54DF0050FBE1 /* Settings */,
 				3BAE6CCF1E065A380017CAEB /* Search */,
 				3BC264B71DF1DEA700977AB7 /* TabBarViewController.swift */,
@@ -628,6 +639,7 @@
 				3BB678F11DD8D06300420C2F /* GamesAdapter.swift in Sources */,
 				3BFDB8131E915BF40050FBE1 /* AcknowledgementsViewController.swift in Sources */,
 				3B5B380B1DE17DFF0069F64A /* SectionController.swift in Sources */,
+				3B11603A1F364D8F007049FE /* ChannelViewController.swift in Sources */,
 				3BB678EE1DD5329400420C2F /* GameSectionController.swift in Sources */,
 				3BB678F91DDA679400420C2F /* ChannelStreamsAdapter.swift in Sources */,
 				3BAC49331D28EED70034A972 /* TwitchGame.swift in Sources */,

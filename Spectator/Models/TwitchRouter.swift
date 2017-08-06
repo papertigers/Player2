@@ -31,6 +31,7 @@ enum tapi: URLRequestConvertible {
     case topGames([String:Int])
     // Streams
     case streams([String:AnyObject])
+    case getUserStream(Int)
     case featuredStreams([String:Int])
     // Search
     case search(TwitchSearch, [String:AnyObject])
@@ -43,6 +44,8 @@ enum tapi: URLRequestConvertible {
         case .topGames:
             return .get
         case .streams:
+            return .get
+        case .getUserStream:
             return .get
         case .featuredStreams:
             return .get
@@ -61,6 +64,8 @@ enum tapi: URLRequestConvertible {
             return "/games/top"
         case .streams:
             return "/streams"
+        case .getUserStream(let id):
+            return "/streams/\(id)"
         case .featuredStreams:
             return "/streams/featured"
         case .search(let type, _):

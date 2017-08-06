@@ -62,7 +62,6 @@ class TwitchCell: UICollectionViewCell, NibReusable {
         if let process = presenter.kf_processor {
             self.imageView.kf.setImage(with: url, placeholder: UIImage(named: presenter.placeholder), options: [.targetCache(presenter.cache), .processor(process)])
         } else {
-            print(url)
             self.imageView.kf.setImage(with: url, placeholder: UIImage(named: presenter.placeholder), options: [.targetCache(presenter.cache)])
         }
     }
