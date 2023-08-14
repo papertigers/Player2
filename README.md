@@ -1,19 +1,20 @@
 # Player2
 
-![Player 2 - TopShelf (small) - Small](https://github.com/papertigers/Player2/assets/792549/1e28d541-3605-4424-9908-a6b5a90a06b1)
+![banner](https://github.com/papertigers/Player2/blob/master/Screenshots/banner.png?raw=true)
+
 Player2 is a Twitch app for the Apple TV.
 
 ### Top Shelf
-![top shelf](https://github.com/papertigers/Player2/assets/792549/98fdcb15-3e20-4bb2-a0fb-75de07dbed1c)
+![topshelf](https://github.com/papertigers/Player2/blob/master/Screenshots/topshelf.jpg?raw=true)
 
 ### Games Tab
-![Screenshot](https://github.com/papertigers/Player2/blob/develop/Screenshots/Player2%20%20-%20Games.png?raw=true)
+![games](https://github.com/papertigers/Player2/blob/master/Screenshots/games.png?raw=true)
 
 ### Streams Tab
-![streams](https://github.com/papertigers/Player2/assets/792549/41592b3d-0aa4-4ebc-884a-1a7cb422f413)
+![streams](https://github.com/papertigers/Player2/blob/master/Screenshots/streams.jpg?raw=true)
 
 ### Search Tab
-![search](https://github.com/papertigers/Player2/assets/792549/4a046e92-4422-4238-b828-d3823c6838a2)
+![search](https://github.com/papertigers/Player2/blob/master/Screenshots/search.jpg?raw=true)
 
 ### Settings Tab
-![settings](https://github.com/papertigers/Player2/assets/792549/141959b9-3f6d-4eb2-a59a-07c88c303349)
+![settings](https://github.com/papertigers/Player2/blob/master/Screenshots/settings.png?raw=true)
