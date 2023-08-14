@@ -1,4 +1,6 @@
 # Player2
+
+![Player 2 - TopShelf (small) - Small](https://github.com/papertigers/Player2/assets/792549/1e28d541-3605-4424-9908-a6b5a90a06b1)
 Player2 is a Twitch app for the Apple TV.
 
 ### Top Shelf
